@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="48"
+   height="48"
+   viewBox="0 0 48 48"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="16.791667"
+     inkscape:cx="23.970223"
+     inkscape:cy="24"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid29" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#334139;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:bevel;stroke-opacity:1;fill-opacity:1"
+       d="M 3,10 5,8 H 7 V 5 L 8,4 h 2 l 1,1 v 3 h 2 V 5 l 1,-1 h 2 l 1,1 v 3 h 2 V 5 l 1,-1 h 2 l 1,1 v 3 h 2 V 5 l 1,-1 h 2 l 1,1 v 3 h 2 V 5 l 1,-1 h 2 l 1,1 v 3 h 2 V 5 l 1,-1 h 2 l 1,1 v 3 h 2 l 2,2 v 28 l -2,2 h -2 v 3 l -1,1 h -2 l -1,-1 v -3 h -2 v 3 l -1,1 h -2 l -1,-1 v -3 h -2 v 3 l -1,1 h -2 l -1,-1 v -3 h -2 v 3 l -1,1 h -2 l -1,-1 v -3 h -2 v 3 l -1,1 h -2 l -1,-1 v -3 h -2 v 3 l -1,1 H 8 L 7,43 V 40 H 5 L 3,38 Z"
+       id="path40" />
+    <text
+       xml:space="preserve"
+       style="font-size:8px;line-height:1.25;font-family:'Airstrip Four';-inkscape-font-specification:'Airstrip Four';letter-spacing:0px;word-spacing:0px"
+       x="5.0332031"
+       y="18.345703"
+       id="text33675"><tspan
+         sodipodi:role="line"
+         id="tspan33673"
+         x="5.0332031"
+         y="18.345703">MCP2210</tspan></text>
+    <path
+       style="fill:#bf0000;fill-opacity:1;stroke:#5f0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:bevel;stroke-opacity:1"
+       d="m 9,28 v -3 h 20 v -2 l 10,4 v 1 z"
+       id="path33922" />
+    <path
+       style="fill:#007f00;fill-opacity:1;stroke:#003f00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:bevel;stroke-opacity:1"
+       d="m 9,30 h 30 v 3 H 19 v 2 L 9,31 Z"
+       id="path33959" />
+  </g>
+</svg>
