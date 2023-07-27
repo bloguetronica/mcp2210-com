@@ -23,6 +23,8 @@
 
 // Includes
 #include <QMainWindow>
+#include <QString>
+#include "mcp2210.h"
 
 namespace Ui {
 class DeviceWindow;
@@ -36,8 +38,15 @@ public:
     explicit DeviceWindow(QWidget *parent = nullptr);
     ~DeviceWindow();
 
+    bool isViewEnabled();
+    void openDevice(quint16 vid, quint16 pid, const QString &serialstr);
+
 private:
     Ui::DeviceWindow *ui;
+    MCP2210 mcp2210_;
+    QString serialstr_;
+    quint16 pid_, vid_;
+    bool viewEnabled_ = false;
 };
 
 #endif  // DEVICEWINDOW_H

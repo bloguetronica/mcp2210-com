@@ -19,6 +19,7 @@
 
 
 // Includes
+#include <QMessageBox>
 #include "devicewindow.h"
 #include "ui_devicewindow.h"
 
@@ -32,4 +33,33 @@ DeviceWindow::DeviceWindow(QWidget *parent) :
 DeviceWindow::~DeviceWindow()
 {
     delete ui;
+}
+
+// Checks if the device window is currently fully enabled
+bool DeviceWindow::isViewEnabled()
+{
+    return viewEnabled_;
+}
+
+// Opens the device and prepares the corresponding window
+void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialstr)
+{
+    int err = mcp2210_.open(vid, pid, serialstr);
+    if (err == MCP2210::SUCCESS) {  // Device was successfully opened
+        vid_ = vid;  // Pass VID
+        pid_ = pid;  // and PID
+        serialstr_ = serialstr;  // and the serial number as well
+        this->setWindowTitle(tr("MCP2210 Device (S/N: %1)").arg(serialstr_));
+        viewEnabled_ = true;
+    } else if (err == MCP2210::ERROR_INIT) {  // Failed to initialize libusb
+        QMessageBox::critical(this, tr("Critical Error"), tr("Could not initialize libusb.\n\nThis is a critical error and execution will be aborted."));
+        exit(EXIT_FAILURE);  // This error is critical because libusb failed to initialize
+    } else {
+        if (err == MCP2210::ERROR_NOT_FOUND) {  // Failed to find device
+            QMessageBox::critical(this, tr("Error"), tr("Could not find device."));
+        } else if (err == MCP2210::ERROR_BUSY) {  // Failed to claim interface
+            QMessageBox::critical(this, tr("Error"), tr("Device is currently unavailable.\n\nPlease confirm that the device is not in use."));
+        }
+        this->deleteLater();  // Close window after the subsequent show() call
+    }
 }
