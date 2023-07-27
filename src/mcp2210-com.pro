@@ -23,17 +23,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    devicewindow.cpp \
     libusb-extra.c \
     main.cpp \
     mainwindow.cpp \
     mcp2210.cpp
 
 HEADERS += \
+    devicewindow.h \
     libusb-extra.h \
     mainwindow.h \
     mcp2210.h
 
 FORMS += \
+    devicewindow.ui \
     mainwindow.ui
 
 LIBS += -lusb-1.0

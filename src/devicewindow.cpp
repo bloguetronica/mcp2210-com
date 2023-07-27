@@ -18,36 +18,18 @@
    Please feel free to contact me via e-mail: samuel.fmlourenco@gmail.com */
 
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-
 // Includes
-#include <QMainWindow>
+#include "devicewindow.h"
+#include "ui_devicewindow.h"
 
-namespace Ui {
-class MainWindow;
+DeviceWindow::DeviceWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::DeviceWindow)
+{
+    ui->setupUi(this);
 }
 
-class MainWindow : public QMainWindow
+DeviceWindow::~DeviceWindow()
 {
-    Q_OBJECT
-
-public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
-
-private slots:
-    void on_comboBoxDevices_currentIndexChanged(int index);
-    void on_lineEditPID_textEdited();
-    void on_lineEditVID_textEdited();
-    void on_pushButtonRefresh_clicked();
-
-private:
-    Ui::MainWindow *ui;
-    quint16 pid_, vid_;
-
-    void refresh();
-    void validateInput();
-};
-
-#endif  // MAINWINDOW_H
+    delete ui;
+}
