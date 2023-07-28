@@ -37,8 +37,26 @@
      <height>30</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu_Device">
+    <property name="title">
+     <string>&amp;Device</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="action_About_MCP2210_Commander"/>
+   </widget>
+   <addaction name="menu_Device"/>
+   <addaction name="menu_Help"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="action_About_MCP2210_Commander">
+   <property name="text">
+    <string>&amp;About MCP2210 Commander</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="resources.qrc"/>

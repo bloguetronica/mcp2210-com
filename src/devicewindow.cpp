@@ -49,6 +49,7 @@ void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialstr
         vid_ = vid;  // Pass VID
         pid_ = pid;  // and PID
         serialstr_ = serialstr;  // and the serial number as well
+        //readSettings();  // Read settings in volatile memory
         this->setWindowTitle(tr("MCP2210 Device (S/N: %1)").arg(serialstr_));
         viewEnabled_ = true;
     } else if (err == MCP2210::ERROR_INIT) {  // Failed to initialize libusb
