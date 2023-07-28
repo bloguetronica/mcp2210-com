@@ -4,4 +4,7 @@
         <file>icons/greyed64.png</file>
         <file>icons/selected64.png</file>
     </qresource>
+    <qresource prefix="/images">
+        <file>imagens/banner.png</file>
+    </qresource>
 </RCC>
