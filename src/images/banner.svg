@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="281"
+   height="41"
+   viewBox="0 0 281 41"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="banner.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="6.0960854"
+     inkscape:cx="140.5"
+     inkscape:cy="20.504962"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid29" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#334139;fill-opacity:1;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:bevel;stroke-opacity:1"
+       d="m 0.5,6.5 2,-2 h 2 v -3 l 1,-1 h 2 l 1,1 v 3 h 2 v -3 l 1,-1 h 2 l 1,1 v 3 h 2 v -3 l 1,-1 h 2 l 1,1 v 3 h 2 v -3 l 1,-1 h 2 l 1,1 v 3 h 2 v -3 l 1,-1 h 2 l 1,1 v 3 h 2 v -3 l 1,-1 h 2 l 1,1 v 3 h 2 l 2,2 v 28 l -2,2 h -2 v 3 l -1,1 h -2 l -1,-1 v -3 h -2 v 3 l -1,1 h -2 l -1,-1 v -3 h -2 v 3 l -1,1 h -2 l -1,-1 v -3 h -2 v 3 l -1,1 h -2 l -1,-1 v -3 h -2 v 3 l -1,1 h -2 l -1,-1 v -3 h -2 v 3 l -1,1 h -2 l -1,-1 v -3 h -2 l -2,-2 z"
+       id="path40" />
+    <text
+       xml:space="preserve"
+       style="font-size:8px;line-height:1.25;font-family:'Airstrip Four';-inkscape-font-specification:'Airstrip Four';letter-spacing:0px;word-spacing:0px"
+       x="2.5332031"
+       y="14.845703"
+       id="text33675"><tspan
+         sodipodi:role="line"
+         id="tspan33673"
+         x="2.5332031"
+         y="14.845703">MCP2210</tspan></text>
+    <path
+       style="fill:#bf0000;fill-opacity:1;stroke:#5f0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:bevel;stroke-opacity:1"
+       d="m 6.5,24.5 v -3 h 20 v -2 l 10,4 v 1 z"
+       id="path33922" />
+    <path
+       style="fill:#007f00;fill-opacity:1;stroke:#003f00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:bevel;stroke-opacity:1"
+       d="m 6.5,26.5 h 30 v 3 h -20 v 2 l -10,-4 z"
+       id="path33959" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:21.7867px;line-height:1.25;font-family:Figtree;-inkscape-font-specification:'Figtree, Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       x="51.782608"
+       y="28.136238"
+       id="text32"><tspan
+         sodipodi:role="line"
+         id="tspan34"
+         x="51.782608"
+         y="28.136238">MCP2210 Commander</tspan></text>
+  </g>
+</svg>
