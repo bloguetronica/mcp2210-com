@@ -5,6 +5,6 @@
         <file>icons/selected64.png</file>
     </qresource>
     <qresource prefix="/images">
-        <file>imagens/banner.png</file>
+        <file>images/banner.png</file>
     </qresource>
 </RCC>
