@@ -40,7 +40,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+protected:
+    void closeEvent(QCloseEvent *event);
+
 private slots:
+    void on_actionAbout_triggered();
     void on_comboBoxDevices_currentIndexChanged(int index);
     void on_lineEditPID_textEdited();
     void on_lineEditVID_textEdited();

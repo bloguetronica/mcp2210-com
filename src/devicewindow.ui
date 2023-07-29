@@ -37,22 +37,22 @@
      <height>30</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu_Device">
+   <widget class="QMenu" name="menuDevice">
     <property name="title">
      <string>&amp;Device</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menu_Help">
+   <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>&amp;Help</string>
     </property>
-    <addaction name="action_About_MCP2210_Commander"/>
+    <addaction name="actionAbout"/>
    </widget>
-   <addaction name="menu_Device"/>
-   <addaction name="menu_Help"/>
+   <addaction name="menuDevice"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="action_About_MCP2210_Commander">
+  <action name="actionAbout">
    <property name="text">
     <string>&amp;About MCP2210 Commander</string>
    </property>

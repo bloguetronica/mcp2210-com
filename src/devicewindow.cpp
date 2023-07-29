@@ -20,6 +20,7 @@
 
 // Includes
 #include <QMessageBox>
+#include "common.h"
 #include "devicewindow.h"
 #include "ui_devicewindow.h"
 
@@ -63,4 +64,9 @@ void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialstr
         }
         this->deleteLater();  // Close window after the subsequent show() call
     }
+}
+
+void DeviceWindow::on_actionAbout_triggered()
+{
+    showAboutDialog();  // See "common.h" and "common.cpp"
 }

@@ -41,6 +41,9 @@ public:
     bool isViewEnabled();
     void openDevice(quint16 vid, quint16 pid, const QString &serialstr);
 
+private slots:
+    void on_actionAbout_triggered();
+
 private:
     Ui::DeviceWindow *ui;
     MCP2210 mcp2210_;

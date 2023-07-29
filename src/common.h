@@ -18,26 +18,11 @@
    Please feel free to contact me via e-mail: samuel.fmlourenco@gmail.com */
 
 
-#ifndef ABOUTDIALOG_H
-#define ABOUTDIALOG_H
+#ifndef COMMON_H
+#define COMMON_H
 
-// Includes
-#include <QDialog>
+// Function prototypes
+void closeAboutDialog();
+void showAboutDialog();
 
-namespace Ui {
-class AboutDialog;
-}
-
-class AboutDialog : public QDialog
-{
-    Q_OBJECT
-
-public:
-    explicit AboutDialog(QWidget *parent = nullptr);
-    ~AboutDialog();
-
-private:
-    Ui::AboutDialog *ui;
-};
-
-#endif  // ABOUTDIALOG_H
+#endif  // COMMON_H

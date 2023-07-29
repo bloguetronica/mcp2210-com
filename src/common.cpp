@@ -18,26 +18,30 @@
    Please feel free to contact me via e-mail: samuel.fmlourenco@gmail.com */
 
 
-#ifndef ABOUTDIALOG_H
-#define ABOUTDIALOG_H
-
 // Includes
-#include <QDialog>
+#include <QPointer>
+#include "aboutdialog.h"
+#include "common.h"
 
-namespace Ui {
-class AboutDialog;
+// Definitions
+QPointer<AboutDialog> aboutDialog_;
+
+// Closes the about dialog
+void closeAboutDialog()
+{
+    if (!aboutDialog_.isNull()) {
+        aboutDialog_->close();  // Close the about dialog if open
+    }
 }
 
-class AboutDialog : public QDialog
+// Shows the about dialog
+void showAboutDialog()
 {
-    Q_OBJECT
-
-public:
-    explicit AboutDialog(QWidget *parent = nullptr);
-    ~AboutDialog();
-
-private:
-    Ui::AboutDialog *ui;
-};
-
-#endif  // ABOUTDIALOG_H
+    if (aboutDialog_.isNull()) {  // If the dialog wasn't previously open
+        aboutDialog_ = new AboutDialog;  // Note that the about dialog doesn't have a parent
+        aboutDialog_->show();
+    } else {
+        aboutDialog_->showNormal();  // Required if the dialog is minimized
+        aboutDialog_->activateWindow();  // Set focus on the previous dialog (dialog is raised and selected)
+    }
+}
