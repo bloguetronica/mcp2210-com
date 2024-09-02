@@ -53,7 +53,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QMap<QString, QPointer<DeviceWindow>> devWindowMap_;
+    QMap<QString, QPointer<DeviceWindow>> deviceWindowMap_;
     quint16 pid_, vid_;
 
     void refresh();
