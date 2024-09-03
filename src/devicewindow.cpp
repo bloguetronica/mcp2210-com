@@ -66,6 +66,8 @@ void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialstr
     }
 }
 
+// TODO Override resizeEvent()
+
 void DeviceWindow::on_actionAbout_triggered()
 {
     showAboutDialog();  // See "common.h" and "common.cpp"
