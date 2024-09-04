@@ -39,7 +39,7 @@ public:
     ~DeviceWindow();
 
     bool isViewEnabled();
-    void openDevice(quint16 vid, quint16 pid, const QString &serialstr);
+    void openDevice(quint16 vid, quint16 pid, const QString &serialString);
 
 private slots:
     void on_actionAbout_triggered();
@@ -47,7 +47,7 @@ private slots:
 private:
     Ui::DeviceWindow *ui;
     MCP2210 mcp2210_;
-    QString serialstr_;
+    QString serialString_;
     quint16 pid_, vid_;
     bool viewEnabled_ = false;
 };

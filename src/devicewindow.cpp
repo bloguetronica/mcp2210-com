@@ -43,15 +43,15 @@ bool DeviceWindow::isViewEnabled()
 }
 
 // Opens the device and prepares the corresponding window
-void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialstr)
+void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialString)
 {
-    int err = mcp2210_.open(vid, pid, serialstr);
+    int err = mcp2210_.open(vid, pid, serialString);
     if (err == MCP2210::SUCCESS) {  // Device was successfully opened
         vid_ = vid;  // Pass VID
         pid_ = pid;  // and PID
-        serialstr_ = serialstr;  // and the serial number as well
+        serialString_ = serialString;  // and the serial number as well
         //readSettings();  // Read settings in volatile memory
-        this->setWindowTitle(tr("MCP2210 Device (S/N: %1)").arg(serialstr_));
+        this->setWindowTitle(tr("MCP2210 Device (S/N: %1)").arg(serialString_));
         viewEnabled_ = true;
     } else if (err == MCP2210::ERROR_INIT) {  // Failed to initialize libusb
         QMessageBox::critical(this, tr("Critical Error"), tr("Could not initialize libusb.\n\nThis is a critical error and execution will be aborted."));

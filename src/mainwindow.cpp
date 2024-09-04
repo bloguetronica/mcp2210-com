@@ -86,18 +86,18 @@ void MainWindow::on_lineEditVID_textEdited(const QString &text)
 
 void MainWindow::on_pushButtonOpen_clicked()
 {
-    QString serialstr = ui->comboBoxDevices->currentText();  // Extract the serial number from the chosen item in the combo box
-    QString usbidstr = QString("%1%2%3").arg(vid_, 4, 16, QChar('0')).arg(pid_, 4, 16, QChar('0')).arg(serialstr);  // Unique identifier string for the USB device
+    QString serialString = ui->comboBoxDevices->currentText();  // Extract the serial number from the chosen item in the combo box
+    QString usbIdString = QString("%1%2%3").arg(vid_, 4, 16, QChar('0')).arg(pid_, 4, 16, QChar('0')).arg(serialString);  // Unique identifier string for the USB device
     DeviceWindow *deviceWindow;
-    if (deviceWindowMap_.contains(usbidstr) && !deviceWindowMap_[usbidstr].isNull() && (deviceWindow = deviceWindowMap_[usbidstr].data())->isViewEnabled()) {  // If the device is already mapped, and its window is open but not disabled
+    if (deviceWindowMap_.contains(usbIdString) && !deviceWindowMap_[usbIdString].isNull() && (deviceWindow = deviceWindowMap_[usbIdString].data())->isViewEnabled()) {  // If the device is already mapped, and its window is open but not disabled
         deviceWindow->showNormal();  // Required if the corresponding device window is minimized
         deviceWindow->activateWindow();  // Set focus on the device window (window is raised and selected)
     } else {
         deviceWindow = new DeviceWindow(this);  // Create a new window that will close when its parent window closes
         deviceWindow->setAttribute(Qt::WA_DeleteOnClose);  // This will not only free the allocated memory once the window is closed, but will also automatically call the destructor of the respective device, which in turn closes it
-        deviceWindow->openDevice(vid_, pid_, serialstr);  // Access the selected device and prepare its view
+        deviceWindow->openDevice(vid_, pid_, serialString);  // Access the selected device and prepare its view
         deviceWindow->show();  // Then open the corresponding window
-        deviceWindowMap_[usbidstr] = deviceWindow;  // Map the device window, via a QPointer, to the unique identifier string of the device
+        deviceWindowMap_[usbIdString] = deviceWindow;  // Map the device window, via a QPointer, to the unique identifier string of the device
     }
 }
 
