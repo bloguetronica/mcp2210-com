@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PinFunctionsDialog</class>
+ <widget class="QDialog" name="PinFunctionsDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>281</width>
+    <height>411</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>281</width>
+    <height>411</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>281</width>
+    <height>411</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>GPIO Pin Functions</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/icons/active64.png</normaloff>
+    <normalon>:/icons/icons/active64.png</normalon>
+    <disabledoff>:/icons/icons/greyed64.png</disabledoff>
+    <disabledon>:/icons/icons/greyed64.png</disabledon>
+    <activeoff>:/icons/icons/active64.png</activeoff>
+    <activeon>:/icons/icons/active64.png</activeon>
+    <selectedoff>:/icons/icons/selected64.png</selectedoff>
+    <selectedon>:/icons/icons/selected64.png</selectedon>:/icons/icons/active64.png</iconset>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>370</y>
+     <width>261</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelGP0">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>17</y>
+     <width>45</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GP0:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxGP0">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>10</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Input</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Output</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Chip select</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="labelGP1">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>57</y>
+     <width>45</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GP1:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxGP1">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>50</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Input</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Output</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Chip select</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="labelGP2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>97</y>
+     <width>45</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GP2:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxGP2">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>90</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Input</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Output</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Chip select</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Suspend</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="labelGP3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>137</y>
+     <width>45</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GP3:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxGP3">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>130</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Input</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Output</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Chip select</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>SPI transfer LED</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="labelGP4">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>177</y>
+     <width>45</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GP4:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxGP4">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>170</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Input</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Output</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Chip select</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>USB low power</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="labelGP5">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>217</y>
+     <width>45</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GP5:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxGP5">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>210</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Input</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Output</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Chip select</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>USB configured</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="labelGP6">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>257</y>
+     <width>45</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GP6:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxGP6">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>250</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Input</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Output</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Chip select</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>External interrupt</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="labelGP7">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>297</y>
+     <width>45</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GP7:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxGP7">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>290</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Input</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Output</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Chip select</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>SPI bus release ACK</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="labelGP8">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>337</y>
+     <width>45</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GP8:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxGP8">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>330</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Input</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>SPI bus release REQ</string>
+    </property>
+   </item>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>PinFunctionsDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>385</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>140</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>PinFunctionsDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>385</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>140</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
