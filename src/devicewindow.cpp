@@ -87,7 +87,7 @@ void DeviceWindow::on_actionStatus_triggered()
         int errcnt = 0;
         QString errstr;
         MCP2210::ChipStatus chipStatus = mcp2210_.getChipStatus(errcnt, errstr);
-        if (validOperation(tr("retrieve device status"), errcnt, errstr)) {
+        if (validateOperation(tr("retrieve device status"), errcnt, errstr)) {
             statusDialog_ = new StatusDialog(this);
             statusDialog_->setAttribute(Qt::WA_DeleteOnClose);  // It is important to delete the dialog in memory once closed, in order to force the application to retrieve the device status if the window is opened again???
             statusDialog_->setWindowTitle(tr("Device Status (S/N: %1)").arg(serialString_));
@@ -127,7 +127,7 @@ void DeviceWindow::disableView()
 }
 
 // Checks for errors and validates (or ultimately halts) device operations
-bool DeviceWindow::validOperation(const QString &operation, int errcnt, QString errstr)
+bool DeviceWindow::validateOperation(const QString &operation, int errcnt, QString errstr)
 {
     bool retval;
     if (errcnt > 0) {
@@ -143,14 +143,13 @@ bool DeviceWindow::validOperation(const QString &operation, int errcnt, QString 
             if (erracc_ > ERR_LIMIT) {  // If the session accumulated more errors than the limit set by "ERR_LIMIT" [10]
                 timer_->stop();  // Again, this prevents further errors
                 disableView();  // Disable device window
-                mcp2210_.close();  // Ensure that the device is freed, even if the previous device reset is not effective (cp2130_.reset() also frees the device interface, as an effect of re-enumeration)
-                // It is essential that cp2130_.close() is called, since some important checks rely on cp2130_.isOpen() to retrieve a proper status
+                mcp2210_.close();
                 QMessageBox::critical(this, tr("Error"), tr("Detected too many errors."));
             }
         }
-        retval = false;  // Failed check
+        retval = false;  // Failed validation
     } else {
-        retval = true;  // Passed check
+        retval = true;  // Passed validation
     }
     return retval;
 }

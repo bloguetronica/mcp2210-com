@@ -63,7 +63,7 @@ private:
     int erracc_ = 0;
 
     void disableView();
-    bool validOperation(const QString &operation, int errcnt, QString errstr);
+    bool validateOperation(const QString &operation, int errcnt, QString errstr);
 };
 
 #endif  // DEVICEWINDOW_H
