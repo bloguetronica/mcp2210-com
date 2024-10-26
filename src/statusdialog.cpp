@@ -19,12 +19,13 @@
 
 
 // Includes
+#include "mcp2210.h"
 #include "statusdialog.h"
 #include "ui_statusdialog.h"
 
-StatusDialog::StatusDialog(QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::StatusDialog)
+StatusDialog::StatusDialog(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::StatusDialog)
 {
     ui->setupUi(this);
 }
@@ -32,4 +33,42 @@ StatusDialog::StatusDialog(QWidget *parent)
 StatusDialog::~StatusDialog()
 {
     delete ui;
+}
+
+// Sets the text of "labelBusOnwerValue"
+void StatusDialog::setBusOwnerValueLabelText(quint8 busowner)
+{
+    QString owner;
+    switch (busowner) {
+    case MCP2210::BONO:
+        owner = tr("No owner");
+        break;
+    case MCP2210::BOOWN:
+        owner = tr("This master");
+        break;
+    case MCP2210::BOEXT:
+        owner = tr("External master");
+        break;
+    default:
+        owner = tr("Unknown");
+    }
+    ui->labelBusOwnerValue->setText(owner);
+}
+
+// Sets the text of "labelBusRequestValue"
+void StatusDialog::setBusRequestValueLabelText(bool busreq)
+{
+    ui->labelBusRequestValue->setText(busreq ? tr("Pending") : tr("None"));
+}
+
+// Sets the text of "labelPasswordStatusValue"
+void StatusDialog::setPasswordStatusValueLabelText(bool pwok)
+{
+    ui->labelPasswordStatusValue->setText(pwok ? tr("Guessed") : tr("Not guessed"));
+}
+
+// Sets the text of "labelPasswordTriesValue"
+void StatusDialog::setPasswordTriesValueLabelText(quint8 pwtries)
+{
+    ui->labelPasswordTriesValue->setText(tr("%1 of 5").arg(pwtries));
 }

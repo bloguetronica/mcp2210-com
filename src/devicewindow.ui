@@ -41,7 +41,12 @@
     <property name="title">
      <string>&amp;Device</string>
     </property>
-    <addaction name="action_Status"/>
+    <addaction name="actionInformation"/>
+    <addaction name="actionStatus"/>
+    <addaction name="separator"/>
+    <addaction name="actionEditGPIOPinFunctions"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -58,9 +63,27 @@
     <string>&amp;About MCP2210 Commander</string>
    </property>
   </action>
-  <action name="action_Status">
+  <action name="actionInformation">
+   <property name="text">
+    <string>&amp;Information</string>
+   </property>
+  </action>
+  <action name="actionStatus">
    <property name="text">
     <string>&amp;Status</string>
+   </property>
+  </action>
+  <action name="actionEditGPIOPinFunctions">
+   <property name="text">
+    <string>Edit &amp;GPIO Pin Functions</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>&amp;Close</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
    </property>
   </action>
  </widget>

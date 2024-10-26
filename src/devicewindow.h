@@ -23,8 +23,12 @@
 
 // Includes
 #include <QMainWindow>
+#include <QPointer>
+#include <QResizeEvent>
 #include <QString>
+#include <QTimer>
 #include "mcp2210.h"
+#include "statusdialog.h"
 
 namespace Ui {
 class DeviceWindow;
@@ -41,15 +45,25 @@ public:
     bool isViewEnabled();
     void openDevice(quint16 vid, quint16 pid, const QString &serialString);
 
+protected:
+    void resizeEvent(QResizeEvent *event);
+
 private slots:
     void on_actionAbout_triggered();
+    void on_actionStatus_triggered();
 
 private:
     Ui::DeviceWindow *ui;
     MCP2210 mcp2210_;
+    QPointer<StatusDialog> statusDialog_;
     QString serialString_;
+    QTimer *timer_;
     quint16 pid_, vid_;
     bool viewEnabled_ = false;
+    int erracc_ = 0;
+
+    void disableView();
+    bool validOperation(const QString &operation, int errcnt, QString errstr);
 };
 
 #endif  // DEVICEWINDOW_H
