@@ -30,7 +30,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     mcp2210.cpp \
-    pinfunctionsdialog.cpp
+    pinfunctionsdialog.cpp \
+    statusdialog.cpp
 
 HEADERS += \
     aboutdialog.h \
@@ -39,13 +40,15 @@ HEADERS += \
     libusb-extra.h \
     mainwindow.h \
     mcp2210.h \
-    pinfunctionsdialog.h
+    pinfunctionsdialog.h \
+    statusdialog.h
 
 FORMS += \
     aboutdialog.ui \
     devicewindow.ui \
     mainwindow.ui \
-    pinfunctionsdialog.ui
+    pinfunctionsdialog.ui \
+    statusdialog.ui
 
 LIBS += -lusb-1.0
 

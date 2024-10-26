@@ -41,6 +41,7 @@
     <property name="title">
      <string>&amp;Device</string>
     </property>
+    <addaction name="action_Status"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -55,6 +56,11 @@
   <action name="actionAbout">
    <property name="text">
     <string>&amp;About MCP2210 Commander</string>
+   </property>
+  </action>
+  <action name="action_Status">
+   <property name="text">
+    <string>&amp;Status</string>
    </property>
   </action>
  </widget>
