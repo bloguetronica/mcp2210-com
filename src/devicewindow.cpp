@@ -54,7 +54,7 @@ void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialStr
         vid_ = vid;  // Pass VID
         pid_ = pid;  // and PID
         serialString_ = serialString;  // and the serial number as well
-        //readSettings();  // Read settings in volatile memory
+        //readSettings();  // Read settings in volatile memory TODO
         this->setWindowTitle(tr("MCP2210 Device (S/N: %1)").arg(serialString_));
         viewEnabled_ = true;
     } else if (err == MCP2210::ERROR_INIT) {  // Failed to initialize libusb
@@ -73,7 +73,7 @@ void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialStr
 void DeviceWindow::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
-    this->setFixedHeight(ui->menuBar->height() + CENTRAL_HEIGHT);  // TODO
+    this->setFixedHeight(ui->menuBar->height() + CENTRAL_HEIGHT + ui->statusBar->height());  // TODO
 }
 
 void DeviceWindow::on_actionAbout_triggered()
