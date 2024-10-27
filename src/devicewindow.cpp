@@ -54,7 +54,7 @@ void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialStr
         vid_ = vid;  // Pass VID
         pid_ = pid;  // and PID
         serialString_ = serialString;  // and the serial number as well
-        //readSettings();  // Read settings in volatile memory TODO
+        readSettings();  // Read settings in volatile memory
         this->setWindowTitle(tr("MCP2210 Device (S/N: %1)").arg(serialString_));
         viewEnabled_ = true;
     } else if (err == MCP2210::ERROR_INIT) {  // Failed to initialize libusb
@@ -79,6 +79,34 @@ void DeviceWindow::resizeEvent(QResizeEvent *event)
 void DeviceWindow::on_actionAbout_triggered()
 {
     showAboutDialog();  // See "common.h" and "common.cpp"
+}
+
+void DeviceWindow::on_actionInformation_triggered()
+{
+    if (informationDialog_.isNull()) {  // If the dialog is not open
+        int errcnt = 0;
+        QString errstr;
+        QString manufacturerString = mcp2210_.getManufacturerDesc(errcnt, errstr);
+        QString productString = mcp2210_.getProductDesc(errcnt, errstr);
+        MCP2210::USBParameters usbParameters = mcp2210_.getUSBParameters(errcnt, errstr);
+        if (validateOperation(tr("retrieve device information"), errcnt, errstr)) {
+            informationDialog_ = new InformationDialog(this);
+            informationDialog_->setAttribute(Qt::WA_DeleteOnClose);  // It is important to delete the dialog in memory once closed, in order to force the application to retrieve information about the device if the window is opened again
+            informationDialog_->setWindowTitle(tr("Device Information (S/N: %1)").arg(serialString_));
+            informationDialog_->setManufacturerValueLabelText(manufacturerString);
+            informationDialog_->setProductValueLabelText(productString);
+            informationDialog_->setSerialValueLabelText(serialString_);
+            informationDialog_->setVIDValueLabelText(usbParameters.vid);
+            informationDialog_->setPIDValueLabelText(usbParameters.pid);
+            informationDialog_->setPowerModeValueLabelText(usbParameters.powmode);
+            informationDialog_->setMaxPowerValueLabelText(usbParameters.maxpow);
+            informationDialog_->setRemoteWakeUpCapableValueLabelText(usbParameters.rmwakeup);
+            informationDialog_->show();
+        }
+    } else {
+        informationDialog_->showNormal();  // Required if the dialog is minimized
+        informationDialog_->activateWindow();  // Set focus on the previous dialog (dialog is raised and selected)
+    }
 }
 
 void DeviceWindow::on_actionStatus_triggered()
@@ -125,6 +153,12 @@ void DeviceWindow::disableView()
     ui->lcdNumberCount->setStyleSheet("");*/
     ui->statusBar->setEnabled(false);
     viewEnabled_ = false;
+}
+
+// Reads settings from the MCP2210 volatile memory area
+void DeviceWindow::readSettings()
+{
+    // TODO
 }
 
 // Checks for errors and validates (or ultimately halts) device operations

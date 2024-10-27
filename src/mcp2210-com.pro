@@ -26,6 +26,7 @@ SOURCES += \
     aboutdialog.cpp \
     common.cpp \
     devicewindow.cpp \
+    informationdialog.cpp \
     libusb-extra.c \
     main.cpp \
     mainwindow.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     aboutdialog.h \
     common.h \
     devicewindow.h \
+    informationdialog.h \
     libusb-extra.h \
     mainwindow.h \
     mcp2210.h \
@@ -46,6 +48,7 @@ HEADERS += \
 FORMS += \
     aboutdialog.ui \
     devicewindow.ui \
+    informationdialog.ui \
     mainwindow.ui \
     pinfunctionsdialog.ui \
     statusdialog.ui

@@ -27,6 +27,7 @@
 #include <QResizeEvent>
 #include <QString>
 #include <QTimer>
+#include "informationdialog.h"
 #include "mcp2210.h"
 #include "statusdialog.h"
 
@@ -50,11 +51,13 @@ protected:
 
 private slots:
     void on_actionAbout_triggered();
+    void on_actionInformation_triggered();
     void on_actionStatus_triggered();
 
 private:
     Ui::DeviceWindow *ui;
     MCP2210 mcp2210_;
+    QPointer<InformationDialog> informationDialog_;
     QPointer<StatusDialog> statusDialog_;
     QString serialString_;
     QTimer *timer_;
@@ -63,6 +66,7 @@ private:
     int erracc_ = 0;
 
     void disableView();
+    void readSettings();
     bool validateOperation(const QString &operation, int errcnt, QString errstr);
 };
 
