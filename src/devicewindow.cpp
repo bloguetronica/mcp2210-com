@@ -139,18 +139,15 @@ void DeviceWindow::disableView()
     ui->actionChangePinFunctions->setEnabled(false);
     ui->actionClose->setText(tr("&Close Window"));
     ui->centralWidget->setEnabled(false);
-    /*ui->checkBoxGP0->setStyleSheet("");
-    ui->checkBoxGP1->setStyleSheet("");
-    ui->checkBoxGP2->setStyleSheet("");
-    ui->checkBoxGP3->setStyleSheet("");
-    ui->checkBoxGP4->setStyleSheet("");
-    ui->checkBoxGP5->setStyleSheet("");
-    ui->checkBoxGP6->setStyleSheet("");
-    ui->checkBoxGP7->setStyleSheet("");
-    ui->checkBoxGP8->setStyleSheet("");
-    ui->checkBoxGP9->setStyleSheet("");
-    ui->checkBoxGP10->setStyleSheet("");
-    ui->lcdNumberCount->setStyleSheet("");*/
+    ui->checkBoxGPIO0->setStyleSheet("");
+    ui->checkBoxGPIO1->setStyleSheet("");
+    ui->checkBoxGPIO2->setStyleSheet("");
+    ui->checkBoxGPIO3->setStyleSheet("");
+    ui->checkBoxGPIO4->setStyleSheet("");
+    ui->checkBoxGPIO5->setStyleSheet("");
+    ui->checkBoxGPIO6->setStyleSheet("");
+    ui->checkBoxGPIO7->setStyleSheet("");
+    ui->checkBoxGPIO8->setStyleSheet("");
     ui->statusBar->setEnabled(false);
     viewEnabled_ = false;
 }
