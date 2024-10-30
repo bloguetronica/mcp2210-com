@@ -53,6 +53,7 @@ private slots:
     void on_actionAbout_triggered();
     void on_actionInformation_triggered();
     void on_actionStatus_triggered();
+    void update();
 
 private:
     Ui::DeviceWindow *ui;

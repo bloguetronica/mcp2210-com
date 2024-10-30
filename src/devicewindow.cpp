@@ -33,6 +33,8 @@ DeviceWindow::DeviceWindow(QWidget *parent) :
     ui(new Ui::DeviceWindow)
 {
     ui->setupUi(this);
+    timer_ = new QTimer(this);
+    connect(timer_, SIGNAL(timeout()), this, SLOT(update()));
 }
 
 DeviceWindow::~DeviceWindow()
@@ -56,7 +58,9 @@ void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialStr
         serialString_ = serialString;  // and the serial number as well
         readSettings();  // Read settings in volatile memory
         this->setWindowTitle(tr("MCP2210 Device (S/N: %1)").arg(serialString_));
-        viewEnabled_ = true;
+        // initializeView();  // TODO
+        timer_->start(100);  // Start the timer
+        viewEnabled_ = true;  // TODO Maybe inside initializeView()?
     } else if (err == MCP2210::ERROR_INIT) {  // Failed to initialize libusb
         QMessageBox::critical(this, tr("Critical Error"), tr("Could not initialize libusb.\n\nThis is a critical error and execution will be aborted."));
         exit(EXIT_FAILURE);  // This error is critical because libusb failed to initialize
@@ -129,6 +133,12 @@ void DeviceWindow::on_actionStatus_triggered()
         statusDialog_->showNormal();  // Required if the dialog is minimized
         statusDialog_->activateWindow();  // Set focus on the previous dialog (dialog is raised and selected)
     }
+}
+
+// This is the main update routine
+void DeviceWindow::update()
+{
+    // TODO
 }
 
 // Partially disables device window
