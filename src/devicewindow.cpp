@@ -58,9 +58,8 @@ void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialStr
         serialString_ = serialString;  // and the serial number as well
         readSettings();  // Read settings in volatile memory
         this->setWindowTitle(tr("MCP2210 Device (S/N: %1)").arg(serialString_));
-        // initializeView();  // TODO
+        initializeView();
         timer_->start(100);  // Start the timer
-        viewEnabled_ = true;  // TODO Maybe inside initializeView()?
     } else if (err == MCP2210::ERROR_INIT) {  // Failed to initialize libusb
         QMessageBox::critical(this, tr("Critical Error"), tr("Could not initialize libusb.\n\nThis is a critical error and execution will be aborted."));
         exit(EXIT_FAILURE);  // This error is critical because libusb failed to initialize
@@ -160,6 +159,20 @@ void DeviceWindow::disableView()
     ui->checkBoxGPIO8->setStyleSheet("");
     ui->statusBar->setEnabled(false);
     viewEnabled_ = false;
+}
+
+// Initializes the GPIO controls
+void DeviceWindow::initializeGPIOControls()
+{
+    // TODO
+}
+
+// This is the routine that is used to initialize the device window
+void DeviceWindow::initializeView()
+{
+    initializeGPIOControls();
+    // TODO
+    viewEnabled_ = true;
 }
 
 // Reads settings from the MCP2210 volatile memory area

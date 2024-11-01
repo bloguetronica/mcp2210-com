@@ -67,6 +67,8 @@ private:
     int erracc_ = 0;
 
     void disableView();
+    void initializeGPIOControls();
+    void initializeView();
     void readSettings();
     bool validateOperation(const QString &operation, int errcnt, QString errstr);
 };
