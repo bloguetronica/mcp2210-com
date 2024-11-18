@@ -21,6 +21,7 @@
 // Includes
 #include <QMessageBox>
 #include "common.h"
+#include "pinfunctionsdialog.h"
 #include "devicewindow.h"
 #include "ui_devicewindow.h"
 
@@ -82,6 +83,18 @@ void DeviceWindow::resizeEvent(QResizeEvent *event)
 void DeviceWindow::on_actionAbout_triggered()
 {
     showAboutDialog();  // See "common.h" and "common.cpp"
+}
+
+void DeviceWindow::on_actionChangePinFunctions_triggered()
+{
+    // TODO Get (or parse) pin functions
+    PinFunctionsDialog pinFunctionsDialog(this);
+    if (pinFunctionsDialog.exec() == QDialog::Accepted) {  // If the user clicks "OK", the new pin functions are applied
+        // TODO
+        int errcnt = 0;
+        QString errstr;
+        // TODO Apply and then validateOperation()
+    }
 }
 
 void DeviceWindow::on_actionInformation_triggered()
