@@ -147,6 +147,70 @@ void DeviceWindow::on_actionStatus_triggered()
     }
 }
 
+void DeviceWindow::on_checkBoxGPIO0_clicked()
+{
+    int errcnt = 0;
+    QString errstr;
+    mcp2210_.setGPIO(MCP2210::GPIO0, ui->checkBoxGPIO0->isChecked(), errcnt, errstr);  // Set GPIO0 according to the user choice
+    validateOperation(tr("switch GPIO0"), errcnt, errstr);
+}
+
+void DeviceWindow::on_checkBoxGPIO1_clicked()
+{
+    int errcnt = 0;
+    QString errstr;
+    mcp2210_.setGPIO(MCP2210::GPIO1, ui->checkBoxGPIO1->isChecked(), errcnt, errstr);  // Set GPIO1 according to the user choice
+    validateOperation(tr("switch GPIO1"), errcnt, errstr);
+}
+
+void DeviceWindow::on_checkBoxGPIO2_clicked()
+{
+    int errcnt = 0;
+    QString errstr;
+    mcp2210_.setGPIO(MCP2210::GPIO2, ui->checkBoxGPIO2->isChecked(), errcnt, errstr);  // Set GPIO2 according to the user choice
+    validateOperation(tr("switch GPIO2"), errcnt, errstr);
+}
+
+void DeviceWindow::on_checkBoxGPIO3_clicked()
+{
+    int errcnt = 0;
+    QString errstr;
+    mcp2210_.setGPIO(MCP2210::GPIO3, ui->checkBoxGPIO3->isChecked(), errcnt, errstr);  // Set GPIO3 according to the user choice
+    validateOperation(tr("switch GPIO3"), errcnt, errstr);  // The string "gpio3-switch-op" should be translated to "GPIO.3 switch"
+}
+
+void DeviceWindow::on_checkBoxGPIO4_clicked()
+{
+    int errcnt = 0;
+    QString errstr;
+    mcp2210_.setGPIO(MCP2210::GPIO4, ui->checkBoxGPIO4->isChecked(), errcnt, errstr);  // Set GPIO4 according to the user choice
+    validateOperation(tr("switch GPIO4"), errcnt, errstr);  // The string "gpio4-switch-op" should be translated to "GPIO.4 switch"
+}
+
+void DeviceWindow::on_checkBoxGPIO5_clicked()
+{
+    int errcnt = 0;
+    QString errstr;
+    mcp2210_.setGPIO(MCP2210::GPIO5, ui->checkBoxGPIO5->isChecked(), errcnt, errstr);  // Set GPIO5 according to the user choice
+    validateOperation(tr("switch GPIO5"), errcnt, errstr);  // The string "gpio5-switch-op" should be translated to "GPIO.5 switch"
+}
+
+void DeviceWindow::on_checkBoxGPIO6_clicked()
+{
+    int errcnt = 0;
+    QString errstr;
+    mcp2210_.setGPIO(MCP2210::GPIO6, ui->checkBoxGPIO6->isChecked(), errcnt, errstr);  // Set GPIO6 according to the user choice
+    validateOperation(tr("switch GPIO6"), errcnt, errstr);  // The string "gpio6-switch-op" should be translated to "GPIO.6 switch"
+}
+
+void DeviceWindow::on_checkBoxGPIO7_clicked()
+{
+    int errcnt = 0;
+    QString errstr;
+    mcp2210_.setGPIO(MCP2210::GPIO7, ui->checkBoxGPIO7->isChecked(), errcnt, errstr);  // Set GPIO7 according to the user choice
+    validateOperation(tr("switch GPIO7"), errcnt, errstr);  // The string "gpio7-switch-op" should be translated to "GPIO.7 switch"
+}
+
 // This is the main update routine
 void DeviceWindow::update()
 {
@@ -161,15 +225,6 @@ void DeviceWindow::disableView()
     ui->actionChangePinFunctions->setEnabled(false);
     ui->actionClose->setText(tr("&Close Window"));
     ui->centralWidget->setEnabled(false);
-    ui->checkBoxGPIO0->setStyleSheet("");
-    ui->checkBoxGPIO1->setStyleSheet("");
-    ui->checkBoxGPIO2->setStyleSheet("");
-    ui->checkBoxGPIO3->setStyleSheet("");
-    ui->checkBoxGPIO4->setStyleSheet("");
-    ui->checkBoxGPIO5->setStyleSheet("");
-    ui->checkBoxGPIO6->setStyleSheet("");
-    ui->checkBoxGPIO7->setStyleSheet("");
-    ui->checkBoxGPIO8->setStyleSheet("");
     ui->statusBar->setEnabled(false);
     viewEnabled_ = false;
 }
@@ -177,24 +232,14 @@ void DeviceWindow::disableView()
 // Initializes the GPIO controls
 void DeviceWindow::initializeGPIOControls()
 {
-    ui->checkBoxGPIO0->setStyleSheet(chipSettings_.gp0 == MCP2210::PCCS ? "color: darkred;" : "");
-    ui->checkBoxGPIO0->setEnabled(chipSettings_.gp0 == MCP2210::PCCS || (chipSettings_.gp0 == MCP2210::PCGPIO && (0x01 & chipSettings_.gpdir) == 0x00));
-    ui->checkBoxGPIO1->setStyleSheet(chipSettings_.gp1 == MCP2210::PCCS ? "color: darkred;" : "");
-    ui->checkBoxGPIO1->setEnabled(chipSettings_.gp1 == MCP2210::PCCS || (chipSettings_.gp1 == MCP2210::PCGPIO && (0x02 & chipSettings_.gpdir) == 0x00));
-    ui->checkBoxGPIO2->setStyleSheet(chipSettings_.gp2 == MCP2210::PCCS ? "color: darkred;" : "");
-    ui->checkBoxGPIO2->setEnabled(chipSettings_.gp2 == MCP2210::PCCS || (chipSettings_.gp2 == MCP2210::PCGPIO && (0x04 & chipSettings_.gpdir) == 0x00));
-    ui->checkBoxGPIO3->setStyleSheet(chipSettings_.gp3 == MCP2210::PCCS ? "color: darkred;" : "");
-    ui->checkBoxGPIO3->setEnabled(chipSettings_.gp3 == MCP2210::PCCS || (chipSettings_.gp3 == MCP2210::PCGPIO && (0x08 & chipSettings_.gpdir) == 0x00));
-    ui->checkBoxGPIO4->setStyleSheet(chipSettings_.gp4 == MCP2210::PCCS ? "color: darkred;" : "");
-    ui->checkBoxGPIO4->setEnabled(chipSettings_.gp4 == MCP2210::PCCS || (chipSettings_.gp4 == MCP2210::PCGPIO && (0x10 & chipSettings_.gpdir) == 0x00));
-    ui->checkBoxGPIO5->setStyleSheet(chipSettings_.gp5 == MCP2210::PCCS ? "color: darkred;" : "");
-    ui->checkBoxGPIO5->setEnabled(chipSettings_.gp5 == MCP2210::PCCS || (chipSettings_.gp5 == MCP2210::PCGPIO && (0x20 & chipSettings_.gpdir) == 0x00));
-    ui->checkBoxGPIO6->setStyleSheet(chipSettings_.gp6 == MCP2210::PCCS ? "color: darkred;" : "");
-    ui->checkBoxGPIO6->setEnabled(chipSettings_.gp6 == MCP2210::PCCS || (chipSettings_.gp6 == MCP2210::PCGPIO && (0x40 & chipSettings_.gpdir) == 0x00));
-    ui->checkBoxGPIO7->setStyleSheet(chipSettings_.gp7 == MCP2210::PCCS ? "color: darkred;" : "");
-    ui->checkBoxGPIO7->setEnabled(chipSettings_.gp7 == MCP2210::PCCS || (chipSettings_.gp7 == MCP2210::PCGPIO && (0x80 & chipSettings_.gpdir) == 0x00));
-    ui->checkBoxGPIO8->setStyleSheet(chipSettings_.gp8 == MCP2210::PCCS ? "color: darkred;" : "");
-    ui->checkBoxGPIO8->setEnabled(chipSettings_.gp8 == MCP2210::PCCS);
+    ui->checkBoxGPIO0->setEnabled(chipSettings_.gp0 == MCP2210::PCGPIO && (0x01 & chipSettings_.gpdir) == 0x00);
+    ui->checkBoxGPIO1->setEnabled(chipSettings_.gp1 == MCP2210::PCGPIO && (0x02 & chipSettings_.gpdir) == 0x00);
+    ui->checkBoxGPIO2->setEnabled(chipSettings_.gp2 == MCP2210::PCGPIO && (0x04 & chipSettings_.gpdir) == 0x00);
+    ui->checkBoxGPIO3->setEnabled(chipSettings_.gp3 == MCP2210::PCGPIO && (0x08 & chipSettings_.gpdir) == 0x00);
+    ui->checkBoxGPIO4->setEnabled(chipSettings_.gp4 == MCP2210::PCGPIO && (0x10 & chipSettings_.gpdir) == 0x00);
+    ui->checkBoxGPIO5->setEnabled(chipSettings_.gp5 == MCP2210::PCGPIO && (0x20 & chipSettings_.gpdir) == 0x00);
+    ui->checkBoxGPIO6->setEnabled(chipSettings_.gp6 == MCP2210::PCGPIO && (0x40 & chipSettings_.gpdir) == 0x00);
+    ui->checkBoxGPIO7->setEnabled(chipSettings_.gp7 == MCP2210::PCGPIO && (0x80 & chipSettings_.gpdir) == 0x00);
 }
 
 // This is the routine that is used to initialize the device window
@@ -223,7 +268,7 @@ bool DeviceWindow::validateOperation(const QString &operation, int errcnt, QStri
             QMessageBox::critical(this, tr("Error"), tr("Device disconnected.\n\nPlease reconnect it and try again."));
         } else {
             errstr.chop(1);  // Remove the last character, which is always a newline
-            QMessageBox::critical(this, tr("Error"), tr("%1 operation returned the following error(s):\n– %2", "", errcnt).arg(operation, errstr.replace("\n", "\n– ")));
+            QMessageBox::critical(this, tr("Error"), tr("Failed to %1. The operation returned the following error(s):\n– %2", "", errcnt).arg(operation, errstr.replace("\n", "\n– ")));
             erracc_ += errcnt;
             if (erracc_ > ERR_LIMIT) {  // If the session accumulated more errors than the limit set by "ERR_LIMIT" [10]
                 timer_->stop();  // Again, this prevents further errors

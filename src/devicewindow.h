@@ -54,12 +54,21 @@ private slots:
     void on_actionInformation_triggered();
     void on_actionChangePinFunctions_triggered();
     void on_actionStatus_triggered();
+    void on_checkBoxGPIO0_clicked();
+    void on_checkBoxGPIO1_clicked();
+    void on_checkBoxGPIO2_clicked();
+    void on_checkBoxGPIO3_clicked();
+    void on_checkBoxGPIO4_clicked();
+    void on_checkBoxGPIO5_clicked();
+    void on_checkBoxGPIO6_clicked();
+    void on_checkBoxGPIO7_clicked();
     void update();
 
 private:
     Ui::DeviceWindow *ui;
     MCP2210 mcp2210_;
     MCP2210::ChipSettings chipSettings_;
+    MCP2210::SPISettings spiSettings_;
     QPointer<InformationDialog> informationDialog_;
     QPointer<StatusDialog> statusDialog_;
     QString serialString_;
