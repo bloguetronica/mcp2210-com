@@ -36,6 +36,16 @@ public:
     explicit PinFunctionsDialog(QWidget *parent = nullptr);
     ~PinFunctionsDialog();
 
+    void setGP0ComboBoxCurrentIndex(int index);
+    void setGP1ComboBoxCurrentIndex(int index);
+    void setGP2ComboBoxCurrentIndex(int index);
+    void setGP3ComboBoxCurrentIndex(int index);
+    void setGP4ComboBoxCurrentIndex(int index);
+    void setGP5ComboBoxCurrentIndex(int index);
+    void setGP6ComboBoxCurrentIndex(int index);
+    void setGP7ComboBoxCurrentIndex(int index);
+    void setGP8ComboBoxCurrentIndex(int index);
+
 private:
     Ui::PinFunctionsDialog *ui;
 };

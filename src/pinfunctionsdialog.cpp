@@ -33,3 +33,48 @@ PinFunctionsDialog::~PinFunctionsDialog()
 {
     delete ui;
 }
+
+void PinFunctionsDialog::setGP0ComboBoxCurrentIndex(int index)
+{
+    ui->comboBoxGP0->setCurrentIndex(index);
+}
+
+void PinFunctionsDialog::setGP1ComboBoxCurrentIndex(int index)
+{
+    ui->comboBoxGP1->setCurrentIndex(index);
+}
+
+void PinFunctionsDialog::setGP2ComboBoxCurrentIndex(int index)
+{
+    ui->comboBoxGP2->setCurrentIndex(index);
+}
+
+void PinFunctionsDialog::setGP3ComboBoxCurrentIndex(int index)
+{
+    ui->comboBoxGP3->setCurrentIndex(index);
+}
+
+void PinFunctionsDialog::setGP4ComboBoxCurrentIndex(int index)
+{
+    ui->comboBoxGP4->setCurrentIndex(index);
+}
+
+void PinFunctionsDialog::setGP5ComboBoxCurrentIndex(int index)
+{
+    ui->comboBoxGP5->setCurrentIndex(index);
+}
+
+void PinFunctionsDialog::setGP6ComboBoxCurrentIndex(int index)
+{
+    ui->comboBoxGP6->setCurrentIndex(index);
+}
+
+void PinFunctionsDialog::setGP7ComboBoxCurrentIndex(int index)
+{
+    ui->comboBoxGP7->setCurrentIndex(index);
+}
+
+void PinFunctionsDialog::setGP8ComboBoxCurrentIndex(int index)
+{
+    ui->comboBoxGP8->setCurrentIndex(index);
+}

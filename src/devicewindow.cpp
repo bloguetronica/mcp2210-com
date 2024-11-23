@@ -87,8 +87,16 @@ void DeviceWindow::on_actionAbout_triggered()
 
 void DeviceWindow::on_actionChangePinFunctions_triggered()
 {
-    // TODO Get (or parse) pin functions
     PinFunctionsDialog pinFunctionsDialog(this);
+    pinFunctionsDialog.setGP0ComboBoxCurrentIndex(chipSettings_.gp0 == MCP2210::PCGPIO ? (0x01 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp0 + 1);
+    pinFunctionsDialog.setGP1ComboBoxCurrentIndex(chipSettings_.gp1 == MCP2210::PCGPIO ? (0x02 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp1 + 1);
+    pinFunctionsDialog.setGP2ComboBoxCurrentIndex(chipSettings_.gp2 == MCP2210::PCGPIO ? (0x04 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp2 + 1);
+    pinFunctionsDialog.setGP3ComboBoxCurrentIndex(chipSettings_.gp3 == MCP2210::PCGPIO ? (0x08 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp3 + 1);
+    pinFunctionsDialog.setGP4ComboBoxCurrentIndex(chipSettings_.gp4 == MCP2210::PCGPIO ? (0x10 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp4 + 1);
+    pinFunctionsDialog.setGP5ComboBoxCurrentIndex(chipSettings_.gp5 == MCP2210::PCGPIO ? (0x20 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp5 + 1);
+    pinFunctionsDialog.setGP6ComboBoxCurrentIndex(chipSettings_.gp6 == MCP2210::PCGPIO ? (0x40 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp6 + 1);
+    pinFunctionsDialog.setGP7ComboBoxCurrentIndex(chipSettings_.gp7 == MCP2210::PCGPIO ? (0x80 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp7 + 1);
+    pinFunctionsDialog.setGP8ComboBoxCurrentIndex(chipSettings_.gp8 == MCP2210::PCGPIO ? 0 : 1);
     if (pinFunctionsDialog.exec() == QDialog::Accepted) {  // If the user clicks "OK", the new pin functions are applied
         // TODO
         int errcnt = 0;
@@ -253,7 +261,21 @@ void DeviceWindow::initializeView()
 // Reads settings from the MCP2210 volatile memory area
 void DeviceWindow::readSettings()
 {
-    // TODO
+    int errcnt = 0;
+    QString errstr;
+    chipSettings_ = mcp2210_.getChipSettings(errcnt, errstr);
+    spiSettings_ = mcp2210_.getSPISettings(errcnt, errstr);
+    if (errcnt > 0) {
+        this->hide();  // Hide the window, if applicable, to let the user know that the device is practically closed
+        mcp2210_.close();
+        if (mcp2210_.disconnected()) {
+            QMessageBox::critical(this, tr("Error"), tr("Device disconnected.\n\nPlease reconnect it and try again."));
+        } else {
+            errstr.chop(1);  // Remove the last character, which is always a newline
+            QMessageBox::critical(this, tr("Error"), tr("Failed to read device settings. The operation returned the following error(s):\n– %1\n\nPlease try accessing the device again.", "", errcnt).arg(errstr.replace("\n", "\n– ")));
+        }
+        this->deleteLater();  // This is a severe error that requires the window to be closed, because the state of the device is not known, and therefore it is not safe to proceed
+    }
 }
 
 // Checks for errors and validates (or ultimately halts) device operations

@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>GPIO Pin Functions</string>
+   <string>Pin Functions</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
