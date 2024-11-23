@@ -59,6 +59,7 @@ private slots:
 private:
     Ui::DeviceWindow *ui;
     MCP2210 mcp2210_;
+    MCP2210::ChipSettings chipSettings_;
     QPointer<InformationDialog> informationDialog_;
     QPointer<StatusDialog> statusDialog_;
     QString serialString_;

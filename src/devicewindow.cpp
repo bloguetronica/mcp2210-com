@@ -177,7 +177,24 @@ void DeviceWindow::disableView()
 // Initializes the GPIO controls
 void DeviceWindow::initializeGPIOControls()
 {
-    // TODO
+    ui->checkBoxGPIO0->setStyleSheet(chipSettings_.gp0 == MCP2210::PCCS ? "color: darkred;" : "");
+    ui->checkBoxGPIO0->setEnabled(chipSettings_.gp0 == MCP2210::PCCS || (chipSettings_.gp0 == MCP2210::PCGPIO && (0x01 & chipSettings_.gpdir) == 0x00));
+    ui->checkBoxGPIO1->setStyleSheet(chipSettings_.gp1 == MCP2210::PCCS ? "color: darkred;" : "");
+    ui->checkBoxGPIO1->setEnabled(chipSettings_.gp1 == MCP2210::PCCS || (chipSettings_.gp1 == MCP2210::PCGPIO && (0x02 & chipSettings_.gpdir) == 0x00));
+    ui->checkBoxGPIO2->setStyleSheet(chipSettings_.gp2 == MCP2210::PCCS ? "color: darkred;" : "");
+    ui->checkBoxGPIO2->setEnabled(chipSettings_.gp2 == MCP2210::PCCS || (chipSettings_.gp2 == MCP2210::PCGPIO && (0x04 & chipSettings_.gpdir) == 0x00));
+    ui->checkBoxGPIO3->setStyleSheet(chipSettings_.gp3 == MCP2210::PCCS ? "color: darkred;" : "");
+    ui->checkBoxGPIO3->setEnabled(chipSettings_.gp3 == MCP2210::PCCS || (chipSettings_.gp3 == MCP2210::PCGPIO && (0x08 & chipSettings_.gpdir) == 0x00));
+    ui->checkBoxGPIO4->setStyleSheet(chipSettings_.gp4 == MCP2210::PCCS ? "color: darkred;" : "");
+    ui->checkBoxGPIO4->setEnabled(chipSettings_.gp4 == MCP2210::PCCS || (chipSettings_.gp4 == MCP2210::PCGPIO && (0x10 & chipSettings_.gpdir) == 0x00));
+    ui->checkBoxGPIO5->setStyleSheet(chipSettings_.gp5 == MCP2210::PCCS ? "color: darkred;" : "");
+    ui->checkBoxGPIO5->setEnabled(chipSettings_.gp5 == MCP2210::PCCS || (chipSettings_.gp5 == MCP2210::PCGPIO && (0x20 & chipSettings_.gpdir) == 0x00));
+    ui->checkBoxGPIO6->setStyleSheet(chipSettings_.gp6 == MCP2210::PCCS ? "color: darkred;" : "");
+    ui->checkBoxGPIO6->setEnabled(chipSettings_.gp6 == MCP2210::PCCS || (chipSettings_.gp6 == MCP2210::PCGPIO && (0x40 & chipSettings_.gpdir) == 0x00));
+    ui->checkBoxGPIO7->setStyleSheet(chipSettings_.gp7 == MCP2210::PCCS ? "color: darkred;" : "");
+    ui->checkBoxGPIO7->setEnabled(chipSettings_.gp7 == MCP2210::PCCS || (chipSettings_.gp7 == MCP2210::PCGPIO && (0x80 & chipSettings_.gpdir) == 0x00));
+    ui->checkBoxGPIO8->setStyleSheet(chipSettings_.gp8 == MCP2210::PCCS ? "color: darkred;" : "");
+    ui->checkBoxGPIO8->setEnabled(chipSettings_.gp8 == MCP2210::PCCS);
 }
 
 // This is the routine that is used to initialize the device window
