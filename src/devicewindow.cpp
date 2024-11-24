@@ -184,7 +184,7 @@ void DeviceWindow::on_checkBoxGPIO3_clicked()
     int errcnt = 0;
     QString errstr;
     mcp2210_.setGPIO(MCP2210::GPIO3, ui->checkBoxGPIO3->isChecked(), errcnt, errstr);  // Set GPIO3 according to the user choice
-    validateOperation(tr("switch GPIO3"), errcnt, errstr);  // The string "gpio3-switch-op" should be translated to "GPIO.3 switch"
+    validateOperation(tr("switch GPIO3"), errcnt, errstr);
 }
 
 void DeviceWindow::on_checkBoxGPIO4_clicked()
@@ -192,7 +192,7 @@ void DeviceWindow::on_checkBoxGPIO4_clicked()
     int errcnt = 0;
     QString errstr;
     mcp2210_.setGPIO(MCP2210::GPIO4, ui->checkBoxGPIO4->isChecked(), errcnt, errstr);  // Set GPIO4 according to the user choice
-    validateOperation(tr("switch GPIO4"), errcnt, errstr);  // The string "gpio4-switch-op" should be translated to "GPIO.4 switch"
+    validateOperation(tr("switch GPIO4"), errcnt, errstr);
 }
 
 void DeviceWindow::on_checkBoxGPIO5_clicked()
@@ -200,7 +200,7 @@ void DeviceWindow::on_checkBoxGPIO5_clicked()
     int errcnt = 0;
     QString errstr;
     mcp2210_.setGPIO(MCP2210::GPIO5, ui->checkBoxGPIO5->isChecked(), errcnt, errstr);  // Set GPIO5 according to the user choice
-    validateOperation(tr("switch GPIO5"), errcnt, errstr);  // The string "gpio5-switch-op" should be translated to "GPIO.5 switch"
+    validateOperation(tr("switch GPIO5"), errcnt, errstr);
 }
 
 void DeviceWindow::on_checkBoxGPIO6_clicked()
@@ -208,7 +208,7 @@ void DeviceWindow::on_checkBoxGPIO6_clicked()
     int errcnt = 0;
     QString errstr;
     mcp2210_.setGPIO(MCP2210::GPIO6, ui->checkBoxGPIO6->isChecked(), errcnt, errstr);  // Set GPIO6 according to the user choice
-    validateOperation(tr("switch GPIO6"), errcnt, errstr);  // The string "gpio6-switch-op" should be translated to "GPIO.6 switch"
+    validateOperation(tr("switch GPIO6"), errcnt, errstr);
 }
 
 void DeviceWindow::on_checkBoxGPIO7_clicked()
@@ -216,13 +216,18 @@ void DeviceWindow::on_checkBoxGPIO7_clicked()
     int errcnt = 0;
     QString errstr;
     mcp2210_.setGPIO(MCP2210::GPIO7, ui->checkBoxGPIO7->isChecked(), errcnt, errstr);  // Set GPIO7 according to the user choice
-    validateOperation(tr("switch GPIO7"), errcnt, errstr);  // The string "gpio7-switch-op" should be translated to "GPIO.7 switch"
+    validateOperation(tr("switch GPIO7"), errcnt, errstr);
 }
 
 // This is the main update routine
 void DeviceWindow::update()
 {
-    // TODO
+    int errcnt = 0;
+    QString errstr;
+    quint16 gpios = mcp2210_.getGPIOs(errcnt, errstr);
+    if (validateOperation(tr("update"), errcnt, errstr)) {  // If no errors occur
+        updateView(gpios);  // Update values
+    }
 }
 
 // Partially disables device window
@@ -304,4 +309,18 @@ bool DeviceWindow::validateOperation(const QString &operation, int errcnt, QStri
         retval = true;  // Passed validation
     }
     return retval;
+}
+
+// Updates the view
+void DeviceWindow::updateView(quint16 gpios)
+{
+    ui->checkBoxGPIO0->setChecked((0x0001 & gpios) != 0x0000);
+    ui->checkBoxGPIO1->setChecked((0x0002 & gpios) != 0x0000);
+    ui->checkBoxGPIO2->setChecked((0x0004 & gpios) != 0x0000);
+    ui->checkBoxGPIO3->setChecked((0x0008 & gpios) != 0x0000);
+    ui->checkBoxGPIO4->setChecked((0x0010 & gpios) != 0x0000);
+    ui->checkBoxGPIO5->setChecked((0x0020 & gpios) != 0x0000);
+    ui->checkBoxGPIO6->setChecked((0x0040 & gpios) != 0x0000);
+    ui->checkBoxGPIO7->setChecked((0x0080 & gpios) != 0x0000);
+    ui->checkBoxGPIO8->setChecked((0x0100 & gpios) != 0x0000);
 }
