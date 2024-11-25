@@ -34,6 +34,60 @@ PinFunctionsDialog::~PinFunctionsDialog()
     delete ui;
 }
 
+// Returns the current index of "comboBoxGP0"
+int PinFunctionsDialog::gp0ComboBoxCurrentIndex()
+{
+    return ui->comboBoxGP0->currentIndex();
+}
+
+// Returns the current index of "comboBoxGP1"
+int PinFunctionsDialog::gp1ComboBoxCurrentIndex()
+{
+    return ui->comboBoxGP1->currentIndex();
+}
+
+// Returns the current index of "comboBoxGP2"
+int PinFunctionsDialog::gp2ComboBoxCurrentIndex()
+{
+    return ui->comboBoxGP2->currentIndex();
+}
+
+// Returns the current index of "comboBoxGP3"
+int PinFunctionsDialog::gp3ComboBoxCurrentIndex()
+{
+    return ui->comboBoxGP3->currentIndex();
+}
+
+// Returns the current index of "comboBoxGP4"
+int PinFunctionsDialog::gp4ComboBoxCurrentIndex()
+{
+    return ui->comboBoxGP4->currentIndex();
+}
+
+// Returns the current index of "comboBoxGP5"
+int PinFunctionsDialog::gp5ComboBoxCurrentIndex()
+{
+    return ui->comboBoxGP5->currentIndex();
+}
+
+// Returns the current index of "comboBoxGP6"
+int PinFunctionsDialog::gp6ComboBoxCurrentIndex()
+{
+    return ui->comboBoxGP6->currentIndex();
+}
+
+// Returns the current index of "comboBoxGP7"
+int PinFunctionsDialog::gp7ComboBoxCurrentIndex()
+{
+    return ui->comboBoxGP7->currentIndex();
+}
+
+// Returns the current index of "comboBoxGP8"
+int PinFunctionsDialog::gp8ComboBoxCurrentIndex()
+{
+    return ui->comboBoxGP8->currentIndex();
+}
+
 // Sets the current index of "comboBoxGP0"
 void PinFunctionsDialog::setGP0ComboBoxCurrentIndex(int index)
 {

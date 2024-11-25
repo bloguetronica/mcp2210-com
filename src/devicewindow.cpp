@@ -98,10 +98,31 @@ void DeviceWindow::on_actionChangePinFunctions_triggered()
     pinFunctionsDialog.setGP7ComboBoxCurrentIndex(chipSettings_.gp7 == MCP2210::PCGPIO ? (0x80 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp7 + 1);
     pinFunctionsDialog.setGP8ComboBoxCurrentIndex(chipSettings_.gp8 == MCP2210::PCGPIO ? 0 : 1);
     if (pinFunctionsDialog.exec() == QDialog::Accepted) {  // If the user clicks "OK", the new pin functions are applied
-        // TODO
+        MCP2210::ChipSettings chipSettings = chipSettings_;  // Local variable required to hold chip settings that may or may not be applied
+        chipSettings.gp0 = static_cast<quint8>(pinFunctionsDialog.gp0ComboBoxCurrentIndex() > 0 ? pinFunctionsDialog.gp0ComboBoxCurrentIndex() - 1 : MCP2210::PCGPIO);
+        chipSettings.gp1 = static_cast<quint8>(pinFunctionsDialog.gp1ComboBoxCurrentIndex() > 0 ? pinFunctionsDialog.gp1ComboBoxCurrentIndex() - 1 : MCP2210::PCGPIO);
+        chipSettings.gp2 = static_cast<quint8>(pinFunctionsDialog.gp2ComboBoxCurrentIndex() > 0 ? pinFunctionsDialog.gp2ComboBoxCurrentIndex() - 1 : MCP2210::PCGPIO);
+        chipSettings.gp3 = static_cast<quint8>(pinFunctionsDialog.gp3ComboBoxCurrentIndex() > 0 ? pinFunctionsDialog.gp3ComboBoxCurrentIndex() - 1 : MCP2210::PCGPIO);
+        chipSettings.gp4 = static_cast<quint8>(pinFunctionsDialog.gp4ComboBoxCurrentIndex() > 0 ? pinFunctionsDialog.gp4ComboBoxCurrentIndex() - 1 : MCP2210::PCGPIO);
+        chipSettings.gp5 = static_cast<quint8>(pinFunctionsDialog.gp5ComboBoxCurrentIndex() > 0 ? pinFunctionsDialog.gp5ComboBoxCurrentIndex() - 1 : MCP2210::PCGPIO);
+        chipSettings.gp6 = static_cast<quint8>(pinFunctionsDialog.gp6ComboBoxCurrentIndex() > 0 ? pinFunctionsDialog.gp6ComboBoxCurrentIndex() - 1 : MCP2210::PCGPIO);
+        chipSettings.gp7 = static_cast<quint8>(pinFunctionsDialog.gp7ComboBoxCurrentIndex() > 0 ? pinFunctionsDialog.gp7ComboBoxCurrentIndex() - 1 : MCP2210::PCGPIO);
+        chipSettings.gp8 = static_cast<quint8>(pinFunctionsDialog.gp8ComboBoxCurrentIndex() == 0 ? MCP2210::PCGPIO : MCP2210::PCFUNC);
+        chipSettings.gpdir = static_cast<quint8>((pinFunctionsDialog.gp7ComboBoxCurrentIndex() != 1) << 7 |  // All pins have their direction set to input by default, except those pins that are specifically set to be outputs
+                                                                      (pinFunctionsDialog.gp6ComboBoxCurrentIndex() != 1) << 6 |
+                                                                      (pinFunctionsDialog.gp5ComboBoxCurrentIndex() != 1) << 5 |
+                                                                      (pinFunctionsDialog.gp4ComboBoxCurrentIndex() != 1) << 4 |
+                                                                      (pinFunctionsDialog.gp3ComboBoxCurrentIndex() != 1) << 3 |
+                                                                      (pinFunctionsDialog.gp2ComboBoxCurrentIndex() != 1) << 2 |
+                                                                      (pinFunctionsDialog.gp1ComboBoxCurrentIndex() != 1) << 1 |
+                                                                      (pinFunctionsDialog.gp0ComboBoxCurrentIndex() != 1));
         int errcnt = 0;
         QString errstr;
-        // TODO Apply and then validateOperation()
+        mcp2210_.configureChipSettings(chipSettings, errcnt, errstr);
+        if (validateOperation(tr("configure chip settings"), errcnt, errstr)) {
+            chipSettings_ = chipSettings;  // Apply new chip settings
+            initializeGPIOControls();  // Reinitialize GPIO controls to reflect the new chip settings
+        }
     }
 }
 
@@ -242,7 +263,7 @@ void DeviceWindow::disableView()
     viewEnabled_ = false;
 }
 
-// Initializes the GPIO controls
+// Initializes (or reinitializes) the GPIO controls
 void DeviceWindow::initializeGPIOControls()
 {
     ui->checkBoxGPIO0->setEnabled(chipSettings_.gp0 == MCP2210::PCGPIO && (0x01 & chipSettings_.gpdir) == 0x00);
