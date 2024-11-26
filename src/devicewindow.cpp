@@ -21,7 +21,7 @@
 // Includes
 #include <QMessageBox>
 #include "common.h"
-#include "pinfunctionsdialog.h"
+#include "pinsdialog.h"
 #include "devicewindow.h"
 #include "ui_devicewindow.h"
 
@@ -85,9 +85,9 @@ void DeviceWindow::on_actionAbout_triggered()
     showAboutDialog();  // See "common.h" and "common.cpp"
 }
 
-void DeviceWindow::on_actionChangePinFunctions_triggered()
+void DeviceWindow::on_actionConfigurePins_triggered()
 {
-    PinFunctionsDialog pinFunctionsDialog(this);
+    PinsDialog pinFunctionsDialog(this);
     pinFunctionsDialog.setGP0ComboBoxCurrentIndex(chipSettings_.gp0 == MCP2210::PCGPIO ? (0x01 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp0 + 1);
     // TODO
     pinFunctionsDialog.setGP1ComboBoxCurrentIndex(chipSettings_.gp1 == MCP2210::PCGPIO ? (0x02 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp1 + 1);
@@ -265,7 +265,7 @@ void DeviceWindow::disableView()
 {
     ui->actionInformation->setEnabled(false);
     ui->actionStatus->setEnabled(false);
-    ui->actionChangePinFunctions->setEnabled(false);
+    ui->actionConfigurePins->setEnabled(false);
     ui->actionClose->setText(tr("&Close Window"));
     ui->centralWidget->setEnabled(false);
     ui->statusBar->setEnabled(false);

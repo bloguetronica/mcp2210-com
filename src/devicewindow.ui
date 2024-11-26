@@ -202,7 +202,7 @@
     <addaction name="actionInformation"/>
     <addaction name="actionStatus"/>
     <addaction name="separator"/>
-    <addaction name="actionChangePinFunctions"/>
+    <addaction name="actionConfigurePins"/>
     <addaction name="separator"/>
     <addaction name="actionClose"/>
    </widget>
@@ -231,9 +231,9 @@
     <string>&amp;Status</string>
    </property>
   </action>
-  <action name="actionChangePinFunctions">
+  <action name="actionConfigurePins">
    <property name="text">
-    <string>Change &amp;Pin Functions</string>
+    <string>Configure &amp;Pins</string>
    </property>
   </action>
   <action name="actionClose">
