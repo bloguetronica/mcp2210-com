@@ -142,10 +142,22 @@ void PinsDialog::setGP0ComboBoxCurrentIndex(int index)
     ui->comboBoxGP0->setCurrentIndex(index);
 }
 
+// Sets the state of "comboBoxGP0"
+void PinsDialog::setGP0DefaultValueCheckBox(bool state)
+{
+   ui->checkBoxGP0DefaultValue->setChecked(state);
+}
+
 // Sets the current index of "comboBoxGP1"
 void PinsDialog::setGP1ComboBoxCurrentIndex(int index)
 {
     ui->comboBoxGP1->setCurrentIndex(index);
+}
+
+// Sets the state of "comboBoxGP1"
+void PinsDialog::setGP1DefaultValueCheckBox(bool state)
+{
+    ui->checkBoxGP1DefaultValue->setChecked(state);
 }
 
 // Sets the current index of "comboBoxGP2"
@@ -154,10 +166,22 @@ void PinsDialog::setGP2ComboBoxCurrentIndex(int index)
     ui->comboBoxGP2->setCurrentIndex(index);
 }
 
+// Sets the state of "comboBoxGP2"
+void PinsDialog::setGP2DefaultValueCheckBox(bool state)
+{
+    ui->checkBoxGP2DefaultValue->setChecked(state);
+}
+
 // Sets the current index of "comboBoxGP3"
 void PinsDialog::setGP3ComboBoxCurrentIndex(int index)
 {
     ui->comboBoxGP3->setCurrentIndex(index);
+}
+
+// Sets the state of "comboBoxGP3"
+void PinsDialog::setGP3DefaultValueCheckBox(bool state)
+{
+    ui->checkBoxGP3DefaultValue->setChecked(state);
 }
 
 // Sets the current index of "comboBoxGP4"
@@ -166,10 +190,22 @@ void PinsDialog::setGP4ComboBoxCurrentIndex(int index)
     ui->comboBoxGP4->setCurrentIndex(index);
 }
 
+// Sets the state of "comboBoxGP4"
+void PinsDialog::setGP4DefaultValueCheckBox(bool state)
+{
+    ui->checkBoxGP4DefaultValue->setChecked(state);
+}
+
 // Sets the current index of "comboBoxGP5"
 void PinsDialog::setGP5ComboBoxCurrentIndex(int index)
 {
     ui->comboBoxGP5->setCurrentIndex(index);
+}
+
+// Sets the state of "comboBoxGP5"
+void PinsDialog::setGP5DefaultValueCheckBox(bool state)
+{
+    ui->checkBoxGP5DefaultValue->setChecked(state);
 }
 
 // Sets the current index of "comboBoxGP6"
@@ -178,10 +214,22 @@ void PinsDialog::setGP6ComboBoxCurrentIndex(int index)
     ui->comboBoxGP6->setCurrentIndex(index);
 }
 
+// Sets the state of "comboBoxGP6"
+void PinsDialog::setGP6DefaultValueCheckBox(bool state)
+{
+    ui->checkBoxGP6DefaultValue->setChecked(state);
+}
+
 // Sets the current index of "comboBoxGP7"
 void PinsDialog::setGP7ComboBoxCurrentIndex(int index)
 {
     ui->comboBoxGP7->setCurrentIndex(index);
+}
+
+// Sets the state of "comboBoxGP7"
+void PinsDialog::setGP7DefaultValueCheckBox(bool state)
+{
+    ui->checkBoxGP7DefaultValue->setChecked(state);
 }
 
 // Sets the current index of "comboBoxGP8"

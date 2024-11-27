@@ -54,13 +54,21 @@ public:
     bool gp7DefaultValueCheckBoxIsChecked();
     int gp8ComboBoxCurrentIndex();
     void setGP0ComboBoxCurrentIndex(int index);
+    void setGP0DefaultValueCheckBox(bool state);
     void setGP1ComboBoxCurrentIndex(int index);
+    void setGP1DefaultValueCheckBox(bool state);
     void setGP2ComboBoxCurrentIndex(int index);
+    void setGP2DefaultValueCheckBox(bool state);
     void setGP3ComboBoxCurrentIndex(int index);
+    void setGP3DefaultValueCheckBox(bool state);
     void setGP4ComboBoxCurrentIndex(int index);
+    void setGP4DefaultValueCheckBox(bool state);
     void setGP5ComboBoxCurrentIndex(int index);
+    void setGP5DefaultValueCheckBox(bool state);
     void setGP6ComboBoxCurrentIndex(int index);
+    void setGP6DefaultValueCheckBox(bool state);
     void setGP7ComboBoxCurrentIndex(int index);
+    void setGP7DefaultValueCheckBox(bool state);
     void setGP8ComboBoxCurrentIndex(int index);
 
 private:
