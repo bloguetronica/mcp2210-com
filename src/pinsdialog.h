@@ -37,13 +37,21 @@ public:
     ~PinsDialog();
 
     int gp0ComboBoxCurrentIndex();
+    bool gp0DefaultValueCheckBoxIsChecked();
     int gp1ComboBoxCurrentIndex();
+    bool gp1DefaultValueCheckBoxIsChecked();
     int gp2ComboBoxCurrentIndex();
+    bool gp2DefaultValueCheckBoxIsChecked();
     int gp3ComboBoxCurrentIndex();
+    bool gp3DefaultValueCheckBoxIsChecked();
     int gp4ComboBoxCurrentIndex();
+    bool gp4DefaultValueCheckBoxIsChecked();
     int gp5ComboBoxCurrentIndex();
+    bool gp5DefaultValueCheckBoxIsChecked();
     int gp6ComboBoxCurrentIndex();
+    bool gp6DefaultValueCheckBoxIsChecked();
     int gp7ComboBoxCurrentIndex();
+    bool gp7DefaultValueCheckBoxIsChecked();
     int gp8ComboBoxCurrentIndex();
     void setGP0ComboBoxCurrentIndex(int index);
     void setGP1ComboBoxCurrentIndex(int index);

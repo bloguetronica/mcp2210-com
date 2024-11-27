@@ -40,10 +40,22 @@ int PinsDialog::gp0ComboBoxCurrentIndex()
     return ui->comboBoxGP0->currentIndex();
 }
 
+// Returns the state of "checkBoxGP0DefaultValue"
+bool PinsDialog::gp0DefaultValueCheckBoxIsChecked()
+{
+    return ui->checkBoxGP0DefaultValue->isChecked();
+}
+
 // Returns the current index of "comboBoxGP1"
 int PinsDialog::gp1ComboBoxCurrentIndex()
 {
     return ui->comboBoxGP1->currentIndex();
+}
+
+// Returns the state of "checkBoxGP1DefaultValue"
+bool PinsDialog::gp1DefaultValueCheckBoxIsChecked()
+{
+    return ui->checkBoxGP1DefaultValue->isChecked();
 }
 
 // Returns the current index of "comboBoxGP2"
@@ -52,10 +64,22 @@ int PinsDialog::gp2ComboBoxCurrentIndex()
     return ui->comboBoxGP2->currentIndex();
 }
 
+// Returns the state of "checkBoxGP2DefaultValue"
+bool PinsDialog::gp2DefaultValueCheckBoxIsChecked()
+{
+    return ui->checkBoxGP2DefaultValue->isChecked();
+}
+
 // Returns the current index of "comboBoxGP3"
 int PinsDialog::gp3ComboBoxCurrentIndex()
 {
     return ui->comboBoxGP3->currentIndex();
+}
+
+// Returns the state of "checkBoxGP3DefaultValue"
+bool PinsDialog::gp3DefaultValueCheckBoxIsChecked()
+{
+    return ui->checkBoxGP3DefaultValue->isChecked();
 }
 
 // Returns the current index of "comboBoxGP4"
@@ -64,10 +88,22 @@ int PinsDialog::gp4ComboBoxCurrentIndex()
     return ui->comboBoxGP4->currentIndex();
 }
 
+// Returns the state of "checkBoxGP4DefaultValue"
+bool PinsDialog::gp4DefaultValueCheckBoxIsChecked()
+{
+    return ui->checkBoxGP4DefaultValue->isChecked();
+}
+
 // Returns the current index of "comboBoxGP5"
 int PinsDialog::gp5ComboBoxCurrentIndex()
 {
     return ui->comboBoxGP5->currentIndex();
+}
+
+// Returns the state of "checkBoxGP5DefaultValue"
+bool PinsDialog::gp5DefaultValueCheckBoxIsChecked()
+{
+    return ui->checkBoxGP5DefaultValue->isChecked();
 }
 
 // Returns the current index of "comboBoxGP6"
@@ -76,10 +112,22 @@ int PinsDialog::gp6ComboBoxCurrentIndex()
     return ui->comboBoxGP6->currentIndex();
 }
 
+// Returns the state of "checkBoxGP6DefaultValue"
+bool PinsDialog::gp6DefaultValueCheckBoxIsChecked()
+{
+    return ui->checkBoxGP6DefaultValue->isChecked();
+}
+
 // Returns the current index of "comboBoxGP7"
 int PinsDialog::gp7ComboBoxCurrentIndex()
 {
     return ui->comboBoxGP7->currentIndex();
+}
+
+// Returns the state of "checkBoxGP7DefaultValue"
+bool PinsDialog::gp7DefaultValueCheckBoxIsChecked()
+{
+    return ui->checkBoxGP7DefaultValue->isChecked();
 }
 
 // Returns the current index of "comboBoxGP8"
