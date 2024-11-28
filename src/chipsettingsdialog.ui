@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>401</width>
+    <width>411</width>
     <height>511</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>361</width>
+    <width>411</width>
     <height>511</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>401</width>
+    <width>411</width>
     <height>511</height>
    </size>
   </property>
@@ -44,7 +44,7 @@
     <rect>
      <x>10</x>
      <y>470</y>
-     <width>381</width>
+     <width>391</width>
      <height>31</height>
     </rect>
    </property>
@@ -60,7 +60,7 @@
     <rect>
      <x>10</x>
      <y>17</y>
-     <width>85</width>
+     <width>95</width>
      <height>17</height>
     </rect>
    </property>
@@ -74,7 +74,7 @@
   <widget class="QComboBox" name="comboBoxGP0">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>10</y>
      <width>211</width>
      <height>31</height>
@@ -99,7 +99,7 @@
   <widget class="QCheckBox" name="checkBoxGP0DefaultValue">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>330</x>
      <y>15</y>
      <width>71</width>
      <height>21</height>
@@ -114,7 +114,7 @@
     <rect>
      <x>10</x>
      <y>57</y>
-     <width>85</width>
+     <width>95</width>
      <height>17</height>
     </rect>
    </property>
@@ -128,7 +128,7 @@
   <widget class="QComboBox" name="comboBoxGP1">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>50</y>
      <width>211</width>
      <height>31</height>
@@ -153,7 +153,7 @@
   <widget class="QCheckBox" name="checkBoxGP1DefaultValue">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>330</x>
      <y>55</y>
      <width>71</width>
      <height>21</height>
@@ -168,7 +168,7 @@
     <rect>
      <x>10</x>
      <y>97</y>
-     <width>85</width>
+     <width>95</width>
      <height>17</height>
     </rect>
    </property>
@@ -182,7 +182,7 @@
   <widget class="QComboBox" name="comboBoxGP2">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>90</y>
      <width>211</width>
      <height>31</height>
@@ -212,7 +212,7 @@
   <widget class="QCheckBox" name="checkBoxGP2DefaultValue">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>330</x>
      <y>95</y>
      <width>71</width>
      <height>21</height>
@@ -227,7 +227,7 @@
     <rect>
      <x>10</x>
      <y>137</y>
-     <width>85</width>
+     <width>95</width>
      <height>17</height>
     </rect>
    </property>
@@ -241,7 +241,7 @@
   <widget class="QComboBox" name="comboBoxGP3">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>130</y>
      <width>211</width>
      <height>31</height>
@@ -271,7 +271,7 @@
   <widget class="QCheckBox" name="checkBoxGP3DefaultValue">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>330</x>
      <y>135</y>
      <width>71</width>
      <height>21</height>
@@ -286,7 +286,7 @@
     <rect>
      <x>10</x>
      <y>177</y>
-     <width>85</width>
+     <width>95</width>
      <height>17</height>
     </rect>
    </property>
@@ -300,7 +300,7 @@
   <widget class="QComboBox" name="comboBoxGP4">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>170</y>
      <width>211</width>
      <height>31</height>
@@ -330,7 +330,7 @@
   <widget class="QCheckBox" name="checkBoxGP4DefaultValue">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>330</x>
      <y>175</y>
      <width>71</width>
      <height>21</height>
@@ -345,7 +345,7 @@
     <rect>
      <x>10</x>
      <y>217</y>
-     <width>85</width>
+     <width>95</width>
      <height>17</height>
     </rect>
    </property>
@@ -359,7 +359,7 @@
   <widget class="QComboBox" name="comboBoxGP5">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>210</y>
      <width>211</width>
      <height>31</height>
@@ -389,7 +389,7 @@
   <widget class="QCheckBox" name="checkBoxGP5DefaultValue">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>330</x>
      <y>215</y>
      <width>71</width>
      <height>21</height>
@@ -404,7 +404,7 @@
     <rect>
      <x>10</x>
      <y>257</y>
-     <width>85</width>
+     <width>95</width>
      <height>17</height>
     </rect>
    </property>
@@ -418,7 +418,7 @@
   <widget class="QComboBox" name="comboBoxGP6">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>250</y>
      <width>211</width>
      <height>31</height>
@@ -448,7 +448,7 @@
   <widget class="QCheckBox" name="checkBoxGP6DefaultValue">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>330</x>
      <y>255</y>
      <width>71</width>
      <height>21</height>
@@ -463,7 +463,7 @@
     <rect>
      <x>10</x>
      <y>297</y>
-     <width>85</width>
+     <width>95</width>
      <height>17</height>
     </rect>
    </property>
@@ -477,7 +477,7 @@
   <widget class="QComboBox" name="comboBoxGP7">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>290</y>
      <width>211</width>
      <height>31</height>
@@ -507,7 +507,7 @@
   <widget class="QCheckBox" name="checkBoxGP7DefaultValue">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>330</x>
      <y>295</y>
      <width>71</width>
      <height>21</height>
@@ -522,7 +522,7 @@
     <rect>
      <x>10</x>
      <y>337</y>
-     <width>85</width>
+     <width>95</width>
      <height>17</height>
     </rect>
    </property>
@@ -536,7 +536,7 @@
   <widget class="QComboBox" name="comboBoxGP8">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>330</y>
      <width>211</width>
      <height>31</height>
@@ -558,7 +558,7 @@
     <rect>
      <x>10</x>
      <y>377</y>
-     <width>85</width>
+     <width>95</width>
      <height>17</height>
     </rect>
    </property>
@@ -572,7 +572,7 @@
   <widget class="QComboBox" name="comboBoxInterruptMode">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>370</y>
      <width>211</width>
      <height>31</height>
@@ -607,7 +607,7 @@
   <widget class="QCheckBox" name="checkBoxRemoteWakeUp">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>410</y>
      <width>291</width>
      <height>21</height>
@@ -620,7 +620,7 @@
   <widget class="QCheckBox" name="checkBoxSPIBusCaptive">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>440</y>
      <width>291</width>
      <height>21</height>
@@ -664,11 +664,11 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>200</x>
+     <x>205</x>
      <y>485</y>
     </hint>
     <hint type="destinationlabel">
-     <x>200</x>
+     <x>205</x>
      <y>255</y>
     </hint>
    </hints>
@@ -680,11 +680,11 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>200</x>
+     <x>205</x>
      <y>485</y>
     </hint>
     <hint type="destinationlabel">
-     <x>200</x>
+     <x>205</x>
      <y>255</y>
     </hint>
    </hints>
