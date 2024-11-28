@@ -228,12 +228,12 @@
   </action>
   <action name="actionStatus">
    <property name="text">
-    <string>S&amp;tatus</string>
+    <string>&amp;Status</string>
    </property>
   </action>
   <action name="actionChipSettings">
    <property name="text">
-    <string>Chip &amp;Settings</string>
+    <string>C&amp;hip Settings</string>
    </property>
   </action>
   <action name="actionClose">
