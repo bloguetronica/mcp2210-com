@@ -21,7 +21,7 @@
 // Includes
 #include <QMessageBox>
 #include "common.h"
-#include "pinsdialog.h"
+#include "chipsettingsdialog.h"
 #include "devicewindow.h"
 #include "ui_devicewindow.h"
 
@@ -87,7 +87,7 @@ void DeviceWindow::on_actionAbout_triggered()
 
 void DeviceWindow::on_actionChipSettings_triggered()
 {
-    PinsDialog pinFunctionsDialog(this);
+    ChipSettingsDialog pinFunctionsDialog(this);
     pinFunctionsDialog.setGP0ComboBoxCurrentIndex(chipSettings_.gp0 == MCP2210::PCGPIO ? (0x01 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp0 + 1);
     pinFunctionsDialog.setGP0DefaultValueCheckBox((0x01 & chipSettings_.gpout) != 0x00);
     pinFunctionsDialog.setGP1ComboBoxCurrentIndex(chipSettings_.gp1 == MCP2210::PCGPIO ? (0x02 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp1 + 1);

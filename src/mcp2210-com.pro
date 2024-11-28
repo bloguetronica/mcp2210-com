@@ -24,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     aboutdialog.cpp \
+    chipsettingsdialog.cpp \
     common.cpp \
     devicewindow.cpp \
     informationdialog.cpp \
@@ -31,26 +32,25 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     mcp2210.cpp \
-    pinsdialog.cpp \
     statusdialog.cpp
 
 HEADERS += \
     aboutdialog.h \
+    chipsettingsdialog.h \
     common.h \
     devicewindow.h \
     informationdialog.h \
     libusb-extra.h \
     mainwindow.h \
     mcp2210.h \
-    pinsdialog.h \
     statusdialog.h
 
 FORMS += \
     aboutdialog.ui \
+    chipsettingsdialog.ui \
     devicewindow.ui \
     informationdialog.ui \
     mainwindow.ui \
-    pinsdialog.ui \
     statusdialog.ui
 
 LIBS += -lusb-1.0
