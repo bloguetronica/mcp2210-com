@@ -202,7 +202,7 @@
     <addaction name="actionInformation"/>
     <addaction name="actionStatus"/>
     <addaction name="separator"/>
-    <addaction name="actionConfigurePins"/>
+    <addaction name="actionChipSettings"/>
     <addaction name="separator"/>
     <addaction name="actionClose"/>
    </widget>
@@ -228,12 +228,12 @@
   </action>
   <action name="actionStatus">
    <property name="text">
-    <string>&amp;Status</string>
+    <string>S&amp;tatus</string>
    </property>
   </action>
-  <action name="actionConfigurePins">
+  <action name="actionChipSettings">
    <property name="text">
-    <string>Configure &amp;Pins</string>
+    <string>Chip &amp;Settings</string>
    </property>
   </action>
   <action name="actionClose">
