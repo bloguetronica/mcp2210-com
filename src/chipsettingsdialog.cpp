@@ -197,9 +197,9 @@ void ChipSettingsDialog::setGP4DefaultValueCheckBox(bool gp4OutputLevel)
 }
 
 // Sets the current index of "comboBoxGP5"
-void ChipSettingsDialog::setGP5ComboBoxCurrentIndex(int gp5Index)
+void ChipSettingsDialog::setGP5ComboBoxCurrentIndex(int gp5ModeIndex)
 {
-    ui->comboBoxGP5->setCurrentIndex(gp5Index);
+    ui->comboBoxGP5->setCurrentIndex(gp5ModeIndex);
 }
 
 // Sets the state of "comboBoxGP5"
@@ -209,9 +209,9 @@ void ChipSettingsDialog::setGP5DefaultValueCheckBox(bool gp5OutputLevel)
 }
 
 // Sets the current index of "comboBoxGP6"
-void ChipSettingsDialog::setGP6ComboBoxCurrentIndex(int gp6Index)
+void ChipSettingsDialog::setGP6ComboBoxCurrentIndex(int gp6ModeIndex)
 {
-    ui->comboBoxGP6->setCurrentIndex(gp6Index);
+    ui->comboBoxGP6->setCurrentIndex(gp6ModeIndex);
 }
 
 // Sets the state of "comboBoxGP6"
@@ -221,9 +221,9 @@ void ChipSettingsDialog::setGP6DefaultValueCheckBox(bool gp6OutputLevel)
 }
 
 // Sets the current index of "comboBoxGP7"
-void ChipSettingsDialog::setGP7ComboBoxCurrentIndex(int gp7Index)
+void ChipSettingsDialog::setGP7ComboBoxCurrentIndex(int gp7ModeIndex)
 {
-    ui->comboBoxGP7->setCurrentIndex(gp7Index);
+    ui->comboBoxGP7->setCurrentIndex(gp7ModeIndex);
 }
 
 // Sets the state of "comboBoxGP7"
@@ -233,7 +233,7 @@ void ChipSettingsDialog::setGP7DefaultValueCheckBox(bool gp7OutputLevel)
 }
 
 // Sets the current index of "comboBoxGP8"
-void ChipSettingsDialog::setGP8ComboBoxCurrentIndex(int gp8Index)
+void ChipSettingsDialog::setGP8ComboBoxCurrentIndex(int gp8ModeIndex)
 {
-    ui->comboBoxGP8->setCurrentIndex(gp8Index);
+    ui->comboBoxGP8->setCurrentIndex(gp8ModeIndex);
 }
