@@ -136,6 +136,18 @@ int ChipSettingsDialog::gp8ComboBoxCurrentIndex()
     return ui->comboBoxGP8->currentIndex();
 }
 
+// Returns the current index of "comboBoxInterruptMode"
+int ChipSettingsDialog::interruptModeComboBoxCurrentIndex()
+{
+    return ui->comboBoxInterruptMode->currentIndex();
+}
+
+// Returns the state of "checkBoxRemoteWakeUp"
+bool ChipSettingsDialog::remoteWakeUpCheckBoxIsChecked()
+{
+    return ui->checkBoxRemoteWakeUp->isChecked();
+}
+
 // Sets the current index of "comboBoxGP0"
 void ChipSettingsDialog::setGP0ComboBoxCurrentIndex(int gp0ModeIndex)
 {
@@ -236,4 +248,28 @@ void ChipSettingsDialog::setGP7DefaultValueCheckBox(bool gp7OutputLevel)
 void ChipSettingsDialog::setGP8ComboBoxCurrentIndex(int gp8ModeIndex)
 {
     ui->comboBoxGP8->setCurrentIndex(gp8ModeIndex);
+}
+
+// Sets the current index of "comboBoxInterruptMode"
+void ChipSettingsDialog::setInterruptModeComboBoxCurrentIndex(int interruptModeIndex)
+{
+    ui->comboBoxInterruptMode->setCurrentIndex(interruptModeIndex);
+}
+
+// Sets the state of "checkBoxRemoteWakeUp"
+void ChipSettingsDialog::setRemoteWakeUpCheckBox(bool remoteWakeUp)
+{
+    ui->checkBoxRemoteWakeUp->setChecked(remoteWakeUp);
+}
+
+// Sets the state of "checkBoxSPIBusCaptive"
+void ChipSettingsDialog::setSPIBusCaptiveCheckBox(bool spiBusCaptive)
+{
+    ui->checkBoxSPIBusCaptive->setChecked(spiBusCaptive);
+}
+
+// Returns the state of "checkBoxSPIBusCaptive"
+bool ChipSettingsDialog::spiBusCaptiveCheckBoxIsChecked()
+{
+    return ui->checkBoxSPIBusCaptive->isChecked();
 }

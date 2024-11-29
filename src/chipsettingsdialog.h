@@ -53,6 +53,8 @@ public:
     int gp7ComboBoxCurrentIndex();
     bool gp7DefaultValueCheckBoxIsChecked();
     int gp8ComboBoxCurrentIndex();
+    int interruptModeComboBoxCurrentIndex();
+    bool remoteWakeUpCheckBoxIsChecked();
     void setGP0ComboBoxCurrentIndex(int gp0ModeIndex);
     void setGP0DefaultValueCheckBox(bool gp0OutputLevel);
     void setGP1ComboBoxCurrentIndex(int gp1ModeIndex);
@@ -70,6 +72,10 @@ public:
     void setGP7ComboBoxCurrentIndex(int gp7ModeIndex);
     void setGP7DefaultValueCheckBox(bool gp7OutputLevel);
     void setGP8ComboBoxCurrentIndex(int gp8ModeIndex);
+    void setInterruptModeComboBoxCurrentIndex(int interruptModeIndex);
+    void setRemoteWakeUpCheckBox(bool remoteWakeUp);
+    void setSPIBusCaptiveCheckBox(bool spiBusCaptive);
+    bool spiBusCaptiveCheckBoxIsChecked();
 
 private:
     Ui::ChipSettingsDialog *ui;

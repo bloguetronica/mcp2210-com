@@ -105,6 +105,9 @@ void DeviceWindow::on_actionChipSettings_triggered()
     chipSettingsDialog.setGP7ComboBoxCurrentIndex(chipSettings_.gp7 == MCP2210::PCGPIO ? (0x80 & chipSettings_.gpdir) == 0x00 : chipSettings_.gp7 + 1);
     chipSettingsDialog.setGP7DefaultValueCheckBox((0x80 & chipSettings_.gpout) != 0x00);
     chipSettingsDialog.setGP8ComboBoxCurrentIndex(chipSettings_.gp8 == MCP2210::PCGPIO ? 0 : 1);
+    chipSettingsDialog.setInterruptModeComboBoxCurrentIndex(chipSettings_.intmode);
+    chipSettingsDialog.setRemoteWakeUpCheckBox(chipSettings_.rmwakeup);
+    chipSettingsDialog.setSPIBusCaptiveCheckBox(chipSettings_.nrelspi);
     if (chipSettingsDialog.exec() == QDialog::Accepted) {  // If the user clicks "OK", the new chip settings should be applied
         MCP2210::ChipSettings chipSettings = chipSettings_;  // Local variable required to hold chip settings that may or may not be applied
         chipSettings.gp0 = static_cast<quint8>(chipSettingsDialog.gp0ComboBoxCurrentIndex() > 0 ? chipSettingsDialog.gp0ComboBoxCurrentIndex() - 1 : MCP2210::PCGPIO);
@@ -132,12 +135,16 @@ void DeviceWindow::on_actionChipSettings_triggered()
                                                  chipSettingsDialog.gp2DefaultValueCheckBoxIsChecked() << 2 |
                                                  chipSettingsDialog.gp1DefaultValueCheckBoxIsChecked() << 1 |
                                                  chipSettingsDialog.gp0DefaultValueCheckBoxIsChecked());
+        chipSettings.rmwakeup = chipSettingsDialog.remoteWakeUpCheckBoxIsChecked();
+        chipSettings.intmode = static_cast<quint8>(chipSettingsDialog.interruptModeComboBoxCurrentIndex());
+        chipSettings.nrelspi = chipSettingsDialog.spiBusCaptiveCheckBoxIsChecked();
         int errcnt = 0;
         QString errstr;
         mcp2210_.configureChipSettings(chipSettings, errcnt, errstr);
         if (validateOperation(tr("configure chip settings"), errcnt, errstr)) {
             chipSettings_ = chipSettings;  // Reflect new chip settings
             initializeGPIOControls();  // and reinitialize GPIO controls
+            // TODO Initialize interrupt counter
         }
     }
 }
