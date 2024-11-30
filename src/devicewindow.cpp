@@ -59,7 +59,7 @@ void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialStr
         serialString_ = serialString;  // and the serial number as well
         readSettings();  // Read settings in volatile memory
         this->setWindowTitle(tr("MCP2210 Device (S/N: %1)").arg(serialString_));
-        initializeView();
+        initializeView();  // Initialize device window
         timer_->start(100);  // Start the timer
     } else if (err == MCP2210::ERROR_INIT) {  // Failed to initialize libusb
         QMessageBox::critical(this, tr("Critical Error"), tr("Could not initialize libusb.\n\nThis is a critical error and execution will be aborted."));
@@ -143,8 +143,7 @@ void DeviceWindow::on_actionChipSettings_triggered()
         mcp2210_.configureChipSettings(chipSettings, errcnt, errstr);
         if (validateOperation(tr("configure chip settings"), errcnt, errstr)) {
             chipSettings_ = chipSettings;  // Reflect new chip settings
-            initializeGPIOControls();  // and reinitialize GPIO controls
-            // TODO Initialize interrupt counter
+            initializeView();  // and reinitialize device window
         }
     }
 }
@@ -263,14 +262,23 @@ void DeviceWindow::on_checkBoxGPIO7_clicked()
     validateOperation(tr("switch GPIO7"), errcnt, errstr);
 }
 
+void DeviceWindow::on_pushButtonZero_clicked()
+{
+    int errcnt = 0;
+    QString errstr;
+    mcp2210_.resetEventCounter(errcnt, errstr);
+    validateOperation(tr("reset event counter"), errcnt, errstr);
+}
+
 // This is the main update routine
 void DeviceWindow::update()
 {
     int errcnt = 0;
     QString errstr;
     quint16 gpios = mcp2210_.getGPIOs(errcnt, errstr);
+    quint16 evtcnt = mcp2210_.getEventCount(errcnt, errstr);
     if (validateOperation(tr("update"), errcnt, errstr)) {  // If no errors occur
-        updateView(gpios);  // Update values
+        updateView(gpios, evtcnt);  // Update values
     }
 }
 
@@ -286,7 +294,13 @@ void DeviceWindow::disableView()
     viewEnabled_ = false;
 }
 
-// Initializes (or reinitializes) the GPIO controls
+// Initializes the event counter controls
+void DeviceWindow::initializeEventCounterControls()
+{
+    ui->groupBoxEventCounter->setEnabled(chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT);
+}
+
+// Initializes the GPIO controls
 void DeviceWindow::initializeGPIOControls()
 {
     ui->checkBoxGPIO0->setEnabled(chipSettings_.gp0 == MCP2210::PCGPIO && (0x01 & chipSettings_.gpdir) == 0x00);
@@ -299,10 +313,11 @@ void DeviceWindow::initializeGPIOControls()
     ui->checkBoxGPIO7->setEnabled(chipSettings_.gp7 == MCP2210::PCGPIO && (0x80 & chipSettings_.gpdir) == 0x00);
 }
 
-// This is the routine that is used to initialize the device window
+// This is the routine that is used to initialize (or reinitialize) the device window
 void DeviceWindow::initializeView()
 {
     initializeGPIOControls();
+    initializeEventCounterControls();
     // TODO
     viewEnabled_ = true;
 }
@@ -356,7 +371,7 @@ bool DeviceWindow::validateOperation(const QString &operation, int errcnt, QStri
 }
 
 // Updates the view
-void DeviceWindow::updateView(quint16 gpios)
+void DeviceWindow::updateView(quint16 gpios, quint16 evtcnt)
 {
     ui->checkBoxGPIO0->setChecked((0x0001 & gpios) != 0x0000);
     ui->checkBoxGPIO1->setChecked((0x0002 & gpios) != 0x0000);
@@ -367,4 +382,7 @@ void DeviceWindow::updateView(quint16 gpios)
     ui->checkBoxGPIO6->setChecked((0x0040 & gpios) != 0x0000);
     ui->checkBoxGPIO7->setChecked((0x0080 & gpios) != 0x0000);
     ui->checkBoxGPIO8->setChecked((0x0100 & gpios) != 0x0000);
+    if (chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT) {
+        ui->lcdNumberCount->display(evtcnt);
+    }
 }

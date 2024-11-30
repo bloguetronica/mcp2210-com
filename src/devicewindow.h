@@ -62,6 +62,7 @@ private slots:
     void on_checkBoxGPIO5_clicked();
     void on_checkBoxGPIO6_clicked();
     void on_checkBoxGPIO7_clicked();
+    void on_pushButtonZero_clicked();
     void update();
 
 private:
@@ -78,11 +79,12 @@ private:
     int erracc_ = 0;
 
     void disableView();
+    void initializeEventCounterControls();
     void initializeGPIOControls();
     void initializeView();
     void readSettings();
     bool validateOperation(const QString &operation, int errcnt, QString errstr);
-    void updateView(quint16 gpios);
+    void updateView(quint16 gpios, quint16 evtcnt);
 };
 
 #endif  // DEVICEWINDOW_H
