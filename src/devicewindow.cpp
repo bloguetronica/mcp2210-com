@@ -176,6 +176,23 @@ void DeviceWindow::on_actionInformation_triggered()
     }
 }
 
+void DeviceWindow::on_actionResetSettings_triggered()
+{
+    int errcnt = 0;
+    QString errstr;
+    MCP2210::ChipSettings chipSettings = mcp2210_.getNVChipSettings(errcnt, errstr);
+    MCP2210::SPISettings spiSettings = mcp2210_.getNVSPISettings(errcnt, errstr);
+    if (validateOperation(tr("retrieve nonvolatile settings"), errcnt, errstr)) {
+        mcp2210_.configureChipSettings(chipSettings, errcnt, errstr);
+        mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
+        if (validateOperation(tr("reset settings"), errcnt, errstr)) {
+            chipSettings_ = chipSettings;  // Reflect chip
+            spiSettings_ = spiSettings;  // and SPI settings,
+            initializeView();  // and then reinitialize device window
+        }
+    }
+}
+
 void DeviceWindow::on_actionStatus_triggered()
 {
     if (statusDialog_.isNull()) {  // If the dialog is not open
@@ -276,7 +293,10 @@ void DeviceWindow::update()
     int errcnt = 0;
     QString errstr;
     quint16 gpios = mcp2210_.getGPIOs(errcnt, errstr);
-    quint16 evtcnt = mcp2210_.getEventCount(errcnt, errstr);
+    quint16 evtcnt = 0;
+    if (chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT) {
+        evtcnt = mcp2210_.getEventCount(errcnt, errstr);
+    }
     if (validateOperation(tr("update"), errcnt, errstr)) {  // If no errors occur
         updateView(gpios, evtcnt);  // Update values
     }
@@ -382,7 +402,5 @@ void DeviceWindow::updateView(quint16 gpios, quint16 evtcnt)
     ui->checkBoxGPIO6->setChecked((0x0040 & gpios) != 0x0000);
     ui->checkBoxGPIO7->setChecked((0x0080 & gpios) != 0x0000);
     ui->checkBoxGPIO8->setChecked((0x0100 & gpios) != 0x0000);
-    if (chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT) {
-        ui->lcdNumberCount->display(evtcnt);
-    }
+    ui->lcdNumberCount->display(evtcnt);
 }

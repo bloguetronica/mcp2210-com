@@ -270,6 +270,7 @@
     <addaction name="actionStatus"/>
     <addaction name="separator"/>
     <addaction name="actionChipSettings"/>
+    <addaction name="actionResetSettings"/>
     <addaction name="separator"/>
     <addaction name="actionClose"/>
    </widget>
@@ -309,6 +310,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionResetSettings">
+   <property name="text">
+    <string>&amp;Reset Settings</string>
    </property>
   </action>
  </widget>
