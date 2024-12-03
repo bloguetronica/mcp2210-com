@@ -82,6 +82,7 @@ private:
     void disableView();
     void initializeEventCounterControls();
     void initializeGPIOControls();
+    void initializeSPIControls();
     void initializeView();
     void readSettings();
     bool validateOperation(const QString &operation, int errcnt, QString errstr);

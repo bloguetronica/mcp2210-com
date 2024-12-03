@@ -333,12 +333,18 @@ void DeviceWindow::initializeGPIOControls()
     ui->checkBoxGPIO7->setEnabled(chipSettings_.gp7 == MCP2210::PCGPIO && (0x80 & chipSettings_.gpdir) == 0x00);
 }
 
+// Initializes the SPI controls
+void DeviceWindow::initializeSPIControls()
+{
+    // TODO
+}
+
 // This is the routine that is used to initialize (or reinitialize) the device window
 void DeviceWindow::initializeView()
 {
     initializeGPIOControls();
     initializeEventCounterControls();
-    // TODO
+    initializeSPIControls();
     viewEnabled_ = true;
 }
 

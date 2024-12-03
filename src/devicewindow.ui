@@ -252,6 +252,19 @@
      </property>
     </widget>
    </widget>
+   <widget class="QGroupBox" name="groupBoxSPITransfers">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>170</y>
+      <width>551</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>SPI Transfers</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
