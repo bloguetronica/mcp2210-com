@@ -182,7 +182,7 @@ void DeviceWindow::on_actionResetSettings_triggered()
     QString errstr;
     MCP2210::ChipSettings chipSettings = mcp2210_.getNVChipSettings(errcnt, errstr);
     MCP2210::SPISettings spiSettings = mcp2210_.getNVSPISettings(errcnt, errstr);
-    if (validateOperation(tr("retrieve nonvolatile settings"), errcnt, errstr)) {
+    if (validateOperation(tr("retrieve power-up settings"), errcnt, errstr)) {
         mcp2210_.configureChipSettings(chipSettings, errcnt, errstr);
         mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
         if (validateOperation(tr("reset settings"), errcnt, errstr)) {
