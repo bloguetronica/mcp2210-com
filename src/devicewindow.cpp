@@ -293,12 +293,12 @@ void DeviceWindow::update()
     int errcnt = 0;
     QString errstr;
     quint16 gpios = mcp2210_.getGPIOs(errcnt, errstr);
-    quint16 evtcnt = 0;
+    quint16 eventCount = 0;
     if (chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT) {
-        evtcnt = mcp2210_.getEventCount(errcnt, errstr);
+        eventCount = mcp2210_.getEventCount(errcnt, errstr);
     }
     if (validateOperation(tr("update"), errcnt, errstr)) {  // If no errors occur
-        updateView(gpios, evtcnt);  // Update values
+        updateView(gpios, eventCount);  // Update values
     }
 }
 
@@ -336,7 +336,9 @@ void DeviceWindow::initializeGPIOControls()
 // Initializes the SPI controls
 void DeviceWindow::initializeSPIControls()
 {
-    // TODO
+    // TODO Map needed?
+    ui->groupBoxSPIConfiguration->setEnabled(/*TODO*/true);
+    ui->groupBoxSPITransfers->setEnabled(/*TODO*/true);
 }
 
 // This is the routine that is used to initialize (or reinitialize) the device window
@@ -397,7 +399,7 @@ bool DeviceWindow::validateOperation(const QString &operation, int errcnt, QStri
 }
 
 // Updates the view
-void DeviceWindow::updateView(quint16 gpios, quint16 evtcnt)
+void DeviceWindow::updateView(quint16 gpios, quint16 eventCount)
 {
     ui->checkBoxGPIO0->setChecked((0x0001 & gpios) != 0x0000);
     ui->checkBoxGPIO1->setChecked((0x0002 & gpios) != 0x0000);
@@ -408,5 +410,5 @@ void DeviceWindow::updateView(quint16 gpios, quint16 evtcnt)
     ui->checkBoxGPIO6->setChecked((0x0040 & gpios) != 0x0000);
     ui->checkBoxGPIO7->setChecked((0x0080 & gpios) != 0x0000);
     ui->checkBoxGPIO8->setChecked((0x0100 & gpios) != 0x0000);
-    ui->lcdNumberCount->display(evtcnt);
+    ui->lcdNumberCount->display(eventCount);
 }

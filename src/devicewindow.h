@@ -86,7 +86,7 @@ private:
     void initializeView();
     void readSettings();
     bool validateOperation(const QString &operation, int errcnt, QString errstr);
-    void updateView(quint16 gpios, quint16 evtcnt);
+    void updateView(quint16 gpios, quint16 eventCount);
 };
 
 #endif  // DEVICEWINDOW_H
