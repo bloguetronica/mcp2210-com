@@ -318,6 +318,22 @@ void DeviceWindow::disableView()
 void DeviceWindow::initializeEventCounterControls()
 {
     ui->groupBoxEventCounter->setEnabled(chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT);
+    switch (chipSettings_.intmode) {
+        case MCP2210::IMCNTFE:
+            ui->labelCount->setText(tr("Falling edge count"));
+            break;
+        case MCP2210::IMCNTRE:
+            ui->labelCount->setText(tr("Rising edge count"));
+            break;
+        case MCP2210::IMCNTLP:
+            ui->labelCount->setText(tr("Low pulse count"));
+            break;
+        case MCP2210::IMCNTHP:
+            ui->labelCount->setText(tr("High pulse count"));
+            break;
+        default:
+            ui->labelCount->setText(tr("Count"));
+    }
 }
 
 // Initializes the GPIO controls
