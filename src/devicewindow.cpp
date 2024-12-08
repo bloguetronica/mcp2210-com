@@ -20,6 +20,7 @@
 
 // Includes
 #include <QMessageBox>
+#include <QStringList>
 #include "common.h"
 #include "chipsettingsdialog.h"
 #include "devicewindow.h"
@@ -352,9 +353,36 @@ void DeviceWindow::initializeGPIOControls()
 // Initializes the SPI controls
 void DeviceWindow::initializeSPIControls()
 {
-    // TODO Map needed?
-    ui->groupBoxSPIConfiguration->setEnabled(/*TODO*/true);
-    ui->groupBoxSPITransfers->setEnabled(/*TODO*/true);
+    QStringList channelList;
+    if (chipSettings_.gp0 == MCP2210::PCCS) {
+        channelList += "0";
+    }
+    if (chipSettings_.gp1 == MCP2210::PCCS) {
+        channelList += "1";
+    }
+    if (chipSettings_.gp2 == MCP2210::PCCS) {
+        channelList += "2";
+    }
+    if (chipSettings_.gp3 == MCP2210::PCCS) {
+        channelList += "3";
+    }
+    if (chipSettings_.gp4 == MCP2210::PCCS) {
+        channelList += "4";
+    }
+    if (chipSettings_.gp5 == MCP2210::PCCS) {
+        channelList += "5";
+    }
+    if (chipSettings_.gp6 == MCP2210::PCCS) {
+        channelList += "6";
+    }
+    if (chipSettings_.gp7 == MCP2210::PCCS) {
+        channelList += "7";
+    }
+    bool spiEnabled = !channelList.isEmpty();
+    ui->groupBoxSPIConfiguration->setEnabled(spiEnabled);
+    ui->groupBoxSPITransfers->setEnabled(spiEnabled);
+    ui->comboBoxChannel->clear();
+    ui->comboBoxChannel->addItems(channelList);
 }
 
 // This is the routine that is used to initialize (or reinitialize) the device window
