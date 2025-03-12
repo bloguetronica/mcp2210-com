@@ -26,6 +26,7 @@ SOURCES += \
     aboutdialog.cpp \
     chipsettingsdialog.cpp \
     common.cpp \
+    delaysdialog.cpp \
     devicewindow.cpp \
     informationdialog.cpp \
     libusb-extra.c \
@@ -38,6 +39,7 @@ HEADERS += \
     aboutdialog.h \
     chipsettingsdialog.h \
     common.h \
+    delaysdialog.h \
     devicewindow.h \
     informationdialog.h \
     libusb-extra.h \
@@ -48,6 +50,7 @@ HEADERS += \
 FORMS += \
     aboutdialog.ui \
     chipsettingsdialog.ui \
+    delaysdialog.ui \
     devicewindow.ui \
     informationdialog.ui \
     mainwindow.ui \
