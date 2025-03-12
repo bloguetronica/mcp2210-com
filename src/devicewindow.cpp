@@ -23,6 +23,7 @@
 #include <QStringList>
 #include "common.h"
 #include "chipsettingsdialog.h"
+#include "delaysdialog.h"
 #include "devicewindow.h"
 #include "ui_devicewindow.h"
 
@@ -278,6 +279,22 @@ void DeviceWindow::on_checkBoxGPIO7_clicked()
     QString errstr;
     mcp2210_.setGPIO(MCP2210::GPIO7, ui->checkBoxGPIO7->isChecked(), errcnt, errstr);  // Set GPIO7 according to the user choice
     validateOperation(tr("switch GPIO7"), errcnt, errstr);
+}
+
+void DeviceWindow::on_pushButtonSPIDelays_clicked()
+{
+    DelaysDialog delaysDialog(this);
+    // TODO Setup variable and get SPI delays
+    // TODO Set widget values
+    if (delaysDialog.exec() == QDialog::Accepted) {  // If the user clicks "OK", the new delay settings are applied to the current channel
+        // TODO Get widget values
+        int errcnt = 0;
+        QString errstr;
+        //mcp2210_.configureSPISettings(const SPISettings &settings, errcnt, errstr);
+        if (validateOperation(tr("configure spi settings"), errcnt, errstr)) {
+            // Set variable value
+        }
+    }
 }
 
 void DeviceWindow::on_pushButtonZero_clicked()
