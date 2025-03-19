@@ -203,7 +203,7 @@
     <widget class="QPushButton" name="pushButtonZero">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>260</x>
        <y>30</y>
        <width>101</width>
        <height>31</height>
@@ -216,9 +216,9 @@
     <widget class="QLabel" name="labelCount">
      <property name="geometry">
       <rect>
-       <x>290</x>
+       <x>370</x>
        <y>37</y>
-       <width>145</width>
+       <width>65</width>
        <height>17</height>
       </rect>
      </property>
@@ -261,7 +261,7 @@
       <x>10</x>
       <y>170</y>
       <width>551</width>
-      <height>131</height>
+      <height>231</height>
      </rect>
     </property>
     <property name="title">
@@ -270,9 +270,9 @@
     <widget class="QLabel" name="labelChannel">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>10</x>
        <y>37</y>
-       <width>85</width>
+       <width>245</width>
        <height>17</height>
       </rect>
      </property>
@@ -286,7 +286,7 @@
     <widget class="QComboBox" name="comboBoxChannel">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>260</x>
        <y>30</y>
        <width>101</width>
        <height>31</height>
@@ -296,9 +296,9 @@
     <widget class="QPushButton" name="pushButtonCSSettings">
      <property name="geometry">
       <rect>
-       <x>290</x>
+       <x>370</x>
        <y>30</y>
-       <width>121</width>
+       <width>171</width>
        <height>31</height>
       </rect>
      </property>
@@ -309,14 +309,180 @@
     <widget class="QPushButton" name="pushButtonSPIDelays">
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>30</y>
-       <width>121</width>
+       <x>370</x>
+       <y>110</y>
+       <width>171</width>
        <height>31</height>
       </rect>
      </property>
      <property name="text">
       <string>SPI Delays</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelBytesPerTransaction">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>77</y>
+       <width>245</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bytes per SPI transaction:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBoxBytesPerTransaction">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>70</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>65535</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelBitRate">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>117</y>
+       <width>245</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bit rate (Kib/s):</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="doubleSpinBoxBitRate">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>110</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="decimals">
+      <number>3</number>
+     </property>
+     <property name="minimum">
+      <double>1.464000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>12000.000000000000000</double>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelMode">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>157</y>
+       <width>245</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mode:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBoxMode">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>150</y>
+       <width>51</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>3</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelCPOL">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>157</y>
+       <width>45</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CPOL:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBoxCPOL">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>150</y>
+       <width>51</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>1</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelCPHA">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>157</y>
+       <width>45</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CPHA:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBoxCPHA">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>150</y>
+       <width>51</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>1</number>
      </property>
     </widget>
    </widget>
@@ -327,7 +493,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>310</y>
+      <y>410</y>
       <width>551</width>
       <height>91</height>
      </rect>

@@ -143,6 +143,11 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>spinBoxCSToDataDelay</tabstop>
+  <tabstop>spinBoxDataToCSDelay</tabstop>
+  <tabstop>spinBoxInterByteDelay</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>
