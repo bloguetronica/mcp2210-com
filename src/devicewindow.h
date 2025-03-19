@@ -63,7 +63,6 @@ private slots:
     void on_checkBoxGPIO5_clicked();
     void on_checkBoxGPIO6_clicked();
     void on_checkBoxGPIO7_clicked();
-    void on_doubleSpinBoxBitRate_editingFinished();
     void on_pushButtonSPIDelays_clicked();
     void on_pushButtonZero_clicked();
     void on_spinBoxCPHA_valueChanged(int i);

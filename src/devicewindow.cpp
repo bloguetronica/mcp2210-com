@@ -281,11 +281,6 @@ void DeviceWindow::on_checkBoxGPIO7_clicked()
     validateOperation(tr("switch GPIO7"), errcnt, errstr);
 }
 
-void DeviceWindow::on_doubleSpinBoxBitRate_editingFinished()
-{
-    // TODO
-}
-
 void DeviceWindow::on_pushButtonSPIDelays_clicked()
 {
     DelaysDialog delaysDialog(this);
