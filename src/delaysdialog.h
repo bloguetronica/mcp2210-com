@@ -36,6 +36,13 @@ public:
     explicit DelaysDialog(QWidget *parent = nullptr);
     ~DelaysDialog();
 
+    quint16 csToDataDelaySpinBoxValue();
+    quint16 dataToCSDelaySpinBoxValue();
+    quint16 interByteDelaySpinBoxValue();
+    void setCSToDataDelaySpinBoxValue(quint16 csToDataDelay);
+    void setDataToCSDelaySpinBoxValue(quint16 dataToCSDelay);
+    void setInterByteDelaySpinBoxValue(quint16 interByteDelay);
+
 private:
     Ui::DelaysDialog *ui;
 };

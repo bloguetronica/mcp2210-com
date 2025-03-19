@@ -33,3 +33,39 @@ DelaysDialog::~DelaysDialog()
 {
     delete ui;
 }
+
+// Returns the value of "spinBoxCSToDataDelay"
+quint16 DelaysDialog::csToDataDelaySpinBoxValue()
+{
+    return static_cast<quint16>(ui->spinBoxCSToDataDelay->value());
+}
+
+// Returns the value of "spinBoxDataToCSDelay"
+quint16 DelaysDialog::dataToCSDelaySpinBoxValue()
+{
+    return static_cast<quint16>(ui->spinBoxDataToCSDelay->value());
+}
+
+// Returns the value of "spinBoxInterByteDelay"
+quint16 DelaysDialog::interByteDelaySpinBoxValue()
+{
+    return static_cast<quint16>(ui->spinBoxInterByteDelay->value());
+}
+
+// Sets the value of "spinBoxCSToDataDelay"
+void DelaysDialog::setCSToDataDelaySpinBoxValue(quint16 csToDataDelay)
+{
+    ui->spinBoxCSToDataDelay->setValue(csToDataDelay);
+}
+
+// Sets the value of "spinBoxDataToCSDelay"
+void DelaysDialog::setDataToCSDelaySpinBoxValue(quint16 dataToCSDelay)
+{
+    ui->spinBoxDataToCSDelay->setValue(dataToCSDelay);
+}
+
+// Sets the value of "spinBoxInterByteDelay"
+void DelaysDialog::setInterByteDelaySpinBoxValue(quint16 interByteDelay)
+{
+    ui->spinBoxInterByteDelay->setValue(interByteDelay);
+}
