@@ -281,6 +281,11 @@ void DeviceWindow::on_checkBoxGPIO7_clicked()
     validateOperation(tr("switch GPIO7"), errcnt, errstr);
 }
 
+void DeviceWindow::on_doubleSpinBoxBitRate_editingFinished()
+{
+    // TODO
+}
+
 void DeviceWindow::on_pushButtonSPIDelays_clicked()
 {
     DelaysDialog delaysDialog(this);
@@ -295,7 +300,7 @@ void DeviceWindow::on_pushButtonSPIDelays_clicked()
         int errcnt = 0;
         QString errstr;
         mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
-        if (validateOperation(tr("configure SPI settings"), errcnt, errstr)) {
+        if (validateOperation(tr("set SPI delays"), errcnt, errstr)) {
             spiSettings_ = spiSettings;  // Reflect new SPI settings
             initializeView();  // and reinitialize device window
         }
@@ -308,6 +313,22 @@ void DeviceWindow::on_pushButtonZero_clicked()
     QString errstr;
     mcp2210_.resetEventCounter(errcnt, errstr);
     validateOperation(tr("reset event counter"), errcnt, errstr);
+}
+
+void DeviceWindow::on_spinBoxCPHA_valueChanged(int i)
+{
+    ui->spinBoxMode->setValue(2 * ui->spinBoxCPOL->value() + i);
+}
+
+void DeviceWindow::on_spinBoxCPOL_valueChanged(int i)
+{
+    ui->spinBoxMode->setValue(2 * i + ui->spinBoxCPHA->value());
+}
+
+void DeviceWindow::on_spinBoxMode_valueChanged(int i)
+{
+    ui->spinBoxCPOL->setValue(i / 2);
+    ui->spinBoxCPHA->setValue(i % 2);
 }
 
 // This is the main update routine
