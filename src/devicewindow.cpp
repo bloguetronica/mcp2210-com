@@ -111,7 +111,7 @@ void DeviceWindow::on_actionChipSettings_triggered()
     chipSettingsDialog.setRemoteWakeUpCheckBox(chipSettings_.rmwakeup);
     chipSettingsDialog.setSPIBusCaptiveCheckBox(chipSettings_.nrelspi);
     if (chipSettingsDialog.exec() == QDialog::Accepted) {  // If the user clicks "OK", the new chip settings should be applied
-        MCP2210::ChipSettings chipSettings = chipSettings_;  // Local variable required to hold chip settings that may or may not be applied
+        MCP2210::ChipSettings chipSettings = chipSettings_;  // Local variable required in order to hold chip settings that may or may not be applied
         chipSettings.gp0 = static_cast<quint8>(chipSettingsDialog.gp0ComboBoxCurrentIndex() > 0 ? chipSettingsDialog.gp0ComboBoxCurrentIndex() - 1 : MCP2210::PCGPIO);
         chipSettings.gp1 = static_cast<quint8>(chipSettingsDialog.gp1ComboBoxCurrentIndex() > 0 ? chipSettingsDialog.gp1ComboBoxCurrentIndex() - 1 : MCP2210::PCGPIO);
         chipSettings.gp2 = static_cast<quint8>(chipSettingsDialog.gp2ComboBoxCurrentIndex() > 0 ? chipSettingsDialog.gp2ComboBoxCurrentIndex() - 1 : MCP2210::PCGPIO);
@@ -284,15 +284,20 @@ void DeviceWindow::on_checkBoxGPIO7_clicked()
 void DeviceWindow::on_pushButtonSPIDelays_clicked()
 {
     DelaysDialog delaysDialog(this);
-    // TODO Setup variable and get SPI delays
-    // TODO Set widget values
+    delaysDialog.setCSToDataDelaySpinBoxValue(spiSettings_.csdtdly);
+    delaysDialog.setDataToCSDelaySpinBoxValue(spiSettings_.dtcsdly);
+    delaysDialog.setInterByteDelaySpinBoxValue(spiSettings_.itbytdly);
     if (delaysDialog.exec() == QDialog::Accepted) {  // If the user clicks "OK", the new delay settings are applied to the current channel
-        // TODO Get widget values
+        MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied
+        spiSettings.csdtdly = delaysDialog.csToDataDelaySpinBoxValue();
+        spiSettings.dtcsdly = delaysDialog.dataToCSDelaySpinBoxValue();
+        spiSettings.itbytdly = delaysDialog.interByteDelaySpinBoxValue();
         int errcnt = 0;
         QString errstr;
-        //mcp2210_.configureSPISettings(const SPISettings &settings, errcnt, errstr);
-        if (validateOperation(tr("configure spi settings"), errcnt, errstr)) {
-            // Set variable value
+        mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
+        if (validateOperation(tr("configure SPI settings"), errcnt, errstr)) {
+            spiSettings_ = spiSettings;  // Reflect new SPI settings
+            initializeView();  // and reinitialize device window
         }
     }
 }
