@@ -7,8 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>571</width>
-    <height>600</height>
+    <height>544</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>571</width>
+    <height>544</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>571</width>
+    <height>544</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MCP2210 Device</string>
@@ -203,7 +215,7 @@
     <widget class="QPushButton" name="pushButtonZero">
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>10</x>
        <y>30</y>
        <width>101</width>
        <height>31</height>
@@ -261,7 +273,7 @@
       <x>10</x>
       <y>170</y>
       <width>551</width>
-      <height>191</height>
+      <height>151</height>
      </rect>
     </property>
     <property name="title">
@@ -306,53 +318,11 @@
       <string>CS Settings</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButtonSPIDelays">
-     <property name="geometry">
-      <rect>
-       <x>380</x>
-       <y>110</y>
-       <width>161</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>SPI Delays</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="labelBytesPerTransaction">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>77</y>
-       <width>255</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Bytes per SPI transaction:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="spinBoxBytesPerTransaction">
-     <property name="geometry">
-      <rect>
-       <x>270</x>
-       <y>70</y>
-       <width>101</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="maximum">
-      <number>65535</number>
-     </property>
-    </widget>
     <widget class="QLabel" name="labelBitRate">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>117</y>
+       <y>77</y>
        <width>255</width>
        <height>17</height>
       </rect>
@@ -368,7 +338,7 @@
      <property name="geometry">
       <rect>
        <x>270</x>
-       <y>110</y>
+       <y>70</y>
        <width>101</width>
        <height>31</height>
       </rect>
@@ -383,11 +353,24 @@
       <double>12000.000000000000000</double>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButtonSPIDelays">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>70</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>SPI Delays</string>
+     </property>
+    </widget>
     <widget class="QLabel" name="labelMode">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>157</y>
+       <y>117</y>
        <width>255</width>
        <height>17</height>
       </rect>
@@ -403,7 +386,7 @@
      <property name="geometry">
       <rect>
        <x>270</x>
-       <y>150</y>
+       <y>110</y>
        <width>51</width>
        <height>31</height>
       </rect>
@@ -416,7 +399,7 @@
      <property name="geometry">
       <rect>
        <x>330</x>
-       <y>157</y>
+       <y>117</y>
        <width>45</width>
        <height>17</height>
       </rect>
@@ -432,7 +415,7 @@
      <property name="geometry">
       <rect>
        <x>380</x>
-       <y>150</y>
+       <y>110</y>
        <width>51</width>
        <height>31</height>
       </rect>
@@ -445,7 +428,7 @@
      <property name="geometry">
       <rect>
        <x>440</x>
-       <y>157</y>
+       <y>117</y>
        <width>45</width>
        <height>17</height>
       </rect>
@@ -461,7 +444,7 @@
      <property name="geometry">
       <rect>
        <x>490</x>
-       <y>150</y>
+       <y>110</y>
        <width>51</width>
        <height>31</height>
       </rect>
@@ -478,14 +461,135 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>370</y>
+      <y>330</y>
       <width>551</width>
-      <height>121</height>
+      <height>151</height>
      </rect>
     </property>
     <property name="title">
      <string>SPI Transfers</string>
     </property>
+    <widget class="QLineEdit" name="lineEditWrite">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>451</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Mono</family>
+      </font>
+     </property>
+     <property name="maxLength">
+      <number>786431</number>
+     </property>
+     <property name="placeholderText">
+      <string>0x</string>
+     </property>
+     <property name="clearButtonEnabled">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonClipboardCopyWrite">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>30</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../cp2130-com/resources.qrc">
+       <normaloff>:/icons/buttons/icons/buttons/clipboard-copy.png</normaloff>:/icons/buttons/icons/buttons/clipboard-copy.png</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonClipboardPasteWrite">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>30</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../cp2130-com/resources.qrc">
+       <normaloff>:/icons/buttons/icons/buttons/clipboard-paste.png</normaloff>:/icons/buttons/icons/buttons/clipboard-paste.png</iconset>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditRead">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>451</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Mono</family>
+      </font>
+     </property>
+     <property name="maxLength">
+      <number>786431</number>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonClipboardCopyRead">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>70</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../cp2130-com/resources.qrc">
+       <normaloff>:/icons/buttons/icons/buttons/clipboard-copy.png</normaloff>:/icons/buttons/icons/buttons/clipboard-copy.png</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonTransfer">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>110</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Transfer</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -553,8 +657,34 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>checkBoxGPIO0</tabstop>
+  <tabstop>checkBoxGPIO1</tabstop>
+  <tabstop>checkBoxGPIO2</tabstop>
+  <tabstop>checkBoxGPIO3</tabstop>
+  <tabstop>checkBoxGPIO4</tabstop>
+  <tabstop>checkBoxGPIO5</tabstop>
+  <tabstop>checkBoxGPIO6</tabstop>
+  <tabstop>checkBoxGPIO7</tabstop>
+  <tabstop>checkBoxGPIO8</tabstop>
+  <tabstop>pushButtonZero</tabstop>
+  <tabstop>comboBoxChannel</tabstop>
+  <tabstop>pushButtonCSSettings</tabstop>
+  <tabstop>doubleSpinBoxBitRate</tabstop>
+  <tabstop>pushButtonSPIDelays</tabstop>
+  <tabstop>spinBoxMode</tabstop>
+  <tabstop>spinBoxCPOL</tabstop>
+  <tabstop>spinBoxCPHA</tabstop>
+  <tabstop>lineEditWrite</tabstop>
+  <tabstop>pushButtonClipboardCopyWrite</tabstop>
+  <tabstop>pushButtonClipboardPasteWrite</tabstop>
+  <tabstop>lineEditRead</tabstop>
+  <tabstop>pushButtonClipboardCopyRead</tabstop>
+  <tabstop>pushButtonTransfer</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
+  <include location="../cp2130-com/resources.qrc"/>
  </resources>
  <connections>
   <connection>

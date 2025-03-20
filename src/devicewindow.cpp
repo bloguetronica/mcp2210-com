@@ -28,7 +28,7 @@
 #include "ui_devicewindow.h"
 
 // Definitions
-const int CENTRAL_HEIGHT = 701;
+const int CENTRAL_HEIGHT = 491;
 const int ERR_LIMIT = 10;
 
 DeviceWindow::DeviceWindow(QWidget *parent) :
@@ -79,7 +79,7 @@ void DeviceWindow::openDevice(quint16 vid, quint16 pid, const QString &serialStr
 void DeviceWindow::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
-    this->setFixedHeight(ui->menuBar->height() + CENTRAL_HEIGHT + ui->statusBar->height());  // TODO
+    this->setFixedHeight(ui->menuBar->height() + CENTRAL_HEIGHT + ui->statusBar->height());
 }
 
 void DeviceWindow::on_actionAbout_triggered()
