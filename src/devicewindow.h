@@ -22,11 +22,13 @@
 #define DEVICEWINDOW_H
 
 // Includes
+#include <QLabel>
 #include <QMainWindow>
 #include <QPointer>
 #include <QResizeEvent>
 #include <QString>
 #include <QTimer>
+#include "data.h"
 #include "informationdialog.h"
 #include "mcp2210.h"
 #include "statusdialog.h"
@@ -63,18 +65,28 @@ private slots:
     void on_checkBoxGPIO5_clicked();
     void on_checkBoxGPIO6_clicked();
     void on_checkBoxGPIO7_clicked();
+    void on_lineEditRead_textChanged();
+    void on_lineEditWrite_editingFinished();
+    void on_lineEditWrite_textChanged();
+    void on_lineEditWrite_textEdited();
+    void on_pushButtonClipboardCopyRead_clicked();
+    void on_pushButtonClipboardCopyWrite_clicked();
+    void on_pushButtonClipboardPasteWrite_clicked();
     void on_pushButtonSPIDelays_clicked();
     void on_pushButtonZero_clicked();
     void on_spinBoxCPHA_valueChanged(int i);
     void on_spinBoxCPOL_valueChanged(int i);
     void on_spinBoxMode_valueChanged(int i);
     void update();
+    void updatePushButtonClipboardPasteWrite();
 
 private:
     Ui::DeviceWindow *ui;
+    Data write_;
     MCP2210 mcp2210_;
     MCP2210::ChipSettings chipSettings_;  // TODO Evaluate if this is really needed?
     MCP2210::SPISettings spiSettings_;  // TODO Evaluate if this is really needed?
+    QLabel *labelStatus_;
     QPointer<InformationDialog> informationDialog_;
     QPointer<StatusDialog> statusDialog_;
     QString serialString_;
@@ -88,6 +100,7 @@ private:
     void initializeGPIOControls();
     void initializeSPIControls();
     void initializeView();
+    bool isClipboardTextValid();
     void readSettings();
     bool validateOperation(const QString &operation, int errcnt, QString errstr);
     void updateView(quint16 gpios, quint16 eventCount);

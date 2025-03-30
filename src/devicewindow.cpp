@@ -19,6 +19,7 @@
 
 
 // Includes
+#include <QClipboard>
 #include <QMessageBox>
 #include <QStringList>
 #include "common.h"
@@ -36,7 +37,11 @@ DeviceWindow::DeviceWindow(QWidget *parent) :
     ui(new Ui::DeviceWindow)
 {
     ui->setupUi(this);
+    ui->lineEditWrite->setValidator(new QRegExpValidator(QRegExp("[A-Fa-f\\d\\s]+"), this));  // Spaces are also allowed
+    labelStatus_ = new QLabel(this);
+    this->statusBar()->addWidget(labelStatus_);
     timer_ = new QTimer(this);
+    connect(QGuiApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(updatePushButtonClipboardPasteWrite()));
     connect(timer_, SIGNAL(timeout()), this, SLOT(update()));
 }
 
@@ -281,6 +286,46 @@ void DeviceWindow::on_checkBoxGPIO7_clicked()
     validateOperation(tr("switch GPIO7"), errcnt, errstr);
 }
 
+void DeviceWindow::on_lineEditRead_textChanged()
+{
+    ui->pushButtonClipboardCopyRead->setEnabled(!ui->lineEditRead->text().isEmpty());
+}
+
+void DeviceWindow::on_lineEditWrite_editingFinished()
+{
+    ui->lineEditWrite->setText(write_.toHexadecimal());  // Required to reformat the hexadecimal string
+}
+
+void DeviceWindow::on_lineEditWrite_textChanged()
+{
+    ui->pushButtonClipboardCopyWrite->setEnabled(!ui->lineEditWrite->text().isEmpty());
+    write_.fromHexadecimal(ui->lineEditWrite->text());  //This also forces a retrim whenever on_lineEditWrite_editingFinished() is triggered, which is useful case the reformatted hexadecimal string does not fit the line edit box (required in order to follow the WYSIWYG principle)
+    ui->pushButtonTransfer->setEnabled(write_.vector.size() != 0);  // The button "Transfer" is enabled if the string is valid, that is, its conversion leads to a non-empty QVector
+}
+
+void DeviceWindow::on_lineEditWrite_textEdited()
+{
+    int curPosition = ui->lineEditWrite->cursorPosition();
+    ui->lineEditWrite->setText(ui->lineEditWrite->text().toLower());
+    ui->lineEditWrite->setCursorPosition(curPosition);
+}
+
+void DeviceWindow::on_pushButtonClipboardCopyRead_clicked()
+{
+    QGuiApplication::clipboard()->setText(ui->lineEditRead->text());
+}
+
+void DeviceWindow::on_pushButtonClipboardCopyWrite_clicked()
+{
+    QGuiApplication::clipboard()->setText(ui->lineEditWrite->text());
+}
+
+void DeviceWindow::on_pushButtonClipboardPasteWrite_clicked()
+{
+    ui->lineEditWrite->setText(QGuiApplication::clipboard()->text().toLower());  // No need to filter the clipboard contents
+    ui->lineEditWrite->setFocus();  // This ensures that on_lineEditWrite_editingFinished() is triggered once the user clicks elsewhere
+}
+
 void DeviceWindow::on_pushButtonSPIDelays_clicked()
 {
     DelaysDialog delaysDialog(this);
@@ -339,6 +384,12 @@ void DeviceWindow::update()
     if (validateOperation(tr("update"), errcnt, errstr)) {  // If no errors occur
         updateView(gpios, eventCount);  // Update values
     }
+}
+
+// This is executed when the clipboard contents change
+void DeviceWindow::updatePushButtonClipboardPasteWrite()
+{
+    ui->pushButtonClipboardPasteWrite->setEnabled(isClipboardTextValid());
 }
 
 // Partially disables device window
@@ -430,6 +481,14 @@ void DeviceWindow::initializeView()
     initializeEventCounterControls();
     initializeSPIControls();
     viewEnabled_ = true;
+}
+
+// Returns true if the clipboard text contains a valid hexadecimal string
+bool DeviceWindow::isClipboardTextValid()
+{
+    QString clipboardText = QGuiApplication::clipboard()->text();
+    int pos = 0;
+    return QRegExpValidator(QRegExp("[A-Fa-f\\d\\s]+")).validate(clipboardText, pos) == QValidator::Acceptable;
 }
 
 // Reads settings from the MCP2210 volatile memory area

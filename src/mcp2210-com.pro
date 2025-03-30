@@ -26,6 +26,7 @@ SOURCES += \
     aboutdialog.cpp \
     chipsettingsdialog.cpp \
     common.cpp \
+    data.cpp \
     delaysdialog.cpp \
     devicewindow.cpp \
     informationdialog.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
     aboutdialog.h \
     chipsettingsdialog.h \
     common.h \
+    data.h \
     delaysdialog.h \
     devicewindow.h \
     informationdialog.h \
