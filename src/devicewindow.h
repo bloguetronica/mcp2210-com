@@ -85,7 +85,6 @@ private:
     Data write_;
     MCP2210 mcp2210_;
     MCP2210::ChipSettings chipSettings_;  // TODO Evaluate if this is really needed?
-    MCP2210::SPISettings spiSettings_;  // TODO Evaluate if this is really needed?
     QLabel *labelStatus_;
     QPointer<InformationDialog> informationDialog_;
     QPointer<StatusDialog> statusDialog_;
