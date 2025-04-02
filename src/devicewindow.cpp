@@ -148,7 +148,8 @@ void DeviceWindow::on_actionChipSettings_triggered()
         int errcnt = 0;
         QString errstr;
         mcp2210_.configureChipSettings(chipSettings, errcnt, errstr);
-        if (validateOperation(tr("configure chip settings"), errcnt, errstr)) {
+        chipSettings = mcp2210_.getChipSettings(errcnt, errstr);  // Although not strictly necessary, it is a good practice to read the applied settings back
+        if (validateOperation(tr("apply chip settings"), errcnt, errstr)) {
             chipSettings_ = chipSettings;  // Reflect new chip settings
             initializeView();  // and reinitialize device window
         }
