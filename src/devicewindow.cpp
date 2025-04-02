@@ -193,6 +193,8 @@ void DeviceWindow::on_actionResetSettings_triggered()
     if (validateOperation(tr("retrieve power-up settings"), errcnt, errstr)) {
         mcp2210_.configureChipSettings(chipSettings, errcnt, errstr);
         mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
+        chipSettings = mcp2210_.getChipSettings(errcnt, errstr);  // Although not strictly necessary,
+        spiSettings = mcp2210_.getSPISettings(errcnt, errstr);  // it is advisable to read back all the previously applied settings
         if (validateOperation(tr("reset settings"), errcnt, errstr)) {
             chipSettings_ = chipSettings;  // Reflect chip
             spiSettings_ = spiSettings;  // and SPI settings,
