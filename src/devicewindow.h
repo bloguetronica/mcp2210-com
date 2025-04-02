@@ -85,6 +85,7 @@ private:
     Data write_;
     MCP2210 mcp2210_;
     MCP2210::ChipSettings chipSettings_;
+    MCP2210::SPISettings spiSettings_;
     QLabel *labelStatus_;
     QPointer<InformationDialog> informationDialog_;
     QPointer<StatusDialog> statusDialog_;

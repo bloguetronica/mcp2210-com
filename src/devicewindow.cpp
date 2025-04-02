@@ -148,7 +148,7 @@ void DeviceWindow::on_actionChipSettings_triggered()
         int errcnt = 0;
         QString errstr;
         mcp2210_.configureChipSettings(chipSettings, errcnt, errstr);
-        chipSettings = mcp2210_.getChipSettings(errcnt, errstr);  // Although not strictly necessary, it is a good practice to read the applied settings back
+        chipSettings = mcp2210_.getChipSettings(errcnt, errstr);  // Although not strictly necessary, it is a good practice to read back the applied settings in this case
         if (validateOperation(tr("apply chip settings"), errcnt, errstr)) {
             chipSettings_ = chipSettings;  // Reflect new chip settings
             initializeView();  // and reinitialize device window
@@ -195,6 +195,7 @@ void DeviceWindow::on_actionResetSettings_triggered()
         mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
         if (validateOperation(tr("reset settings"), errcnt, errstr)) {
             chipSettings_ = chipSettings;  // Reflect chip
+            spiSettings_ = spiSettings;  // and SPI settings,
             initializeView();  // and then reinitialize device window
         }
     }
@@ -328,20 +329,22 @@ void DeviceWindow::on_pushButtonClipboardPasteWrite_clicked()
 
 void DeviceWindow::on_pushButtonSPIDelays_clicked()
 {
-    int errcnt = 0;
-    QString errstr;
-    MCP2210::SPISettings spiSettings = mcp2210_.getSPISettings(errcnt, errstr);
-    if (validateOperation(tr("retrieve SPI delays"), errcnt, errstr)) {
-        DelaysDialog delaysDialog(this);
-        delaysDialog.setCSToDataDelaySpinBoxValue(spiSettings.csdtdly);
-        delaysDialog.setDataToCSDelaySpinBoxValue(spiSettings.dtcsdly);
-        delaysDialog.setInterByteDelaySpinBoxValue(spiSettings.itbytdly);
-        if (delaysDialog.exec() == QDialog::Accepted) {  // If the user clicks "OK", the new delay settings are applied to the current channel
-            spiSettings.csdtdly = delaysDialog.csToDataDelaySpinBoxValue();
-            spiSettings.dtcsdly = delaysDialog.dataToCSDelaySpinBoxValue();
-            spiSettings.itbytdly = delaysDialog.interByteDelaySpinBoxValue();
-            mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
-            validateOperation(tr("apply SPI delays"), errcnt, errstr);
+    DelaysDialog delaysDialog(this);
+    delaysDialog.setCSToDataDelaySpinBoxValue(spiSettings_.csdtdly);
+    delaysDialog.setDataToCSDelaySpinBoxValue(spiSettings_.dtcsdly);
+    delaysDialog.setInterByteDelaySpinBoxValue(spiSettings_.itbytdly);
+    if (delaysDialog.exec() == QDialog::Accepted) {
+        MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied
+        spiSettings.csdtdly = delaysDialog.csToDataDelaySpinBoxValue();
+        spiSettings.dtcsdly = delaysDialog.dataToCSDelaySpinBoxValue();
+        spiSettings.itbytdly = delaysDialog.interByteDelaySpinBoxValue();
+        int errcnt = 0;
+        QString errstr;
+        mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
+        spiSettings = mcp2210_.getSPISettings(errcnt, errstr);  // Although not strictly necessary, it is a good practice to read back the applied settings in this case
+        if (validateOperation(tr("apply SPI delays"), errcnt, errstr)) {
+            spiSettings_ = spiSettings;  // Reflect new SPI settings
+            initializeView();  // and reinitialize device window
         }
     }
 }
@@ -406,23 +409,23 @@ void DeviceWindow::disableView()
 // Initializes the event counter controls
 void DeviceWindow::initializeEventCounterControls()
 {
-    ui->groupBoxEventCounter->setEnabled(chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT);
     switch (chipSettings_.intmode) {
-        case MCP2210::IMCNTFE:
-            ui->labelCount->setText(tr("Falling edge count"));
-            break;
-        case MCP2210::IMCNTRE:
-            ui->labelCount->setText(tr("Rising edge count"));
-            break;
-        case MCP2210::IMCNTLP:
-            ui->labelCount->setText(tr("Low pulse count"));
-            break;
-        case MCP2210::IMCNTHP:
-            ui->labelCount->setText(tr("High pulse count"));
-            break;
-        default:
-            ui->labelCount->setText(tr("Count"));
+    case MCP2210::IMCNTFE:
+        ui->labelCount->setText(tr("Falling edge count"));
+        break;
+    case MCP2210::IMCNTRE:
+        ui->labelCount->setText(tr("Rising edge count"));
+        break;
+    case MCP2210::IMCNTLP:
+        ui->labelCount->setText(tr("Low pulse count"));
+        break;
+    case MCP2210::IMCNTHP:
+        ui->labelCount->setText(tr("High pulse count"));
+        break;
+    default:
+        ui->labelCount->setText(tr("Count"));
     }
+    ui->groupBoxEventCounter->setEnabled(chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT);
 }
 
 // Initializes the GPIO controls
@@ -466,11 +469,13 @@ void DeviceWindow::initializeSPIControls()
     if (chipSettings_.gp7 == MCP2210::PCCS) {
         channelList += "7";
     }
+    ui->comboBoxChannel->clear();
+    ui->comboBoxChannel->addItems(channelList);
+    ui->doubleSpinBoxBitRate->setValue(spiSettings_.bitrate / 1000.0);
+    ui->spinBoxMode->setValue(spiSettings_.mode);
     bool spiEnabled = !channelList.isEmpty();
     ui->groupBoxSPIConfiguration->setEnabled(spiEnabled);
     ui->groupBoxSPITransfers->setEnabled(spiEnabled);
-    ui->comboBoxChannel->clear();
-    ui->comboBoxChannel->addItems(channelList);
 }
 
 // This is the routine that is used to initialize (or reinitialize) the device window
@@ -496,6 +501,7 @@ void DeviceWindow::readSettings()
     int errcnt = 0;
     QString errstr;
     chipSettings_ = mcp2210_.getChipSettings(errcnt, errstr);
+    spiSettings_ = mcp2210_.getSPISettings(errcnt, errstr);
     if (errcnt > 0) {
         this->hide();  // Hide the window, if applicable, to let the user know that the device is practically closed
         mcp2210_.close();
