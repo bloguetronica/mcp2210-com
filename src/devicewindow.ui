@@ -669,6 +669,7 @@
   <tabstop>checkBoxGPIO8</tabstop>
   <tabstop>pushButtonZero</tabstop>
   <tabstop>comboBoxChannel</tabstop>
+  <tabstop>pushButtonCSSettings</tabstop>
   <tabstop>doubleSpinBoxBitRate</tabstop>
   <tabstop>pushButtonSPIDelays</tabstop>
   <tabstop>spinBoxMode</tabstop>
