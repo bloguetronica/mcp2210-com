@@ -32,6 +32,10 @@
 const int CENTRAL_HEIGHT = 491;
 const int ERR_LIMIT = 10;
 
+// The following values are applicable to applySPISettings()
+const bool CSSINGLE = true;   // Enforce CS settings for one channel only
+const bool CSCUSTOM = false;  // Allow custom configuration and possibly multiple active low CS pins
+
 DeviceWindow::DeviceWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::DeviceWindow)
@@ -289,6 +293,12 @@ void DeviceWindow::on_checkBoxGPIO7_clicked()
     validateOperation(tr("switch GPIO7"), errcnt, errstr);
 }
 
+void DeviceWindow::on_comboBoxChannel_activated()
+{
+    applySPISettings(CSSINGLE);
+    // TODO Unpaint comboBoxChannel
+}
+
 void DeviceWindow::on_lineEditRead_textChanged()
 {
     ui->pushButtonClipboardCopyRead->setEnabled(!ui->lineEditRead->text().isEmpty());
@@ -373,7 +383,7 @@ void DeviceWindow::on_spinBoxMode_valueChanged(int i)
 {
     ui->spinBoxCPOL->setValue(i / 2);
     ui->spinBoxCPHA->setValue(i % 2);
-    configureSPISettings();
+    applySPISettings(CSCUSTOM);
 }
 
 // This is the main update routine
@@ -397,13 +407,17 @@ void DeviceWindow::updatePushButtonClipboardPasteWrite()
     ui->pushButtonClipboardPasteWrite->setEnabled(isClipboardTextValid());
 }
 
-// Configures the SPI settings
-void DeviceWindow::configureSPISettings()
+// Applies the SPI settings defined by the user
+void DeviceWindow::applySPISettings(bool enforceSingleChannel)
 {
     MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied;
     //spiSettings.nbytes; TODO
     spiSettings.bitrate = static_cast<quint32>(1000 * ui->doubleSpinBoxBitRate->value() + 0.5);
     spiSettings.mode = static_cast<quint8>(ui->spinBoxMode->value());
+    if (enforceSingleChannel) {
+        spiSettings.actcs = static_cast<quint8>(~(0x0001 << ui->comboBoxChannel->currentText().toUInt()));  // The CS pin that corresponds to the selected channel is active low
+        spiSettings.idlcs = 0xff;  // All CS pins should idle high by default
+    }
     int errcnt = 0;
     QString errstr;
     mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
@@ -491,6 +505,8 @@ void DeviceWindow::initializeSPIControls()
     }
     ui->comboBoxChannel->clear();
     ui->comboBoxChannel->addItems(channelList);
+    // TODO Set to correct channel, if not dubious
+    // TODO Paint comboBoxChannel if CS related settings do not conform to what is expected for a single channel (could be yellow)
     ui->doubleSpinBoxBitRate->setValue(spiSettings_.bitrate / 1000.0);
     ui->spinBoxMode->setValue(spiSettings_.mode);
     bool spiEnabled = !channelList.isEmpty();

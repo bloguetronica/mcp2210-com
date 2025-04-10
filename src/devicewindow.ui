@@ -509,7 +509,7 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset resource="../cp2130-com/resources.qrc">
+      <iconset resource="resources.qrc">
        <normaloff>:/icons/buttons/icons/buttons/clipboard-copy.png</normaloff>:/icons/buttons/icons/buttons/clipboard-copy.png</iconset>
      </property>
     </widget>
@@ -529,7 +529,7 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset resource="../cp2130-com/resources.qrc">
+      <iconset resource="resources.qrc">
        <normaloff>:/icons/buttons/icons/buttons/clipboard-paste.png</normaloff>:/icons/buttons/icons/buttons/clipboard-paste.png</iconset>
      </property>
     </widget>
@@ -570,7 +570,7 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset resource="../cp2130-com/resources.qrc">
+      <iconset resource="resources.qrc">
        <normaloff>:/icons/buttons/icons/buttons/clipboard-copy.png</normaloff>:/icons/buttons/icons/buttons/clipboard-copy.png</iconset>
      </property>
     </widget>
@@ -669,7 +669,6 @@
   <tabstop>checkBoxGPIO8</tabstop>
   <tabstop>pushButtonZero</tabstop>
   <tabstop>comboBoxChannel</tabstop>
-  <tabstop>pushButtonCSSettings</tabstop>
   <tabstop>doubleSpinBoxBitRate</tabstop>
   <tabstop>pushButtonSPIDelays</tabstop>
   <tabstop>spinBoxMode</tabstop>

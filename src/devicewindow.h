@@ -65,6 +65,7 @@ private slots:
     void on_checkBoxGPIO5_clicked();
     void on_checkBoxGPIO6_clicked();
     void on_checkBoxGPIO7_clicked();
+    void on_comboBoxChannel_activated();
     void on_lineEditRead_textChanged();
     void on_lineEditWrite_editingFinished();
     void on_lineEditWrite_textChanged();
@@ -95,7 +96,7 @@ private:
     bool viewEnabled_ = false;
     int erracc_ = 0;
 
-    void configureSPISettings();
+    void applySPISettings(bool enforceSingleChannel);
     void disableView();
     void initializeEventCounterControls();
     void initializeGPIOControls();
