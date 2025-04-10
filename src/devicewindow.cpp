@@ -373,6 +373,7 @@ void DeviceWindow::on_spinBoxMode_valueChanged(int i)
 {
     ui->spinBoxCPOL->setValue(i / 2);
     ui->spinBoxCPHA->setValue(i % 2);
+    configureSPISettings();
 }
 
 // This is the main update routine
@@ -394,6 +395,23 @@ void DeviceWindow::update()
 void DeviceWindow::updatePushButtonClipboardPasteWrite()
 {
     ui->pushButtonClipboardPasteWrite->setEnabled(isClipboardTextValid());
+}
+
+// Configures the SPI settings
+void DeviceWindow::configureSPISettings()
+{
+    MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied;
+    //spiSettings.nbytes; TODO
+    spiSettings.bitrate = static_cast<quint32>(1000 * ui->doubleSpinBoxBitRate->value() + 0.5);
+    spiSettings.mode = static_cast<quint8>(ui->spinBoxMode->value());
+    int errcnt = 0;
+    QString errstr;
+    mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
+    spiSettings = mcp2210_.getSPISettings(errcnt, errstr);  // Although not strictly necessary, it is a good practice to read back the applied settings in this case
+    if (validateOperation(tr("apply SPI settings"), errcnt, errstr)) {
+        spiSettings_ = spiSettings;  // Reflect new SPI settings
+        initializeView();  // and reinitialize device window
+    }
 }
 
 // Partially disables device window
