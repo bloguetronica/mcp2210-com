@@ -296,7 +296,6 @@ void DeviceWindow::on_checkBoxGPIO7_clicked()
 void DeviceWindow::on_comboBoxChannel_activated()
 {
     applySPISettings(CSSINGLE);
-    // TODO Unpaint comboBoxChannel
 }
 
 void DeviceWindow::on_lineEditRead_textChanged()
@@ -414,7 +413,7 @@ void DeviceWindow::applySPISettings(bool enforceSingleChannel)
     //spiSettings.nbytes; TODO
     spiSettings.bitrate = static_cast<quint32>(1000 * ui->doubleSpinBoxBitRate->value() + 0.5);
     spiSettings.mode = static_cast<quint8>(ui->spinBoxMode->value());
-    if (enforceSingleChannel) {
+    if (enforceSingleChannel && ui->comboBoxChannel->currentIndex() != 0) {  // If the current index of comboBoxChannel is zero, then no specific channel is selected and no changes should be applied
         spiSettings.actcs = static_cast<quint8>(~(0x0001 << ui->comboBoxChannel->currentText().toUInt()));  // The CS pin that corresponds to the selected channel is active low
         spiSettings.idlcs = 0xff;  // All CS pins should idle high by default
     }
@@ -444,20 +443,20 @@ void DeviceWindow::disableView()
 void DeviceWindow::initializeEventCounterControls()
 {
     switch (chipSettings_.intmode) {
-    case MCP2210::IMCNTFE:
-        ui->labelCount->setText(tr("Falling edge count"));
-        break;
-    case MCP2210::IMCNTRE:
-        ui->labelCount->setText(tr("Rising edge count"));
-        break;
-    case MCP2210::IMCNTLP:
-        ui->labelCount->setText(tr("Low pulse count"));
-        break;
-    case MCP2210::IMCNTHP:
-        ui->labelCount->setText(tr("High pulse count"));
-        break;
-    default:
-        ui->labelCount->setText(tr("Count"));
+        case MCP2210::IMCNTFE:
+            ui->labelCount->setText(tr("Falling edge count"));
+            break;
+        case MCP2210::IMCNTRE:
+            ui->labelCount->setText(tr("Rising edge count"));
+            break;
+        case MCP2210::IMCNTLP:
+            ui->labelCount->setText(tr("Low pulse count"));
+            break;
+        case MCP2210::IMCNTHP:
+            ui->labelCount->setText(tr("High pulse count"));
+            break;
+        default:
+            ui->labelCount->setText(tr("Count"));
     }
     ui->groupBoxEventCounter->setEnabled(chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT);
 }
@@ -504,9 +503,36 @@ void DeviceWindow::initializeSPIControls()
         channelList += "7";
     }
     ui->comboBoxChannel->clear();
+    ui->comboBoxChannel->addItem("*");
     ui->comboBoxChannel->addItems(channelList);
-    // TODO Set to correct channel, if not dubious
-    // TODO Paint comboBoxChannel if CS related settings do not conform to what is expected for a single channel (could be yellow)
+    if (spiSettings_.idlcs == 0xff) {
+        switch (spiSettings_.actcs) {
+            case 0xfe:
+                ui->comboBoxChannel->setCurrentText("0");
+                break;
+            case 0xfd:
+                ui->comboBoxChannel->setCurrentText("1");
+                break;
+            case 0xfb:
+                ui->comboBoxChannel->setCurrentText("2");
+                break;
+            case 0xf7:
+                ui->comboBoxChannel->setCurrentText("3");
+                break;
+            case 0xef:
+                ui->comboBoxChannel->setCurrentText("4");
+                break;
+            case 0xdf:
+                ui->comboBoxChannel->setCurrentText("5");
+                break;
+            case 0xbf:
+                ui->comboBoxChannel->setCurrentText("6");
+                break;
+            case 0x7f:
+                ui->comboBoxChannel->setCurrentText("7");
+                break;
+        }
+    }
     ui->doubleSpinBoxBitRate->setValue(spiSettings_.bitrate / 1000.0);
     ui->spinBoxMode->setValue(spiSettings_.mode);
     bool spiEnabled = !channelList.isEmpty();
