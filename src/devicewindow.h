@@ -76,8 +76,11 @@ private slots:
     void on_pushButtonClipboardPasteWrite_clicked();
     void on_pushButtonSPIDelays_clicked();
     void on_pushButtonZero_clicked();
+    void on_spinBoxCPHA_editingFinished();
     void on_spinBoxCPHA_valueChanged(int i);
+    void on_spinBoxCPOL_editingFinished();
     void on_spinBoxCPOL_valueChanged(int i);
+    void on_spinBoxMode_editingFinished();
     void on_spinBoxMode_valueChanged(int i);
     void update();
     void updatePushButtonClipboardPasteWrite();
@@ -97,7 +100,7 @@ private:
     bool viewEnabled_ = false;
     int erracc_ = 0;
 
-    void applySPISettings(bool enforceSingleChannel, bool getCompatibleBitRate);
+    void applySPISettings(bool enforceSingleChannel, bool getCompatibleBitrate);
     void disableView();
     void initializeEventCounterControls();
     void initializeGPIOControls();

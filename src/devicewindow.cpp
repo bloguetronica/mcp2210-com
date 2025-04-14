@@ -375,9 +375,19 @@ void DeviceWindow::on_pushButtonZero_clicked()
     validateOperation(tr("reset event counter"), errcnt, errstr);
 }
 
+void DeviceWindow::on_spinBoxCPHA_editingFinished()
+{
+    applySPISettings(CSCUSTOM, BRTKEEP);
+}
+
 void DeviceWindow::on_spinBoxCPHA_valueChanged(int i)
 {
     ui->spinBoxMode->setValue(2 * ui->spinBoxCPOL->value() + i);
+}
+
+void DeviceWindow::on_spinBoxCPOL_editingFinished()
+{
+    applySPISettings(CSCUSTOM, BRTKEEP);
 }
 
 void DeviceWindow::on_spinBoxCPOL_valueChanged(int i)
@@ -385,11 +395,15 @@ void DeviceWindow::on_spinBoxCPOL_valueChanged(int i)
     ui->spinBoxMode->setValue(2 * i + ui->spinBoxCPHA->value());
 }
 
+void DeviceWindow::on_spinBoxMode_editingFinished()
+{
+    applySPISettings(CSCUSTOM, BRTKEEP);
+}
+
 void DeviceWindow::on_spinBoxMode_valueChanged(int i)
 {
     ui->spinBoxCPOL->setValue(i / 2);
     ui->spinBoxCPHA->setValue(i % 2);
-    applySPISettings(CSCUSTOM, BRTKEEP);
 }
 
 // This is the main update routine
@@ -414,11 +428,10 @@ void DeviceWindow::updatePushButtonClipboardPasteWrite()
 }
 
 // Applies the SPI settings defined by the user
-void DeviceWindow::applySPISettings(bool enforceSingleChannel, bool getCompatibleBitRate)
+void DeviceWindow::applySPISettings(bool enforceSingleChannel, bool getCompatibleBitrate)
 {
     MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied;
     //spiSettings.nbytes; TODO
-    spiSettings.bitrate = static_cast<quint32>(1000 * ui->doubleSpinBoxBitRate->value() + 0.5);
     spiSettings.mode = static_cast<quint8>(ui->spinBoxMode->value());
     if (enforceSingleChannel && ui->comboBoxChannel->currentIndex() != 0) {  // If the current index of comboBoxChannel is zero, then no specific channel is selected and no changes should be applied
         spiSettings.actcs = static_cast<quint8>(~(0x0001 << ui->comboBoxChannel->currentText().toUInt()));  // The CS pin that corresponds to the selected channel is active low
@@ -426,20 +439,20 @@ void DeviceWindow::applySPISettings(bool enforceSingleChannel, bool getCompatibl
     }
     int errcnt = 0;
     QString errstr;
-    if (getCompatibleBitRate) {
-        MCP2210::SPISettings testSPISettings = spiSettings;  // Settings used to test bitrate values
-        quint32 testBitrate = static_cast<quint32>(1.5 * spiSettings.bitrate);  // Variable used for testing and finding compatible bit rates (multiplier value was determined empirically)
+    if (getCompatibleBitrate) {
+        quint32 intendedBitrate = static_cast<quint32>(1000 * ui->doubleSpinBoxBitRate->value());
+        quint32 testBitrate = static_cast<quint32>(1.5 * intendedBitrate);  // Variable used for testing and finding compatible bit rates (multiplier value was determined empirically)
         quint32 nearestLowerBitrate = MCP2210::BRT1K464, nearestUpperBitrate = MCP2210::BRT12M;  // These variables are assigned here, not just for correctness, but to allow algorithmic simplification
         while (errcnt == 0) {
-            testSPISettings.bitrate = testBitrate;
-            mcp2210_.configureSPISettings(testSPISettings, errcnt, errstr);
+            spiSettings.bitrate = testBitrate;
+            mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
             quint32 returnedBitrate = mcp2210_.getSPISettings(errcnt, errstr).bitrate;
             if (returnedBitrate == testBitrate) {
-                if (testBitrate >= spiSettings.bitrate) {
-                    nearestUpperBitrate = testBitrate;  // Can be equal to the input value, if the latter is found to be a compatible bit rate
+                if (testBitrate >= intendedBitrate) {
+                    nearestUpperBitrate = testBitrate;  // Can be equal to the intended value, if the latter is found to be a compatible bit rate
                 }
-                if (testBitrate <= spiSettings.bitrate) {
-                    nearestLowerBitrate = testBitrate;  // Again, can be equal to the input value, if the latter is found to be a compatible bit rate
+                if (testBitrate <= intendedBitrate) {
+                    nearestLowerBitrate = testBitrate;  // Again, can be equal to the intended value, if the latter is found to be a compatible bit rate
                     break;
                 }
                 --testBitrate;
@@ -447,7 +460,7 @@ void DeviceWindow::applySPISettings(bool enforceSingleChannel, bool getCompatibl
                 testBitrate = returnedBitrate;
             }
         }
-        if (nearestUpperBitrate - spiSettings.bitrate > spiSettings.bitrate - nearestLowerBitrate) {  // Half-way cases are approximated to the nearest upper bit rate
+        if (nearestUpperBitrate - intendedBitrate > intendedBitrate - nearestLowerBitrate) {  // Half-way cases are approximated to the nearest upper bit rate
             spiSettings.bitrate = nearestLowerBitrate;
         } else {
             spiSettings.bitrate = nearestUpperBitrate;
