@@ -35,6 +35,8 @@ const int ERR_LIMIT = 10;
 // The following values are applicable to applySPISettings()
 const bool CSSINGLE = true;   // Enforce CS settings for one channel only
 const bool CSCUSTOM = false;  // Allow custom configuration and possibly multiple active low CS pins
+const bool BRTGET = true;     // Get nearest compatible bit rate
+const bool BRTKEEP = false;   // Keep current bit rate
 
 DeviceWindow::DeviceWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -295,7 +297,12 @@ void DeviceWindow::on_checkBoxGPIO7_clicked()
 
 void DeviceWindow::on_comboBoxChannel_activated()
 {
-    applySPISettings(CSSINGLE);
+    applySPISettings(CSSINGLE, BRTKEEP);
+}
+
+void DeviceWindow::on_doubleSpinBoxBitRate_editingFinished()
+{
+    applySPISettings(CSCUSTOM, BRTGET);
 }
 
 void DeviceWindow::on_lineEditRead_textChanged()
@@ -382,7 +389,7 @@ void DeviceWindow::on_spinBoxMode_valueChanged(int i)
 {
     ui->spinBoxCPOL->setValue(i / 2);
     ui->spinBoxCPHA->setValue(i % 2);
-    applySPISettings(CSCUSTOM);
+    applySPISettings(CSCUSTOM, BRTKEEP);
 }
 
 // This is the main update routine
@@ -407,7 +414,7 @@ void DeviceWindow::updatePushButtonClipboardPasteWrite()
 }
 
 // Applies the SPI settings defined by the user
-void DeviceWindow::applySPISettings(bool enforceSingleChannel)
+void DeviceWindow::applySPISettings(bool enforceSingleChannel, bool getCompatibleBitRate)
 {
     MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied;
     //spiSettings.nbytes; TODO
@@ -419,6 +426,33 @@ void DeviceWindow::applySPISettings(bool enforceSingleChannel)
     }
     int errcnt = 0;
     QString errstr;
+    if (getCompatibleBitRate) {
+        MCP2210::SPISettings testSPISettings = spiSettings;  // Settings used to test bitrate values
+        quint32 testBitrate = static_cast<quint32>(1.5 * spiSettings.bitrate);  // Variable used for testing and finding compatible bit rates (multiplier value was determined empirically)
+        quint32 nearestLowerBitrate = MCP2210::BRT1K464, nearestUpperBitrate = MCP2210::BRT12M;  // These variables are assigned here, not just for correctness, but to allow algorithmic simplification
+        while (errcnt == 0) {
+            testSPISettings.bitrate = testBitrate;
+            mcp2210_.configureSPISettings(testSPISettings, errcnt, errstr);
+            quint32 returnedBitrate = mcp2210_.getSPISettings(errcnt, errstr).bitrate;
+            if (returnedBitrate == testBitrate) {
+                if (testBitrate >= spiSettings.bitrate) {
+                    nearestUpperBitrate = testBitrate;  // Can be equal to the input value, if the latter is found to be a compatible bit rate
+                }
+                if (testBitrate <= spiSettings.bitrate) {
+                    nearestLowerBitrate = testBitrate;  // Again, can be equal to the input value, if the latter is found to be a compatible bit rate
+                    break;
+                }
+                --testBitrate;
+            } else {  // Incidentally, "returnedBitrate" is expected to be less than "testBitrate"
+                testBitrate = returnedBitrate;
+            }
+        }
+        if (nearestUpperBitrate - spiSettings.bitrate > spiSettings.bitrate - nearestLowerBitrate) {  // Half-way cases are approximated to the nearest upper bit rate
+            spiSettings.bitrate = nearestLowerBitrate;
+        } else {
+            spiSettings.bitrate = nearestUpperBitrate;
+        }
+    }
     mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
     spiSettings = mcp2210_.getSPISettings(errcnt, errstr);  // Although not strictly necessary, it is a good practice to read back the applied settings in this case
     if (validateOperation(tr("apply SPI settings"), errcnt, errstr)) {
