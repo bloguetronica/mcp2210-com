@@ -67,10 +67,10 @@ private slots:
     void on_checkBoxGPIO7_clicked();
     void on_comboBoxChannel_activated();
     void on_doubleSpinBoxBitRate_editingFinished();
-    void on_lineEditRead_textChanged();
+    void on_lineEditRead_textChanged(const QString &text);
     void on_lineEditWrite_editingFinished();
-    void on_lineEditWrite_textChanged();
-    void on_lineEditWrite_textEdited();
+    void on_lineEditWrite_textChanged(const QString &text);
+    void on_lineEditWrite_textEdited(const QString &text);
     void on_pushButtonClipboardCopyRead_clicked();
     void on_pushButtonClipboardCopyWrite_clicked();
     void on_pushButtonClipboardPasteWrite_clicked();
