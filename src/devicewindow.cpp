@@ -48,7 +48,7 @@ DeviceWindow::DeviceWindow(QWidget *parent) :
     this->statusBar()->addWidget(labelStatus_);
     timer_ = new QTimer(this);
     connect(QGuiApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(updatePushButtonClipboardPasteWrite()));
-    //connect(timer_, SIGNAL(timeout()), this, SLOT(update()));
+    connect(timer_, SIGNAL(timeout()), this, SLOT(update()));
 }
 
 DeviceWindow::~DeviceWindow()
@@ -319,7 +319,7 @@ void DeviceWindow::on_lineEditWrite_editingFinished()
 void DeviceWindow::on_lineEditWrite_textChanged(const QString &text)
 {
     ui->pushButtonClipboardCopyWrite->setEnabled(!text.isEmpty());
-    write_.fromHexadecimal(text);  //This also forces a retrim whenever on_lineEditWrite_editingFinished() is triggered, which is useful case the reformatted hexadecimal string does not fit the line edit box (required in order to follow the WYSIWYG principle)
+    write_.fromHexadecimal(text);  // This also forces a retrim whenever on_lineEditWrite_editingFinished() is triggered, which is useful case the reformatted hexadecimal string does not fit the line edit box (required in order to follow the WYSIWYG principle)
     ui->pushButtonTransfer->setEnabled(write_.vector.size() != 0);  // The button "Transfer" is enabled if the string is valid, that is, its conversion leads to a non-empty QVector
 }
 
