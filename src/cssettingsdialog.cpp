@@ -130,81 +130,97 @@ bool CSSettingsDialog::idleCS7CheckBoxIsChecked()
     return ui->checkBoxIdleCS7->isChecked();
 }
 
+// Sets the state of "checkBoxActiveCS0"
 void CSSettingsDialog::setActiveCS0CheckBox(bool cs0ActiveLevel)
 {
     ui->checkBoxActiveCS0->setChecked(cs0ActiveLevel);
 }
 
+// Sets the state of "checkBoxActiveCS1"
 void CSSettingsDialog::setActiveCS1CheckBox(bool cs1ActiveLevel)
 {
     ui->checkBoxActiveCS1->setChecked(cs1ActiveLevel);
 }
 
+// Sets the state of "checkBoxActiveCS2"
 void CSSettingsDialog::setActiveCS2CheckBox(bool cs2ActiveLevel)
 {
     ui->checkBoxActiveCS2->setChecked(cs2ActiveLevel);
 }
 
+// Sets the state of "checkBoxActiveCS3"
 void CSSettingsDialog::setActiveCS3CheckBox(bool cs3ActiveLevel)
 {
     ui->checkBoxActiveCS3->setChecked(cs3ActiveLevel);
 }
 
+// Sets the state of "checkBoxActiveCS4"
 void CSSettingsDialog::setActiveCS4CheckBox(bool cs4ActiveLevel)
 {
     ui->checkBoxActiveCS4->setChecked(cs4ActiveLevel);
 }
 
+// Sets the state of "checkBoxActiveCS5"
 void CSSettingsDialog::setActiveCS5CheckBox(bool cs5ActiveLevel)
 {
     ui->checkBoxActiveCS5->setChecked(cs5ActiveLevel);
 }
 
+// Sets the state of "checkBoxActiveCS6"
 void CSSettingsDialog::setActiveCS6CheckBox(bool cs6ActiveLevel)
 {
     ui->checkBoxActiveCS6->setChecked(cs6ActiveLevel);
 }
 
+// Sets the state of "checkBoxActiveCS7"
 void CSSettingsDialog::setActiveCS7CheckBox(bool cs7ActiveLevel)
 {
     ui->checkBoxActiveCS7->setChecked(cs7ActiveLevel);
 }
 
+// Sets the state of "checkBoxIdleCS0"
 void CSSettingsDialog::setIdleCS0CheckBox(bool cs0IdleLevel)
 {
     ui->checkBoxIdleCS0->setChecked(cs0IdleLevel);
 }
 
+// Sets the state of "checkBoxIdleCS1"
 void CSSettingsDialog::setIdleCS1CheckBox(bool cs1IdleLevel)
 {
     ui->checkBoxIdleCS1->setChecked(cs1IdleLevel);
 }
 
+// Sets the state of "checkBoxIdleCS2"
 void CSSettingsDialog::setIdleCS2CheckBox(bool cs2IdleLevel)
 {
     ui->checkBoxIdleCS2->setChecked(cs2IdleLevel);
 }
 
+// Sets the state of "checkBoxIdleCS3"
 void CSSettingsDialog::setIdleCS3CheckBox(bool cs3IdleLevel)
 {
     ui->checkBoxIdleCS3->setChecked(cs3IdleLevel);
 }
 
+// Sets the state of "checkBoxIdleCS4"
 void CSSettingsDialog::setIdleCS4CheckBox(bool cs4IdleLevel)
 {
     ui->checkBoxIdleCS4->setChecked(cs4IdleLevel);
 }
 
+// Sets the state of "checkBoxIdleCS5"
 void CSSettingsDialog::setIdleCS5CheckBox(bool cs5IdleLevel)
 {
     ui->checkBoxIdleCS5->setChecked(cs5IdleLevel);
 }
 
+// Sets the state of "checkBoxIdleCS6"
 void CSSettingsDialog::setIdleCS6CheckBox(bool cs6IdleLevel)
 {
     ui->checkBoxIdleCS6->setChecked(cs6IdleLevel);
 }
 
+// Sets the state of "checkBoxIdleCS7"
 void CSSettingsDialog::setIdleCS7CheckBox(bool cs7IdleLevel)
 {
     ui->checkBoxIdleCS7->setChecked(cs7IdleLevel);
