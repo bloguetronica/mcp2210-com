@@ -24,6 +24,7 @@
 #include <QStringList>
 #include "common.h"
 #include "chipsettingsdialog.h"
+#include "cssettingsdialog.h"
 #include "delaysdialog.h"
 #include "devicewindow.h"
 #include "ui_devicewindow.h"
@@ -344,6 +345,54 @@ void DeviceWindow::on_pushButtonClipboardPasteWrite_clicked()
 {
     ui->lineEditWrite->setText(QGuiApplication::clipboard()->text().toLower());  // No need to filter the clipboard contents
     ui->lineEditWrite->setFocus();  // This ensures that on_lineEditWrite_editingFinished() is triggered once the user clicks elsewhere
+}
+
+void DeviceWindow::on_pushButtonCSSettings_clicked()
+{
+    CSSettingsDialog csSettingsDialog(this);
+    csSettingsDialog.setActiveCS0CheckBox((0x01 & spiSettings_.actcs) != 0x00);
+    csSettingsDialog.setActiveCS1CheckBox((0x02 & spiSettings_.actcs) != 0x00);
+    csSettingsDialog.setActiveCS2CheckBox((0x04 & spiSettings_.actcs) != 0x00);
+    csSettingsDialog.setActiveCS3CheckBox((0x08 & spiSettings_.actcs) != 0x00);
+    csSettingsDialog.setActiveCS4CheckBox((0x10 & spiSettings_.actcs) != 0x00);
+    csSettingsDialog.setActiveCS5CheckBox((0x20 & spiSettings_.actcs) != 0x00);
+    csSettingsDialog.setActiveCS6CheckBox((0x40 & spiSettings_.actcs) != 0x00);
+    csSettingsDialog.setActiveCS7CheckBox((0x80 & spiSettings_.actcs) != 0x00);
+    csSettingsDialog.setIdleCS0CheckBox((0x01 & spiSettings_.idlcs) != 0x00);
+    csSettingsDialog.setIdleCS1CheckBox((0x02 & spiSettings_.idlcs) != 0x00);
+    csSettingsDialog.setIdleCS2CheckBox((0x04 & spiSettings_.idlcs) != 0x00);
+    csSettingsDialog.setIdleCS3CheckBox((0x08 & spiSettings_.idlcs) != 0x00);
+    csSettingsDialog.setIdleCS4CheckBox((0x10 & spiSettings_.idlcs) != 0x00);
+    csSettingsDialog.setIdleCS5CheckBox((0x20 & spiSettings_.idlcs) != 0x00);
+    csSettingsDialog.setIdleCS6CheckBox((0x40 & spiSettings_.idlcs) != 0x00);
+    csSettingsDialog.setIdleCS7CheckBox((0x80 & spiSettings_.idlcs) != 0x00);
+    if (csSettingsDialog.exec() == QDialog::Accepted) {
+        MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied
+        spiSettings.actcs = static_cast<quint8>(csSettingsDialog.activeCS7CheckBoxIsChecked() << 7 |
+                                                csSettingsDialog.activeCS6CheckBoxIsChecked() << 6 |
+                                                csSettingsDialog.activeCS5CheckBoxIsChecked() << 5 |
+                                                csSettingsDialog.activeCS4CheckBoxIsChecked() << 4 |
+                                                csSettingsDialog.activeCS3CheckBoxIsChecked() << 3 |
+                                                csSettingsDialog.activeCS2CheckBoxIsChecked() << 2 |
+                                                csSettingsDialog.activeCS1CheckBoxIsChecked() << 1 |
+                                                csSettingsDialog.activeCS0CheckBoxIsChecked());
+        spiSettings.idlcs = static_cast<quint8>(csSettingsDialog.idleCS7CheckBoxIsChecked() << 7 |
+                                                csSettingsDialog.idleCS6CheckBoxIsChecked() << 6 |
+                                                csSettingsDialog.idleCS5CheckBoxIsChecked() << 5 |
+                                                csSettingsDialog.idleCS4CheckBoxIsChecked() << 4 |
+                                                csSettingsDialog.idleCS3CheckBoxIsChecked() << 3 |
+                                                csSettingsDialog.idleCS2CheckBoxIsChecked() << 2 |
+                                                csSettingsDialog.idleCS1CheckBoxIsChecked() << 1 |
+                                                csSettingsDialog.idleCS0CheckBoxIsChecked());
+        int errcnt = 0;
+        QString errstr;
+        mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
+        spiSettings = mcp2210_.getSPISettings(errcnt, errstr);  // Although not strictly necessary, it is a good practice to read back the applied settings in this case
+        if (validateOperation(tr("apply chip select settings"), errcnt, errstr)) {
+            spiSettings_ = spiSettings;  // Reflect new SPI settings
+            initializeView();  // and reinitialize device window
+        }
+    }
 }
 
 void DeviceWindow::on_pushButtonSPIDelays_clicked()

@@ -36,6 +36,39 @@ public:
     explicit CSSettingsDialog(QWidget *parent = nullptr);
     ~CSSettingsDialog();
 
+    bool activeCS0CheckBoxIsChecked();
+    bool activeCS1CheckBoxIsChecked();
+    bool activeCS2CheckBoxIsChecked();
+    bool activeCS3CheckBoxIsChecked();
+    bool activeCS4CheckBoxIsChecked();
+    bool activeCS5CheckBoxIsChecked();
+    bool activeCS6CheckBoxIsChecked();
+    bool activeCS7CheckBoxIsChecked();
+    bool idleCS0CheckBoxIsChecked();
+    bool idleCS1CheckBoxIsChecked();
+    bool idleCS2CheckBoxIsChecked();
+    bool idleCS3CheckBoxIsChecked();
+    bool idleCS4CheckBoxIsChecked();
+    bool idleCS5CheckBoxIsChecked();
+    bool idleCS6CheckBoxIsChecked();
+    bool idleCS7CheckBoxIsChecked();
+    void setActiveCS0CheckBox(bool cs0ActiveLevel);
+    void setActiveCS1CheckBox(bool cs1ActiveLevel);
+    void setActiveCS2CheckBox(bool cs2ActiveLevel);
+    void setActiveCS3CheckBox(bool cs3ActiveLevel);
+    void setActiveCS4CheckBox(bool cs4ActiveLevel);
+    void setActiveCS5CheckBox(bool cs5ActiveLevel);
+    void setActiveCS6CheckBox(bool cs6ActiveLevel);
+    void setActiveCS7CheckBox(bool cs7ActiveLevel);
+    void setIdleCS0CheckBox(bool cs0IdleLevel);
+    void setIdleCS1CheckBox(bool cs1IdleLevel);
+    void setIdleCS2CheckBox(bool cs2IdleLevel);
+    void setIdleCS3CheckBox(bool cs3IdleLevel);
+    void setIdleCS4CheckBox(bool cs4IdleLevel);
+    void setIdleCS5CheckBox(bool cs5IdleLevel);
+    void setIdleCS6CheckBox(bool cs6IdleLevel);
+    void setIdleCS7CheckBox(bool cs7IdleLevel);
+
 private:
     Ui::CSSettingsDialog *ui;
 };
