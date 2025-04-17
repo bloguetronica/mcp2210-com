@@ -76,6 +76,7 @@ private slots:
     void on_pushButtonClipboardPasteWrite_clicked();
     void on_pushButtonCSSettings_clicked();
     void on_pushButtonSPIDelays_clicked();
+    void on_pushButtonTransfer_clicked();
     void on_pushButtonZero_clicked();
     void on_spinBoxCPHA_editingFinished();
     void on_spinBoxCPHA_valueChanged(int i);

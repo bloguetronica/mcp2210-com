@@ -417,6 +417,11 @@ void DeviceWindow::on_pushButtonSPIDelays_clicked()
     }
 }
 
+void DeviceWindow::on_pushButtonTransfer_clicked()
+{
+    // TODO
+}
+
 void DeviceWindow::on_pushButtonZero_clicked()
 {
     int errcnt = 0;
