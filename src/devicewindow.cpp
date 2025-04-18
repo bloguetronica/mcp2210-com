@@ -468,7 +468,7 @@ void DeviceWindow::update()
     QString errstr;
     quint16 gpios = mcp2210_.getGPIOs(errcnt, errstr);
     quint16 eventCount = 0;
-    if (chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT) {
+    if (chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT) {  // This will save overhead during updates, because the MCP2210 will not count events and its counter will stay at zero unless both conditions are satisfied
         eventCount = mcp2210_.getEventCount(errcnt, errstr);
     }
     if (validateOperation(tr("update"), errcnt, errstr)) {  // If no errors occur
