@@ -23,6 +23,7 @@
 
 // Includes
 #include <QLabel>
+#include <QLocale>
 #include <QMainWindow>
 #include <QPointer>
 #include <QResizeEvent>
@@ -94,6 +95,7 @@ private:
     MCP2210::ChipSettings chipSettings_;
     MCP2210::SPISettings spiSettings_;
     QLabel *labelStatus_;
+    QLocale locale_ = QLocale::system();
     QPointer<InformationDialog> informationDialog_;
     QPointer<StatusDialog> statusDialog_;
     QString serialString_;

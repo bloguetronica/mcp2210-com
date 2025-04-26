@@ -20,7 +20,12 @@
 
 // Includes
 #include <QClipboard>
+#include <QElapsedTimer>
+#include <QGuiApplication>
 #include <QMessageBox>
+#include <QProgressDialog>
+#include <QRegExp>
+#include <QRegExpValidator>
 #include <QStringList>
 #include "common.h"
 #include "chipsettingsdialog.h"
@@ -420,6 +425,38 @@ void DeviceWindow::on_pushButtonSPIDelays_clicked()
 void DeviceWindow::on_pushButtonTransfer_clicked()
 {
     // TODO
+    size_t bytesToWriteRead = write_.vector.size();
+    size_t bytesProcessed = 0;
+    QProgressDialog spiTransferProgress(tr("Performing SPI write and read..."), tr("Abort"), 0, static_cast<int>(bytesToWriteRead), this);  // Progress dialog implemented in version 3.0
+    spiTransferProgress.setWindowTitle(tr("SPI Write/Read"));
+    spiTransferProgress.setWindowModality(Qt::WindowModal);
+    spiTransferProgress.setMinimumDuration(500);  // The progress dialog should appear only if the operation takes more than 500 ms
+    // TODO
+    QElapsedTimer time;
+    time.start();
+    int errcnt = 0;
+    QString errstr;
+    while (bytesProcessed < bytesToWriteRead) {
+        if (spiTransferProgress.wasCanceled()) {  // If the user clicks "Abort"
+            break;  // Abort the SPI write and read operation
+        }
+        ++bytesProcessed;  // TODO Template to remove
+        // TODO
+    }
+    // TODO
+    qint64 elapsedTime = time.elapsed();  // Elapsed time in milliseconds
+    timer_->start();  // Restart the timer
+    // TODO
+    if (errcnt > 0) {  // Update status bar
+        labelStatus_->setText(tr("SPI write and read failed."));
+    } else if (spiTransferProgress.wasCanceled()){
+        labelStatus_->setText(tr("SPI transfer aborted by the user."));
+    } else if (elapsedTime < 1000) {
+        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 ms.").arg(2 * bytesProcessed).arg(elapsedTime));  // The number of transferred bytes is now reported (implemented in version 4.0)
+    } else {
+        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 s.").arg(2 * bytesProcessed).arg(locale_.toString(elapsedTime / 1000.0, 'f', 3)));
+    }
+    validateOperation(tr("transfer SPI data"), errcnt, errstr);
 }
 
 void DeviceWindow::on_pushButtonZero_clicked()
@@ -640,6 +677,11 @@ void DeviceWindow::initializeSPIControls()
     bool spiEnabled = !channelList.isEmpty();
     ui->groupBoxSPIConfiguration->setEnabled(spiEnabled);
     ui->groupBoxSPITransfers->setEnabled(spiEnabled);
+    ui->pushButtonClipboardPasteWrite->setEnabled(isClipboardTextValid());
+    if (!spiEnabled) {
+        ui->lineEditWrite->clear();
+        ui->lineEditRead->clear();
+    }
 }
 
 // This is the routine that is used to initialize (or reinitialize) the device window
