@@ -424,29 +424,40 @@ void DeviceWindow::on_pushButtonSPIDelays_clicked()
 
 void DeviceWindow::on_pushButtonTransfer_clicked()
 {
-    // TODO
-    size_t bytesToWriteRead = write_.vector.size();
+    size_t bytesToTransfer = write_.vector.size();
     size_t bytesProcessed = 0;
-    QProgressDialog spiTransferProgress(tr("Performing SPI write and read..."), tr("Abort"), 0, static_cast<int>(bytesToWriteRead), this);  // Progress dialog implemented in version 3.0
+    QProgressDialog spiTransferProgress(tr("Performing SPI write and read..."), tr("Abort"), 0, static_cast<int>(bytesToTransfer), this);  // Progress dialog implemented in version 3.0
     spiTransferProgress.setWindowTitle(tr("SPI Write/Read"));
     spiTransferProgress.setWindowModality(Qt::WindowModal);
     spiTransferProgress.setMinimumDuration(500);  // The progress dialog should appear only if the operation takes more than 500 ms
-    // TODO
+    Data read;
+    timer_->stop();  // The update timer is now stopped during SPI transfers (fix implemented in version 3.1)
     QElapsedTimer time;
     time.start();
     int errcnt = 0;
     QString errstr;
-    while (bytesProcessed < bytesToWriteRead) {
+    //mcp2210_.cancelSPITransfer(errcnt, errstr);  // TODO
+    while (bytesProcessed < bytesToTransfer) {
         if (spiTransferProgress.wasCanceled()) {  // If the user clicks "Abort"
             break;  // Abort the SPI write and read operation
         }
-        ++bytesProcessed;  // TODO Template to remove
-        // TODO
+        size_t bytesRemaining = bytesToTransfer - bytesProcessed;
+        size_t fragmentSize = bytesRemaining > MCP2210::SPIDATA_MAXSIZE ? MCP2210::SPIDATA_MAXSIZE : bytesRemaining;
+        quint8 transferStatus = MCP2210::TRANSFER_STARTED;
+        if (transferStatus != MCP2210::TRANSFER_NOT_FINISHED) {
+            QVector<quint8> readFragment = mcp2210_.spiTransfer(write_.fragment(bytesProcessed, fragmentSize), transferStatus, errcnt, errstr);  // Transfer SPI data
+            if (errcnt > 0) {  // In case of error
+                spiTransferProgress.cancel();  // Important!
+                break;  // Abort the SPI write and read operation
+            }
+            read.vector += readFragment;  // The returned fragment could be considered valid at this point
+        }
+        bytesProcessed += fragmentSize;
+        spiTransferProgress.setValue(static_cast<int>(bytesProcessed));
     }
-    // TODO
     qint64 elapsedTime = time.elapsed();  // Elapsed time in milliseconds
     timer_->start();  // Restart the timer
-    // TODO
+    ui->lineEditRead->setText(read.toHexadecimal());  // At least, a partial result should be shown if an error occurs
     if (errcnt > 0) {  // Update status bar
         labelStatus_->setText(tr("SPI write and read failed."));
     } else if (spiTransferProgress.wasCanceled()){

@@ -22,6 +22,24 @@
 #include <QStringRef>
 #include "data.h"
 
+// Returns a fragment of data from the given index, with the specified size
+// If the given size, when added to the index, goes out of boundaries, the returned QVector will have a smaller than expected size
+QVector<quint8> Data::fragment(size_t index, size_t size) const
+{
+    size_t vectorSize = static_cast<size_t>(vector.size());
+    size_t fragmentSize;
+    if (index < vectorSize) {  // This is essential to prevent integer underflow (see subtraction in the line below)
+        fragmentSize = size + index > vectorSize ? vectorSize - index : size;
+    } else {
+        fragmentSize = 0;
+    }
+    QVector<quint8> retdata(fragmentSize);
+    for (size_t i = 0; i < fragmentSize; ++i) {
+        retdata[static_cast<int>(i)] = vector[static_cast<int>(index + i)];
+    }
+    return retdata;
+}
+
 // Converts to a string of hexadecimal numbers
 QString Data::toHexadecimal() const
 {
