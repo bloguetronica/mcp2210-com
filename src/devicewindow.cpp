@@ -426,12 +426,12 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
 {
     size_t bytesToTransfer = write_.vector.size();
     size_t bytesProcessed = 0;
-    QProgressDialog spiTransferProgress(tr("Performing SPI write and read..."), tr("Abort"), 0, static_cast<int>(bytesToTransfer), this);  // Progress dialog implemented in version 3.0
+    QProgressDialog spiTransferProgress(tr("Performing SPI write and read..."), tr("Abort"), 0, static_cast<int>(bytesToTransfer), this);
     spiTransferProgress.setWindowTitle(tr("SPI Write/Read"));
     spiTransferProgress.setWindowModality(Qt::WindowModal);
     spiTransferProgress.setMinimumDuration(500);  // The progress dialog should appear only if the operation takes more than 500 ms
     Data read;
-    timer_->stop();  // The update timer is now stopped during SPI transfers (fix implemented in version 3.1)
+    timer_->stop();  // The update timer should be stopped during SPI transfers
     QElapsedTimer time;
     time.start();
     int errcnt = 0;
@@ -463,7 +463,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     } else if (spiTransferProgress.wasCanceled()){
         labelStatus_->setText(tr("SPI transfer aborted by the user."));
     } else if (elapsedTime < 1000) {
-        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 ms.").arg(2 * bytesProcessed).arg(elapsedTime));  // The number of transferred bytes is now reported (implemented in version 4.0)
+        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 ms.").arg(2 * bytesProcessed).arg(elapsedTime));
     } else {
         labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 s.").arg(2 * bytesProcessed).arg(locale_.toString(elapsedTime / 1000.0, 'f', 3)));
     }
