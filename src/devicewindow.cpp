@@ -313,7 +313,7 @@ void DeviceWindow::on_doubleSpinBoxBitRate_editingFinished()
 
 void DeviceWindow::on_lineEditRead_textChanged(const QString &text)
 {
-    ui->pushButtonClipboardCopyRead->setEnabled(text.isEmpty());
+    ui->pushButtonClipboardCopyRead->setEnabled(!text.isEmpty());
 }
 
 void DeviceWindow::on_lineEditWrite_editingFinished()
