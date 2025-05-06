@@ -451,7 +451,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
             spiTransferProgress.cancel();  // Important!
             break;  // Abort the SPI write and read operation
         }
-        if (spiTransferStatus == MCP2210::BUSY) {
+        if (spiTransferStatus == MCP2210::BUSY) {  // The bus is in use by another SPI master
             spiTransferProgress.setLabelText(tr("Waiting for the SPI bus to be released..."));
         } else {
             spiTransferProgress.setLabelText(tr("Performing SPI transfer..."));
