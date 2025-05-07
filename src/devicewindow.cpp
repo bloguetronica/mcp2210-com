@@ -429,7 +429,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     QProgressDialog spiTransferProgress("", tr("Abort"), 0, static_cast<int>(bytesToTransfer), this);
     spiTransferProgress.setWindowTitle(tr("SPI transfer"));
     spiTransferProgress.setWindowModality(Qt::WindowModal);
-    spiTransferProgress.setMinimumDuration(5000);  // The progress dialog should appear only if the operation takes more than 500 ms
+    spiTransferProgress.setMinimumDuration(500);  // The progress dialog should appear only if the operation takes more than 500 ms
     Data read;
     timer_->stop();  // The update timer should be stopped during SPI transfers
     QElapsedTimer time;
