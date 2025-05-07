@@ -20,6 +20,7 @@
 
 // Includes
 #include <QClipboard>
+#include <QCoreApplication>
 #include <QElapsedTimer>
 #include <QGuiApplication>
 #include <QMessageBox>
@@ -429,7 +430,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     QProgressDialog spiTransferProgress("", tr("Abort"), 0, static_cast<int>(bytesToTransfer), this);
     spiTransferProgress.setWindowTitle(tr("SPI transfer"));
     spiTransferProgress.setWindowModality(Qt::WindowModal);
-    spiTransferProgress.setMinimumDuration(500);  // The progress dialog should appear only if the operation takes more than 500 ms
+    spiTransferProgress.setMinimumDuration(0);  // Because QCoreApplication::processEvents() is called, the progress dialog needs be displayed right away
     Data read;
     timer_->stop();  // The update timer should be stopped during SPI transfers
     QElapsedTimer time;
@@ -459,8 +460,8 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
                 bytesProcessed += fragmentSize;
             }
         }
-        spiTransferProgress.setValue(static_cast<int>(bytesProcessed));  // Note that this also calls QCoreApplication::processEvents(), so it should be done here at the end of the loop, outside the if statements
-        // For future reference, it is preferable to have some unresponsiveness during very slow transfers than to call QCoreApplication::processEvents() here with the risk of undesirable re-entrancy!
+        spiTransferProgress.setValue(static_cast<int>(bytesProcessed));  // Note that this should be done here at the end of the loop, outside the previous if statements
+        QCoreApplication::processEvents();  // Required in order to maintain responsiveness
     }
     qint64 elapsedTime = time.elapsed();  // Elapsed time in milliseconds
     timer_->start();  // Restart the timer
