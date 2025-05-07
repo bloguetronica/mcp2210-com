@@ -19,7 +19,6 @@
 
 
 // Includes
-#include <QApplication>
 #include <QClipboard>
 #include <QElapsedTimer>
 #include <QGuiApplication>
@@ -430,7 +429,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     QProgressDialog spiTransferProgress("", tr("Abort"), 0, static_cast<int>(bytesToTransfer), this);
     spiTransferProgress.setWindowTitle(tr("SPI transfer"));
     spiTransferProgress.setWindowModality(Qt::WindowModal);
-    spiTransferProgress.setMinimumDuration(500);  // The progress dialog should appear only if the operation takes more than 500 ms
+    spiTransferProgress.setMinimumDuration(5000);  // The progress dialog should appear only if the operation takes more than 500 ms
     Data read;
     timer_->stop();  // The update timer should be stopped during SPI transfers
     QElapsedTimer time;
@@ -439,7 +438,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     QString errstr;
     mcp2210_.cancelSPITransfer(errcnt, errstr);  // Just as a precautionary measure to force a start from scratch
     quint8 spiTransferStatus = MCP2210::TRANSFER_STARTED;
-    while (spiTransferStatus != MCP2210::TRANSFER_FINISHED && bytesProcessed < bytesToTransfer) {  // The last condition is kind of redundant, but it ensures that the application won't hang or crash if the SPI transfer returns an unexpected status (e.g., it returns "TRANSFER_NOT_FINISHED" when it should return "TRANSFER_FINISHED")
+    while (bytesProcessed < bytesToTransfer) {  // For future reference, the condition "spiTransferStatus != MCP2210::TRANSFER_FINISHED" is not a reliable way to check if the transfer is actually completed, and relying on it alone may even lead to a crash!
         if (spiTransferProgress.wasCanceled()) {  // If the user clicks "Abort"
             mcp2210_.cancelSPITransfer(errcnt, errstr);  // This ensures a clean state for any process that follows
             break;  // Abort the SPI write and read operation
@@ -460,8 +459,8 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
                 bytesProcessed += fragmentSize;
             }
         }
-        QApplication::processEvents();  // Required in order to maintain responsiveness
-        spiTransferProgress.setValue(static_cast<int>(bytesProcessed));
+        spiTransferProgress.setValue(static_cast<int>(bytesProcessed));  // Note that this also calls QCoreApplication::processEvents(), so it should be done here at the end of the loop, outside the if statements
+        // For future reference, it is preferable to have some unresponsiveness during very slow transfers than to call QCoreApplication::processEvents() here with the risk of undesirable re-entrancy!
     }
     qint64 elapsedTime = time.elapsed();  // Elapsed time in milliseconds
     timer_->start();  // Restart the timer
