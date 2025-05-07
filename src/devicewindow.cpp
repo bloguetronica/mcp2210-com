@@ -442,14 +442,14 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     while (bytesProcessed < bytesToTransfer) {  // For future reference, the variable "spiTransferStatus" does not provide a reliable way to check if the transfer is actually completed (e.g., by evaluating "spiTransferStatus != MCP2210::TRANSFER_FINISHED"), and relying on that variable alone may even lead to a crash!
         if (spiTransferProgress.wasCanceled()) {  // If the user clicks "Abort"
             mcp2210_.cancelSPITransfer(errcnt, errstr);  // This ensures a clean state for any process that follows
-            break;  // Abort the SPI write and read operation
+            break;  // Abort the SPI transfer operation
         }
         size_t bytesRemaining = bytesToTransfer - bytesProcessed;
         size_t fragmentSize = bytesRemaining > MCP2210::SPIDATA_MAXSIZE ? MCP2210::SPIDATA_MAXSIZE : bytesRemaining;
         QVector<quint8> readFragment = mcp2210_.spiTransfer(write_.fragment(bytesProcessed, fragmentSize), spiTransferStatus, errcnt, errstr);  // Transfer SPI data
         if (errcnt > 0) {  // In case of error
             spiTransferProgress.cancel();  // Important!
-            break;  // Abort the SPI write and read operation
+            break;  // Abort the SPI transfer operation
         }
         if (spiTransferStatus == MCP2210::BUSY) {  // The bus is in use by another SPI master
             spiTransferProgress.setLabelText(tr("Waiting for the SPI bus to be released..."));
@@ -467,7 +467,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     timer_->start();  // Restart the timer
     ui->lineEditRead->setText(read.toHexadecimal());  // At least, a partial result should be shown if an error occurs
     if (errcnt > 0) {  // Update status bar
-        labelStatus_->setText(tr("SPI write and read failed."));
+        labelStatus_->setText(tr("SPI transfer failed."));
     } else if (spiTransferProgress.wasCanceled()){
         labelStatus_->setText(tr("SPI transfer aborted by the user."));
     } else if (elapsedTime < 1000) {
