@@ -438,7 +438,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     QString errstr;
     mcp2210_.cancelSPITransfer(errcnt, errstr);  // Just as a precautionary measure to force a start from scratch
     quint8 spiTransferStatus = MCP2210::TRANSFER_STARTED;
-    while (bytesProcessed < bytesToTransfer) {  // For future reference, the condition "spiTransferStatus != MCP2210::TRANSFER_FINISHED" is not a reliable way to check if the transfer is actually completed, and relying on it alone may even lead to a crash!
+    while (bytesProcessed < bytesToTransfer) {  // For future reference, the variable "spiTransferStatus" does not provide a reliable way to check if the transfer is actually completed (e.g., by evaluating "spiTransferStatus != MCP2210::TRANSFER_FINISHED"), and relying on that variable alone may even lead to a crash!
         if (spiTransferProgress.wasCanceled()) {  // If the user clicks "Abort"
             mcp2210_.cancelSPITransfer(errcnt, errstr);  // This ensures a clean state for any process that follows
             break;  // Abort the SPI write and read operation
