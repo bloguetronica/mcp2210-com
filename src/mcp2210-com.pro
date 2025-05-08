@@ -61,7 +61,16 @@ FORMS += \
     mainwindow.ui \
     statusdialog.ui
 
+TRANSLATIONS += \
+    translations/mcp2210-com_en.ts \
+    translations/mcp2210-com_en_US.ts \
+    translations/mcp2210-com_pt.ts \
+    translations/mcp2210-com_pt_PT.ts
+
 LIBS += -lusb-1.0
+
+RESOURCES += \
+    resources.qrc
 
 # Added installation option
 unix {
@@ -78,6 +87,3 @@ unix {
 }
 
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    resources.qrc
