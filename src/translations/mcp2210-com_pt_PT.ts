@@ -6,17 +6,17 @@
     <message>
         <location filename="../aboutdialog.ui" line="26"/>
         <source>About MCP2210 Commander</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca do MCP2210 Commander</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="68"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/images/images/banner.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="81"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Version 1.0.0&lt;br/&gt;© 2023-2025 Samuel Lourenço&lt;/p&gt;&lt;p&gt;This program is distributed under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0-standalone.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;GNU GPL v3&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Versão 1.0.0&lt;br/&gt;© 2023-2025 Samuel Lourenço&lt;/p&gt;&lt;p&gt;Este programa é distribuido sob os termos da licença &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0-standalone.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;GNU GPL v3&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,60 +29,60 @@
     <message>
         <location filename="../cssettingsdialog.ui" line="68"/>
         <source>Active Chip Select Values</source>
-        <translation type="unfinished"></translation>
+        <translation>Valores das Linhas de Selecção no Activo</translation>
     </message>
     <message>
         <location filename="../cssettingsdialog.ui" line="80"/>
         <location filename="../cssettingsdialog.ui" line="197"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../cssettingsdialog.ui" line="93"/>
         <location filename="../cssettingsdialog.ui" line="210"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../cssettingsdialog.ui" line="106"/>
         <location filename="../cssettingsdialog.ui" line="223"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../cssettingsdialog.ui" line="119"/>
         <location filename="../cssettingsdialog.ui" line="236"/>
         <source>3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../cssettingsdialog.ui" line="132"/>
         <location filename="../cssettingsdialog.ui" line="249"/>
         <source>4</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../cssettingsdialog.ui" line="145"/>
         <location filename="../cssettingsdialog.ui" line="262"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../cssettingsdialog.ui" line="158"/>
         <location filename="../cssettingsdialog.ui" line="275"/>
         <source>6</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../cssettingsdialog.ui" line="171"/>
         <location filename="../cssettingsdialog.ui" line="288"/>
         <source>7</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../cssettingsdialog.ui" line="185"/>
         <source>Idle Chip Select Values</source>
-        <translation type="unfinished"></translation>
+        <translation>Valores das Linhas de Selecção em Espera</translation>
     </message>
 </context>
 <context>
@@ -90,12 +90,12 @@
     <message>
         <location filename="../chipsettingsdialog.ui" line="26"/>
         <source>Chip Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Definições do Integrado</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="68"/>
         <source>GP0:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="85"/>
@@ -108,7 +108,7 @@
         <location filename="../chipsettingsdialog.ui" line="488"/>
         <location filename="../chipsettingsdialog.ui" line="547"/>
         <source>Input</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrada</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="90"/>
@@ -120,7 +120,7 @@
         <location filename="../chipsettingsdialog.ui" line="434"/>
         <location filename="../chipsettingsdialog.ui" line="493"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Saída</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="95"/>
@@ -132,7 +132,7 @@
         <location filename="../chipsettingsdialog.ui" line="439"/>
         <location filename="../chipsettingsdialog.ui" line="498"/>
         <source>Chip select</source>
-        <translation type="unfinished"></translation>
+        <translation>Linha de selecção</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="109"/>
@@ -144,122 +144,122 @@
         <location filename="../chipsettingsdialog.ui" line="458"/>
         <location filename="../chipsettingsdialog.ui" line="517"/>
         <source>High</source>
-        <translation type="unfinished"></translation>
+        <translation>Alto</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="122"/>
         <source>GP1:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="176"/>
         <source>GP2:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="208"/>
         <source>Suspend</source>
-        <translation type="unfinished"></translation>
+        <translation>Suspensão</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="235"/>
         <source>GP3:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="267"/>
         <source>SPI transfer LED</source>
-        <translation type="unfinished"></translation>
+        <translation>LED de transferência SPI</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="294"/>
         <source>GP4:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="326"/>
         <source>USB low power</source>
-        <translation type="unfinished"></translation>
+        <translation>USB em baixo consumo</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="353"/>
         <source>GP5:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="385"/>
         <source>USB configured</source>
-        <translation type="unfinished"></translation>
+        <translation>USB configurado</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="412"/>
         <source>GP6:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="444"/>
         <source>External interrupt</source>
-        <translation type="unfinished"></translation>
+        <translation>Interrupção externa</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="471"/>
         <source>GP7:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="503"/>
         <source>SPI bus release ACK</source>
-        <translation type="unfinished"></translation>
+        <translation>ACK do barramento SPI</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="530"/>
         <source>GP8:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="552"/>
         <source>SPI bus release REQ</source>
-        <translation type="unfinished"></translation>
+        <translation>REQ do barramento SPI</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="566"/>
         <source>Int. mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Modo de int.:</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="583"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Desabilitado</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="588"/>
         <source>Count falling edges</source>
-        <translation type="unfinished"></translation>
+        <translation>Contar flancos desc.</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="593"/>
         <source>Count rising edges</source>
-        <translation type="unfinished"></translation>
+        <translation>Contar flancos asc.</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="598"/>
         <source>Count low pulses</source>
-        <translation type="unfinished"></translation>
+        <translation>Contar pulsos baixos</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="603"/>
         <source>Count high pulses</source>
-        <translation type="unfinished"></translation>
+        <translation>Contar pulsos altos</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="617"/>
         <source>Remote wake-up enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Despertar remoto habilitado</translation>
     </message>
     <message>
         <location filename="../chipsettingsdialog.ui" line="630"/>
         <source>SPI bus captive between transfers</source>
-        <translation type="unfinished"></translation>
+        <translation>Barramento SPI cativo entre transferências</translation>
     </message>
 </context>
 <context>
@@ -267,22 +267,22 @@
     <message>
         <location filename="../delaysdialog.ui" line="26"/>
         <source>SPI Delays</source>
-        <translation type="unfinished"></translation>
+        <translation>Latências SPI</translation>
     </message>
     <message>
         <location filename="../delaysdialog.ui" line="68"/>
         <source>Chip select to data (100 μs):</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecção para dados (100 μs):</translation>
     </message>
     <message>
         <location filename="../delaysdialog.ui" line="97"/>
         <source>Data to chip select (100 μs):</source>
-        <translation type="unfinished"></translation>
+        <translation>Dados para selecção (100 μs):</translation>
     </message>
     <message>
         <location filename="../delaysdialog.ui" line="126"/>
         <source>Inter-byte (100 μs):</source>
-        <translation type="unfinished"></translation>
+        <translation>Entre bytes (100 μs):</translation>
     </message>
 </context>
 <context>
@@ -290,190 +290,192 @@
     <message>
         <location filename="../devicewindow.ui" line="26"/>
         <source>MCP2210 Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Dispositivo MCP2210</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="53"/>
         <source>GPIO Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Controlo GPIO</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="68"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="84"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="100"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="116"/>
         <source>3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="132"/>
         <source>4</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="148"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="164"/>
         <source>6</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="180"/>
         <source>7</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="196"/>
         <source>8</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="213"/>
         <source>Event Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>Contador de Eventos</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="225"/>
         <source>Zero</source>
-        <translation type="unfinished"></translation>
+        <translation>Zerar</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="238"/>
         <location filename="../devicewindow.cpp" line="617"/>
         <source>Count</source>
-        <translation type="unfinished"></translation>
+        <translation>Contagem</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="280"/>
         <source>SPI Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuração SPI</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="292"/>
         <source>Channel:</source>
-        <translation type="unfinished"></translation>
+        <translation>Canal:</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="318"/>
         <source>CS Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Definições CS</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="331"/>
         <source>Bit rate (Kib/s):</source>
-        <translation type="unfinished"></translation>
+        <translation>Taxa de bits (Kib/s):</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="366"/>
         <source>SPI Delays</source>
-        <translation type="unfinished"></translation>
+        <translation>Latências SPI</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="379"/>
         <source>Mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Modo:</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="408"/>
         <source>CPOL:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="437"/>
         <source>CPHA:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="470"/>
         <source>SPI Transfers</source>
-        <translation type="unfinished"></translation>
+        <translation>Transferências SPI</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="490"/>
         <source>0x</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="590"/>
         <source>Transfer</source>
-        <translation type="unfinished"></translation>
+        <translation>Transferir</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="606"/>
         <source>&amp;Device</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Dispositivo</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="618"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ajuda</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="628"/>
         <source>&amp;About MCP2210 Commander</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Acerca do MCP2210 Commander</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="633"/>
         <source>&amp;Information</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Informações</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="638"/>
         <source>&amp;Status</source>
-        <translation type="unfinished"></translation>
+        <translation>E&amp;stado</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="643"/>
         <source>C&amp;hip Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Definições do In&amp;tegrado</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="648"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fechar</translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="651"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../devicewindow.ui" line="656"/>
         <source>&amp;Reset Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Repor Definições</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="81"/>
         <source>MCP2210 Device (S/N: %1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Dispositivo MCP2210 (NS: %1)</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="85"/>
         <source>Critical Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Erro Crítico</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="85"/>
         <source>Could not initialize libusb.
 
 This is a critical error and execution will be aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Falhou ao inicializar o libusb.
+
+Este é um erro crítico e a execução será abortada.</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="89"/>
@@ -484,24 +486,26 @@ This is a critical error and execution will be aborted.</source>
         <location filename="../devicewindow.cpp" line="755"/>
         <location filename="../devicewindow.cpp" line="761"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="89"/>
         <source>Could not find device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dispositivo não encontrado.</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="91"/>
         <source>Device is currently unavailable.
 
 Please confirm that the device is not in use.</source>
-        <translation type="unfinished"></translation>
+        <translation>O dispositivo encontra-se indisponível neste momento.
+
+Por favor, confirme que o mesmo não está a ser utilizado.</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="165"/>
         <source>apply chip settings</source>
-        <translation type="unfinished"></translation>
+        <translation>aplicar as definições do integrado</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="180"/>
@@ -576,12 +580,12 @@ Please confirm that the device is not in use.</source>
     <message>
         <location filename="../devicewindow.cpp" line="397"/>
         <source>apply chip select settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">aplicar as definições SPI</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="419"/>
         <source>apply SPI delays</source>
-        <translation type="unfinished"></translation>
+        <translation>aplicar as definições SPI</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="430"/>
@@ -691,15 +695,17 @@ Please try accessing the device again.</source>
         <location filename="../devicewindow.cpp" line="755"/>
         <source>Failed to %1. The operation returned the following error(s):
 – %2</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Falhou ao %1. A operação retornou o seguinte erro:
+– %2</numerusform>
+            <numerusform>Falhou ao %1. A operação retornou os seguintes erros:
+– %2</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="761"/>
         <source>Detected too many errors.</source>
-        <translation type="unfinished"></translation>
+        <translation>Demasiados erros detectados.</translation>
     </message>
 </context>
 <context>
