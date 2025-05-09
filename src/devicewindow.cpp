@@ -697,10 +697,6 @@ void DeviceWindow::initializeSPIControls()
     ui->groupBoxSPIConfiguration->setEnabled(spiEnabled);
     ui->groupBoxSPITransfers->setEnabled(spiEnabled);
     ui->pushButtonClipboardPasteWrite->setEnabled(isClipboardTextValid());
-    if (!spiEnabled) {
-        ui->lineEditWrite->clear();
-        ui->lineEditRead->clear();
-    }
 }
 
 // This is the routine that is used to initialize (or reinitialize) the device window

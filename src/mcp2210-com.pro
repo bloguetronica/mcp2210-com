@@ -87,3 +87,7 @@ unix {
 }
 
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    icons/mcp2210-com.png \
+    misc/mcp2210-com.desktop
