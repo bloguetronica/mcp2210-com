@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MCP2210 Commander
+Icon=mcp2210-com
+Exec=mcp2210-com
+Terminal=false
+Categories=Development;Electronics;
