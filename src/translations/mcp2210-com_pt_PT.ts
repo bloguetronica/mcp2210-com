@@ -510,167 +510,167 @@ Por favor, confirme que o mesmo não está a ser utilizado.</translation>
     <message>
         <location filename="../devicewindow.cpp" line="180"/>
         <source>retrieve device information</source>
-        <translation type="unfinished"></translation>
+        <translation>recolher as informações do dispositivo</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="183"/>
         <source>Device Information (S/N: %1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Informações do Dispositivo (NS: %1)</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="206"/>
         <source>retrieve power-up settings</source>
-        <translation type="unfinished"></translation>
+        <translation>retornar as definições de arranque</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="211"/>
         <source>reset settings</source>
-        <translation type="unfinished"></translation>
+        <translation>repor as definições</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="225"/>
         <source>retrieve device status</source>
-        <translation type="unfinished"></translation>
+        <translation>retornar o estado do dispositivo</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="228"/>
         <source>Device Status (S/N: %1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Estado do Dispositivo (NS: %1)</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="246"/>
         <source>switch GPIO0</source>
-        <translation type="unfinished"></translation>
+        <translation>comutar o pino GPIO0</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="254"/>
         <source>switch GPIO1</source>
-        <translation type="unfinished"></translation>
+        <translation>comutar o pino GPIO1</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="262"/>
         <source>switch GPIO2</source>
-        <translation type="unfinished"></translation>
+        <translation>comutar o pino GPIO2</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="270"/>
         <source>switch GPIO3</source>
-        <translation type="unfinished"></translation>
+        <translation>comutar o pino GPIO3</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="278"/>
         <source>switch GPIO4</source>
-        <translation type="unfinished"></translation>
+        <translation>comutar o pino GPIO4</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="286"/>
         <source>switch GPIO5</source>
-        <translation type="unfinished"></translation>
+        <translation>comutar o pino GPIO5</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="294"/>
         <source>switch GPIO6</source>
-        <translation type="unfinished"></translation>
+        <translation>comutar o pino GPIO6</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="302"/>
         <source>switch GPIO7</source>
-        <translation type="unfinished"></translation>
+        <translation>comutar o pino GPIO7</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="397"/>
         <source>apply chip select settings</source>
-        <translation type="unfinished">aplicar as definições SPI</translation>
+        <translation>aplicar as definições do integrado</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="419"/>
         <source>apply SPI delays</source>
-        <translation>aplicar as definições SPI</translation>
+        <translation>aplicar as latências SPI</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="430"/>
         <source>Abort</source>
-        <translation type="unfinished"></translation>
+        <translation>Abortar</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="431"/>
         <source>SPI transfer</source>
-        <translation type="unfinished"></translation>
+        <translation>Transferência SPI</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="455"/>
         <source>Waiting for the SPI bus to be released...</source>
-        <translation type="unfinished"></translation>
+        <translation>A aguardar pela disponibilidade do barramento SPI...</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="457"/>
         <source>Performing SPI transfer...</source>
-        <translation type="unfinished"></translation>
+        <translation>A executar transferência SPI...</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="470"/>
         <source>SPI transfer failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Transferência SPI falhou.</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="472"/>
         <source>SPI transfer aborted by the user.</source>
-        <translation type="unfinished"></translation>
+        <translation>Transferência SPI abortada pelo utilizador.</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="474"/>
         <source>SPI transfer completed. %1 bytes transferred in %2 ms.</source>
-        <translation type="unfinished"></translation>
+        <translation>Transferência SPI concluída. %1 bytes transferidos em %2 ms.</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="476"/>
         <source>SPI transfer completed. %1 bytes transferred in %2 s.</source>
-        <translation type="unfinished"></translation>
+        <translation>Transferência SPI concluída. %1 bytes transferidos em %2 s.</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="478"/>
         <source>transfer SPI data</source>
-        <translation type="unfinished"></translation>
+        <translation>transferir dados via SPI</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="486"/>
         <source>reset event counter</source>
-        <translation type="unfinished"></translation>
+        <translation>repor o contador de eventos</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="530"/>
         <source>update</source>
-        <translation type="unfinished"></translation>
+        <translation>actualizar</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="582"/>
         <source>apply SPI settings</source>
-        <translation type="unfinished"></translation>
+        <translation>aplicar as definições SPI</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="594"/>
         <source>&amp;Close Window</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fechar Janela</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="605"/>
         <source>Falling edge count</source>
-        <translation type="unfinished"></translation>
+        <translation>Contagem de flancos desc.</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="608"/>
         <source>Rising edge count</source>
-        <translation type="unfinished"></translation>
+        <translation>Contagem de flancos asc.</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="611"/>
         <source>Low pulse count</source>
-        <translation type="unfinished"></translation>
+        <translation>Contagem de pulsos baixos</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="614"/>
         <source>High pulse count</source>
-        <translation type="unfinished"></translation>
+        <translation>Contagem de pulsos altos</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="734"/>
@@ -678,7 +678,9 @@ Por favor, confirme que o mesmo não está a ser utilizado.</translation>
         <source>Device disconnected.
 
 Please reconnect it and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>O dispositivo foi desligado.
+
+Por favor, ligue-o e tente novamente.</translation>
     </message>
     <message numerus="yes">
         <location filename="../devicewindow.cpp" line="737"/>
@@ -686,9 +688,15 @@ Please reconnect it and try again.</source>
 – %1
 
 Please try accessing the device again.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Falhou ao ler as definições do dispositivo. A operação retornou o seguinte erro:
+– %1
+
+Por favor, tente aceder novamente ao dispositivo.</numerusform>
+            <numerusform>Falhou ao ler as definições do dispositivo. A operação retornou o seguinte erros:
+– %1
+
+Por favor, tente aceder novamente ao dispositivo.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -713,67 +721,67 @@ Please try accessing the device again.</source>
     <message>
         <location filename="../informationdialog.ui" line="26"/>
         <source>Device Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Informações do Dispositivo</translation>
     </message>
     <message>
         <location filename="../informationdialog.ui" line="68"/>
         <source>Manufacturer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fabricante:</translation>
     </message>
     <message>
         <location filename="../informationdialog.ui" line="97"/>
         <source>Product:</source>
-        <translation type="unfinished"></translation>
+        <translation>Produto:</translation>
     </message>
     <message>
         <location filename="../informationdialog.ui" line="126"/>
         <source>Serial number:</source>
-        <translation type="unfinished"></translation>
+        <translation>Número de série:</translation>
     </message>
     <message>
         <location filename="../informationdialog.ui" line="155"/>
         <source>Vendor ID:</source>
-        <translation type="unfinished"></translation>
+        <translation>ID fornecedor:</translation>
     </message>
     <message>
         <location filename="../informationdialog.ui" line="184"/>
         <source>Product ID:</source>
-        <translation type="unfinished"></translation>
+        <translation>ID produto:</translation>
     </message>
     <message>
         <location filename="../informationdialog.ui" line="213"/>
         <source>Power mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Alimentação:</translation>
     </message>
     <message>
         <location filename="../informationdialog.ui" line="242"/>
         <source>Max. power consumpt.:</source>
-        <translation type="unfinished"></translation>
+        <translation>Consumo máximo:</translation>
     </message>
     <message>
         <location filename="../informationdialog.ui" line="271"/>
         <source>Remote wake-up capable:</source>
-        <translation type="unfinished"></translation>
+        <translation>Capaz de despertar remoto:</translation>
     </message>
     <message>
         <location filename="../informationdialog.cpp" line="63"/>
         <source>Self-powered</source>
-        <translation type="unfinished"></translation>
+        <translation>Própria</translation>
     </message>
     <message>
         <location filename="../informationdialog.cpp" line="63"/>
         <source>Bus-powered</source>
-        <translation type="unfinished"></translation>
+        <translation>Via USB</translation>
     </message>
     <message>
         <location filename="../informationdialog.cpp" line="80"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Sim</translation>
     </message>
     <message>
         <location filename="../informationdialog.cpp" line="80"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Não</translation>
     </message>
 </context>
 <context>
@@ -781,75 +789,76 @@ Please try accessing the device again.</source>
     <message>
         <location filename="../mainwindow.ui" line="26"/>
         <source>MCP2210 Commander</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="53"/>
         <source>Vendor ID:</source>
-        <translation type="unfinished"></translation>
+        <translation>ID fornecedor:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="72"/>
         <location filename="../mainwindow.ui" line="107"/>
         <source>0x</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="88"/>
         <source>Product ID:</source>
-        <translation type="unfinished"></translation>
+        <translation>ID produto:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="127"/>
         <location filename="../mainwindow.cpp" line="114"/>
         <source>Select device...</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccione o dispositivo...</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="144"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Actualizar</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="160"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="175"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ficheiro</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="181"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ajuda</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="190"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sair</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="193"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="198"/>
         <source>&amp;About MCP2210 Commander</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Acerca do MCP2210 Commander</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="117"/>
         <source>Critical Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Erro Crítico</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="117"/>
         <source>%1
 This is a critical error and execution will be aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1
+Este é um erro crítico e a execução será abortada.</translation>
     </message>
 </context>
 <context>
