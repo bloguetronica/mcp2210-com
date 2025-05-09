@@ -580,7 +580,7 @@ Por favor, confirme que o mesmo não está a ser utilizado.</translation>
     <message>
         <location filename="../devicewindow.cpp" line="397"/>
         <source>apply chip select settings</source>
-        <translation>aplicar as definições do integrado</translation>
+        <translation>aplicar as definições das linhas de selecção</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="419"/>
@@ -693,7 +693,7 @@ Please try accessing the device again.</source>
 – %1
 
 Por favor, tente aceder novamente ao dispositivo.</numerusform>
-            <numerusform>Falhou ao ler as definições do dispositivo. A operação retornou o seguinte erros:
+            <numerusform>Falhou ao ler as definições do dispositivo. A operação retornou os seguinte erros:
 – %1
 
 Por favor, tente aceder novamente ao dispositivo.</numerusform>
