@@ -24,7 +24,7 @@
     <message>
         <location filename="../cssettingsdialog.ui" line="26"/>
         <source>Chip Select Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Definições das Linhas de Selecção</translation>
     </message>
     <message>
         <location filename="../cssettingsdialog.ui" line="68"/>
@@ -858,103 +858,120 @@ This is a critical error and execution will be aborted.</source>
         <location filename="../mcp2210.cpp" line="56"/>
         <source>In interruptTransfer(): device is not open.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Em &quot;interruptTransfer()&quot;: o dispositivo não se encontra aberto.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="62"/>
         <source>Failed interrupt OUT transfer to endpoint %1 (address 0x%2).
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Falhou transferência &quot;interrupt OUT&quot; para o &apos;endpoint&apos; %1 (endereço 0x%2).
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="64"/>
         <source>Failed interrupt IN transfer from endpoint %1 (address 0x%2).
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Falhou transferência &quot;interrupt IN&quot; proveniente do &apos;endpoint&apos; %1 (endereço 0x%2).
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="297"/>
         <source>In getGPIO(): GPIO pin number must be between 0 and 8.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Em &quot;getGPIO()&quot;: o número do pino GPIO deve estar compreendido entre 0 e 8.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="311"/>
         <source>In getGPIODirection(): GPIO pin number must be between 0 and 7.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Em &quot;getGPIODirection()&quot;: o número do pino GPIO deve estar compreendido entre 0 e 7.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="456"/>
         <source>Received invalid response to HID command.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Resposta inválida recebida após o comando HID.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="520"/>
         <source>In readEEPROMRange(): the first address cannot be greater than the last address.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Em &quot;readEEPROMRange()&quot;: o primeiro endereço não pode ser maior do que o último endereço.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="551"/>
         <source>In setGPIO(): GPIO pin number must be between 0 and 7.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Em &quot;setGPIO()&quot;: o número do pino GPIO deve estar compreendido entre 0 e 7.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="577"/>
         <source>In setGPIODirection(): GPIO pin number must be between 0 and 7.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Em &quot;setGPIODirection()&quot;: o número do pino GPIO deve estar compreendido entre 0 e 7.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="627"/>
         <source>In spiTransfer(): vector size cannot exceed 60 bytes.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Em &quot;spiTransfer()&quot;: o tamanho do vector não pode exceder 60 bytes.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="656"/>
         <source>In toggleGPIO(): GPIO pin number must be between 0 and 7.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Em &quot;toggleGPIO():&quot;: o número do pino GPIO deve estar compreendido entre 0 e 7.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="721"/>
         <source>In writeEEPROMRange(): the first address cannot be greater than the last address.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Em &quot;writeEEPROMRange()&quot;: o primeiro endereço não pode ser maior do que o último endereço.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="727"/>
         <source>In writeEEPROMRange(): vector size does not match range size.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Em &quot;writeEEPROMRange()&quot;: o tamanho do vector não condiz com o tamanho do escopo.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="749"/>
         <source>In writeManufacturerDesc(): manufacturer descriptor string cannot be longer than 28 characters.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Em &quot;writeManufacturerDesc()&quot;: o descritor do fabricante não pode ter mais do que 28 caracteres.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="835"/>
         <source>In writeProductDesc(): product descriptor string cannot be longer than 28 characters.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Em &quot;writeProductDesc()&quot;: o descritor do produto não pode ter mais do que 28 caracteres.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="864"/>
         <source>Could not initialize libusb.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Falhou ao inicializar o libusb.
+</translation>
     </message>
     <message>
         <location filename="../mcp2210.cpp" line="870"/>
         <source>Failed to retrieve a list of devices.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Falhou em obter uma lista de dispositivos.
+</translation>
     </message>
 </context>
 <context>
@@ -962,72 +979,72 @@ This is a critical error and execution will be aborted.</source>
     <message>
         <location filename="../statusdialog.ui" line="26"/>
         <source>Device Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Estado do Dispositivo</translation>
     </message>
     <message>
         <location filename="../statusdialog.ui" line="68"/>
         <source>Bus request:</source>
-        <translation type="unfinished"></translation>
+        <translation>Req. do barramento:</translation>
     </message>
     <message>
         <location filename="../statusdialog.ui" line="97"/>
         <source>Bus owner:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dono do barramento:</translation>
     </message>
     <message>
         <location filename="../statusdialog.ui" line="126"/>
         <source>Password status:</source>
-        <translation type="unfinished"></translation>
+        <translation>Est. da palavra-passe:</translation>
     </message>
     <message>
         <location filename="../statusdialog.ui" line="155"/>
         <source>Password tries:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tentativas de acesso:</translation>
     </message>
     <message>
         <location filename="../statusdialog.cpp" line="44"/>
         <source>No owner</source>
-        <translation type="unfinished"></translation>
+        <translation>Sem dono</translation>
     </message>
     <message>
         <location filename="../statusdialog.cpp" line="47"/>
         <source>This master</source>
-        <translation type="unfinished"></translation>
+        <translation>Este mestre</translation>
     </message>
     <message>
         <location filename="../statusdialog.cpp" line="50"/>
         <source>External master</source>
-        <translation type="unfinished"></translation>
+        <translation>Mestre externo</translation>
     </message>
     <message>
         <location filename="../statusdialog.cpp" line="53"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Desconhecido</translation>
     </message>
     <message>
         <location filename="../statusdialog.cpp" line="61"/>
         <source>Pending</source>
-        <translation type="unfinished"></translation>
+        <translation>Pendente</translation>
     </message>
     <message>
         <location filename="../statusdialog.cpp" line="61"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhum</translation>
     </message>
     <message>
         <location filename="../statusdialog.cpp" line="67"/>
         <source>Guessed</source>
-        <translation type="unfinished"></translation>
+        <translation>Descoberta</translation>
     </message>
     <message>
         <location filename="../statusdialog.cpp" line="67"/>
         <source>Not guessed</source>
-        <translation type="unfinished"></translation>
+        <translation>Não descoberta</translation>
     </message>
     <message>
         <location filename="../statusdialog.cpp" line="73"/>
         <source>%1 of 5</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 de 5</translation>
     </message>
 </context>
 </TS>
