@@ -655,12 +655,12 @@ Por favor, confirme que o mesmo não está a ser utilizado.</translation>
     <message>
         <location filename="../devicewindow.cpp" line="605"/>
         <source>Falling edge count</source>
-        <translation>Contagem de flancos desc.</translation>
+        <translation>Contagem de flancos descendentes</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="608"/>
         <source>Rising edge count</source>
-        <translation>Contagem de flancos asc.</translation>
+        <translation>Contagem de flancos ascendentes</translation>
     </message>
     <message>
         <location filename="../devicewindow.cpp" line="611"/>
