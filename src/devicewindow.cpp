@@ -441,7 +441,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     quint8 spiTransferStatus = MCP2210::TRANSFER_STARTED;
     while (bytesProcessed < bytesToTransfer) {  // For future reference, the variable "spiTransferStatus" does not provide a reliable way to check if the transfer is actually completed (e.g., by evaluating "spiTransferStatus != MCP2210::TRANSFER_FINISHED"), and relying on that variable alone may even lead to a crash!
         if (spiTransferProgress.wasCanceled()) {  // If the user clicks "Abort"
-            mcp2210_.cancelSPITransfer(errcnt, errstr);  // This ensures a clean state for any process that follows
+            mcp2210_.cancelSPITransfer(errcnt, errstr);  // This ensures a clean slate for any process that follows
             break;  // Abort the SPI transfer operation
         }
         size_t bytesRemaining = bytesToTransfer - bytesProcessed;
