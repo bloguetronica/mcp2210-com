@@ -591,6 +591,7 @@ void DeviceWindow::disableView()
     ui->actionInformation->setEnabled(false);
     ui->actionStatus->setEnabled(false);
     ui->actionChipSettings->setEnabled(false);
+    ui->actionResetSettings->setEnabled(false);
     ui->actionClose->setText(tr("&Close Window"));
     ui->centralWidget->setEnabled(false);
     ui->statusBar->setEnabled(false);
