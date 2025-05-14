@@ -517,7 +517,7 @@ void DeviceWindow::on_spinBoxMode_valueChanged(int i)
     ui->spinBoxCPHA->setValue(i % 2);
 }
 
-// This is the main update routine
+// This is the main update routine (fixed in version 1.0.1)
 void DeviceWindow::update()
 {
     int errcnt = 0;
@@ -527,8 +527,16 @@ void DeviceWindow::update()
     if (chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT) {  // This will save overhead during updates, because the MCP2210 will not count events and its counter will default to zero unless both conditions are satisfied
         eventCount = mcp2210_.getEventCount(errcnt, errstr);
     }
+    MCP2210::ChipStatus chipStatus = MCP2210::ChipStatus();  // Added in version 1.0.1
+    if (!statusDialog_.isNull()) {
+        chipStatus = mcp2210_.getChipStatus(errcnt, errstr);
+    }
     if (validateOperation(tr("update"), errcnt, errstr)) {  // If no errors occur
         updateView(gpios, eventCount);  // Update values
+        if (!statusDialog_.isNull()) {  // Added in version 1.0.1
+            statusDialog_->setBusRequestValueLabelText(chipStatus.busreq);
+            statusDialog_->setBusOwnerValueLabelText(chipStatus.busowner);
+        }
     }
 }
 
