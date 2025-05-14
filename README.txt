@@ -1,9 +1,9 @@
 This package contains all the necessary files and scripts to install MCP2210
-Commander (a graphical application that can be used to configure blank MCP2210
-devices). The scripts included here are compatible with most 32-bit and 64-bit
-Debian based operating systems (e.g. Kubuntu, etc). Prior to installation, you
-must certify that your system is Debian based (or at least uses apt-get) and
-that you have an active Internet connection.
+Commander (a graphical application that can be used to control and interact
+with MCP2210 devices). The scripts included here are compatible with most
+32-bit and 64-bit Debian based operating systems (e.g. Kubuntu, etc). Prior to
+installation, you must certify that your system is Debian based (or at least
+uses apt-get) and that you have an active Internet connection.
 
 A list of the included scripts follows:
 – install-rules.sh;
