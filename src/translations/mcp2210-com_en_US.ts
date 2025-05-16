@@ -15,7 +15,7 @@
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="81"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Version 1.0.0&lt;br/&gt;© 2023-2025 Samuel Lourenço&lt;/p&gt;&lt;p&gt;This program is distributed under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0-standalone.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;GNU GPL v3&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Version 1.0.1&lt;br/&gt;© 2023-2025 Samuel Lourenço&lt;/p&gt;&lt;p&gt;This program is distributed under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0-standalone.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;GNU GPL v3&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
 </context>
@@ -354,7 +354,7 @@
     </message>
     <message>
         <location filename="../devicewindow.ui" line="238"/>
-        <location filename="../devicewindow.cpp" line="617"/>
+        <location filename="../devicewindow.cpp" line="632"/>
         <source>Count</source>
         <translation></translation>
     </message>
@@ -478,11 +478,11 @@ This is a critical error and execution will be aborted.</source>
     <message>
         <location filename="../devicewindow.cpp" line="89"/>
         <location filename="../devicewindow.cpp" line="91"/>
-        <location filename="../devicewindow.cpp" line="734"/>
-        <location filename="../devicewindow.cpp" line="737"/>
-        <location filename="../devicewindow.cpp" line="752"/>
-        <location filename="../devicewindow.cpp" line="755"/>
-        <location filename="../devicewindow.cpp" line="761"/>
+        <location filename="../devicewindow.cpp" line="745"/>
+        <location filename="../devicewindow.cpp" line="748"/>
+        <location filename="../devicewindow.cpp" line="763"/>
+        <location filename="../devicewindow.cpp" line="766"/>
+        <location filename="../devicewindow.cpp" line="772"/>
         <source>Error</source>
         <translation></translation>
     </message>
@@ -579,105 +579,105 @@ Please confirm that the device is not in use.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="419"/>
+        <location filename="../devicewindow.cpp" line="421"/>
         <source>apply SPI delays</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="430"/>
+        <location filename="../devicewindow.cpp" line="433"/>
         <source>Abort</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="431"/>
+        <location filename="../devicewindow.cpp" line="434"/>
         <source>SPI transfer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="455"/>
+        <location filename="../devicewindow.cpp" line="457"/>
         <source>Waiting for the SPI bus to be released...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="457"/>
+        <location filename="../devicewindow.cpp" line="459"/>
         <source>Performing SPI transfer...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="470"/>
+        <location filename="../devicewindow.cpp" line="475"/>
         <source>SPI transfer failed.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="472"/>
+        <location filename="../devicewindow.cpp" line="477"/>
         <source>SPI transfer aborted by the user.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="474"/>
+        <location filename="../devicewindow.cpp" line="479"/>
         <source>SPI transfer completed. %1 bytes transferred in %2 ms.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="476"/>
+        <location filename="../devicewindow.cpp" line="481"/>
         <source>SPI transfer completed. %1 bytes transferred in %2 s.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="478"/>
+        <location filename="../devicewindow.cpp" line="483"/>
         <source>transfer SPI data</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="486"/>
+        <location filename="../devicewindow.cpp" line="491"/>
         <source>reset event counter</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="530"/>
+        <location filename="../devicewindow.cpp" line="539"/>
         <source>update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="582"/>
+        <location filename="../devicewindow.cpp" line="596"/>
         <source>apply SPI settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="594"/>
+        <location filename="../devicewindow.cpp" line="609"/>
         <source>&amp;Close Window</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="605"/>
+        <location filename="../devicewindow.cpp" line="620"/>
         <source>Falling edge count</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="608"/>
+        <location filename="../devicewindow.cpp" line="623"/>
         <source>Rising edge count</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="611"/>
+        <location filename="../devicewindow.cpp" line="626"/>
         <source>Low pulse count</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="614"/>
+        <location filename="../devicewindow.cpp" line="629"/>
         <source>High pulse count</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="734"/>
-        <location filename="../devicewindow.cpp" line="752"/>
+        <location filename="../devicewindow.cpp" line="745"/>
+        <location filename="../devicewindow.cpp" line="763"/>
         <source>Device disconnected.
 
 Please reconnect it and try again.</source>
         <translation></translation>
     </message>
     <message numerus="yes">
-        <location filename="../devicewindow.cpp" line="737"/>
+        <location filename="../devicewindow.cpp" line="748"/>
         <source>Failed to read device settings. The operation returned the following error(s):
 – %1
 
@@ -694,7 +694,7 @@ Please try accessing the device again.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../devicewindow.cpp" line="755"/>
+        <location filename="../devicewindow.cpp" line="766"/>
         <source>Failed to %1. The operation returned the following error(s):
 – %2</source>
         <translation>
@@ -705,7 +705,7 @@ Please try accessing the device again.</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="761"/>
+        <location filename="../devicewindow.cpp" line="772"/>
         <source>Detected too many errors.</source>
         <translation></translation>
     </message>

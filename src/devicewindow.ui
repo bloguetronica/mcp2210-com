@@ -484,7 +484,7 @@
       </font>
      </property>
      <property name="maxLength">
-      <number>786431</number>
+      <number>196604</number>
      </property>
      <property name="placeholderText">
       <string>0x</string>
@@ -548,7 +548,7 @@
       </font>
      </property>
      <property name="maxLength">
-      <number>786431</number>
+      <number>196604</number>
      </property>
      <property name="readOnly">
       <bool>true</bool>

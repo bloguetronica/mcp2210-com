@@ -1,4 +1,4 @@
-/* MCP2210 Commander - Version 1.0.0 for Debian Linux
+/* MCP2210 Commander - Version 1.0.1 for Debian Linux
    Copyright (c) 2023-2025 Samuel Lourenço
 
    This program is free software: you can redistribute it and/or modify it
@@ -401,6 +401,7 @@ void DeviceWindow::on_pushButtonCSSettings_clicked()
     }
 }
 
+// Fixed in version 1.0.1
 void DeviceWindow::on_pushButtonSPIDelays_clicked()
 {
     DelaysDialog delaysDialog(this);
@@ -414,6 +415,7 @@ void DeviceWindow::on_pushButtonSPIDelays_clicked()
         spiSettings.itbytdly = delaysDialog.interByteDelaySpinBoxValue();
         int errcnt = 0;
         QString errstr;
+        mcp2210_.cancelSPITransfer(errcnt, errstr);  // Just in case the device is not acknowledging changes in SPI-related settings (workaround implemented in version 1.0.1)
         mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
         spiSettings = mcp2210_.getSPISettings(errcnt, errstr);  // Although not strictly necessary, it is a good practice to read back the applied settings in this case
         if (validateOperation(tr("apply SPI delays"), errcnt, errstr)) {
@@ -423,6 +425,7 @@ void DeviceWindow::on_pushButtonSPIDelays_clicked()
     }
 }
 
+// Fixed in version 1.0.1
 void DeviceWindow::on_pushButtonTransfer_clicked()
 {
     size_t bytesToTransfer = write_.vector.size();
@@ -441,7 +444,6 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     quint8 spiTransferStatus = MCP2210::TRANSFER_STARTED;
     while (bytesProcessed < bytesToTransfer) {  // For future reference, the variable "spiTransferStatus" does not provide a reliable way to check if the transfer is actually completed (e.g., by evaluating "spiTransferStatus != MCP2210::TRANSFER_FINISHED"), and relying on that variable alone may even lead to a crash!
         if (spiTransferProgress.wasCanceled()) {  // If the user clicks "Abort"
-            mcp2210_.cancelSPITransfer(errcnt, errstr);  // This ensures a clean slate for any process that follows
             break;  // Abort the SPI transfer operation
         }
         size_t bytesRemaining = bytesToTransfer - bytesProcessed;
@@ -463,17 +465,20 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
         spiTransferProgress.setValue(static_cast<int>(bytesProcessed));  // Note that this should be done here at the end of the loop, outside the previous if statements
         QCoreApplication::processEvents();  // Required in order to maintain responsiveness
     }
+    if (spiTransferStatus != MCP2210::TRANSFER_FINISHED) {  // Fix applied in version 1.0.1
+        mcp2210_.cancelSPITransfer(errcnt, errstr);  // This ensures a clean slate for any process that follows
+    }
     qint64 elapsedTime = time.elapsed();  // Elapsed time in milliseconds
     timer_->start();  // Restart the timer
     ui->lineEditRead->setText(read.toHexadecimal());  // At least, a partial result should be shown if an error occurs
     if (errcnt > 0) {  // Update status bar
         labelStatus_->setText(tr("SPI transfer failed."));
-    } else if (spiTransferProgress.wasCanceled()){
+    } else if (spiTransferProgress.wasCanceled()) {
         labelStatus_->setText(tr("SPI transfer aborted by the user."));
     } else if (elapsedTime < 1000) {
-        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 ms.").arg(2 * bytesProcessed).arg(elapsedTime));
+        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 ms.").arg(bytesProcessed + read.vector.size()).arg(elapsedTime));  // Fixed in version 1.0.1
     } else {
-        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 s.").arg(2 * bytesProcessed).arg(locale_.toString(elapsedTime / 1000.0, 'f', 3)));
+        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 s.").arg(bytesProcessed + read.vector.size()).arg(locale_.toString(elapsedTime / 1000.0, 'f', 3)));  // Fixed in version 1.0.1
     }
     validateOperation(tr("transfer SPI data"), errcnt, errstr);
 }
@@ -517,7 +522,7 @@ void DeviceWindow::on_spinBoxMode_valueChanged(int i)
     ui->spinBoxCPHA->setValue(i % 2);
 }
 
-// This is the main update routine
+// This is the main update routine (fixed in version 1.0.1)
 void DeviceWindow::update()
 {
     int errcnt = 0;
@@ -527,8 +532,16 @@ void DeviceWindow::update()
     if (chipSettings_.gp6 == MCP2210::PCFUNC && chipSettings_.intmode != MCP2210::IMNOCNT) {  // This will save overhead during updates, because the MCP2210 will not count events and its counter will default to zero unless both conditions are satisfied
         eventCount = mcp2210_.getEventCount(errcnt, errstr);
     }
+    MCP2210::ChipStatus chipStatus = MCP2210::ChipStatus();  // Added in version 1.0.1
+    if (!statusDialog_.isNull()) {
+        chipStatus = mcp2210_.getChipStatus(errcnt, errstr);
+    }
     if (validateOperation(tr("update"), errcnt, errstr)) {  // If no errors occur
         updateView(gpios, eventCount);  // Update values
+        if (!statusDialog_.isNull()) {  // Added in version 1.0.1
+            statusDialog_->setBusRequestValueLabelText(chipStatus.busreq);
+            statusDialog_->setBusOwnerValueLabelText(chipStatus.busowner);
+        }
     }
 }
 
@@ -538,11 +551,11 @@ void DeviceWindow::updatePushButtonClipboardPasteWrite()
     ui->pushButtonClipboardPasteWrite->setEnabled(isClipboardTextValid());
 }
 
-// Applies the SPI settings defined by the user
+// Applies the SPI settings defined by the user (fixed in version 1.0.1)
 void DeviceWindow::applySPISettings(bool enforceSingleChannel, bool getCompatibleBitrate)
 {
     MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied;
-    spiSettings.nbytes = write_.vector.size();
+    spiSettings.nbytes = static_cast<quint16>(write_.vector.size());  // Fixed in version 1.0.1
     spiSettings.mode = static_cast<quint8>(ui->spinBoxMode->value());
     if (enforceSingleChannel && ui->comboBoxChannel->currentIndex() != 0) {  // If the current index of comboBoxChannel is zero, then no specific channel is selected and no changes should be applied
         spiSettings.actcs = static_cast<quint8>(~(0x0001 << ui->comboBoxChannel->currentText().toUInt()));  // The CS pin that corresponds to the selected channel is active low
@@ -550,6 +563,7 @@ void DeviceWindow::applySPISettings(bool enforceSingleChannel, bool getCompatibl
     }
     int errcnt = 0;
     QString errstr;
+    mcp2210_.cancelSPITransfer(errcnt, errstr);  // Just in case the device is not acknowledging changes in SPI-related settings (workaround implemented in version 1.0.1)
     if (getCompatibleBitrate) {
         quint32 intendedBitrate = static_cast<quint32>(1000 * ui->doubleSpinBoxBitRate->value());
         quint32 testBitrate = static_cast<quint32>(1.5 * intendedBitrate);  // Variable used for testing and finding compatible bit rates (multiplier value was determined empirically)
