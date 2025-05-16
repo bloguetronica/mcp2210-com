@@ -476,9 +476,9 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     } else if (spiTransferProgress.wasCanceled()) {
         labelStatus_->setText(tr("SPI transfer aborted by the user."));
     } else if (elapsedTime < 1000) {
-        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 ms.").arg(bytesProcessed + read.vector.size()).arg(elapsedTime));
+        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 ms.").arg(bytesProcessed + read.vector.size()).arg(elapsedTime));  // Fixed in version 1.0.1
     } else {
-        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 s.").arg(bytesProcessed + read.vector.size()).arg(locale_.toString(elapsedTime / 1000.0, 'f', 3)));
+        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 s.").arg(bytesProcessed + read.vector.size()).arg(locale_.toString(elapsedTime / 1000.0, 'f', 3)));  // Fixed in version 1.0.1
     }
     validateOperation(tr("transfer SPI data"), errcnt, errstr);
 }
