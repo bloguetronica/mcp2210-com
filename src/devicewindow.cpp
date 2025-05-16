@@ -401,6 +401,7 @@ void DeviceWindow::on_pushButtonCSSettings_clicked()
     }
 }
 
+// Fixed in version 1.0.1
 void DeviceWindow::on_pushButtonSPIDelays_clicked()
 {
     DelaysDialog delaysDialog(this);
@@ -414,6 +415,7 @@ void DeviceWindow::on_pushButtonSPIDelays_clicked()
         spiSettings.itbytdly = delaysDialog.interByteDelaySpinBoxValue();
         int errcnt = 0;
         QString errstr;
+        mcp2210_.cancelSPITransfer(errcnt, errstr);  // Just in case the device is not acknowledging changes in SPI-related settings (workaround implemented in version 1.0.1)
         mcp2210_.configureSPISettings(spiSettings, errcnt, errstr);
         spiSettings = mcp2210_.getSPISettings(errcnt, errstr);  // Although not strictly necessary, it is a good practice to read back the applied settings in this case
         if (validateOperation(tr("apply SPI delays"), errcnt, errstr)) {
