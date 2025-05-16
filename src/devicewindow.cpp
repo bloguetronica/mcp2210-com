@@ -551,7 +551,7 @@ void DeviceWindow::updatePushButtonClipboardPasteWrite()
     ui->pushButtonClipboardPasteWrite->setEnabled(isClipboardTextValid());
 }
 
-// Applies the SPI settings defined by the user
+// Applies the SPI settings defined by the user (fixed in version 1.0.1)
 void DeviceWindow::applySPISettings(bool enforceSingleChannel, bool getCompatibleBitrate)
 {
     MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied;
@@ -563,6 +563,7 @@ void DeviceWindow::applySPISettings(bool enforceSingleChannel, bool getCompatibl
     }
     int errcnt = 0;
     QString errstr;
+    mcp2210_.cancelSPITransfer(errcnt, errstr);  // Just in case the device is not acknowledging changes in SPI-related settings (workaround implemented in version 1.0.1)
     if (getCompatibleBitrate) {
         quint32 intendedBitrate = static_cast<quint32>(1000 * ui->doubleSpinBoxBitRate->value());
         quint32 testBitrate = static_cast<quint32>(1.5 * intendedBitrate);  // Variable used for testing and finding compatible bit rates (multiplier value was determined empirically)
