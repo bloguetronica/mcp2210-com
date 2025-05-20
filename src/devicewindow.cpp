@@ -1,4 +1,4 @@
-/* MCP2210 Commander - Version 1.0.1 for Debian Linux
+/* MCP2210 Commander - Version 1.0.2 for Debian Linux
    Copyright (c) 2023-2025 Samuel Lourenço
 
    This program is free software: you can redistribute it and/or modify it
@@ -317,10 +317,11 @@ void DeviceWindow::on_lineEditRead_textChanged(const QString &text)
     ui->pushButtonClipboardCopyRead->setEnabled(!text.isEmpty());
 }
 
+// Modified in version 1.0.2
 void DeviceWindow::on_lineEditWrite_editingFinished()
 {
     ui->lineEditWrite->setText(write_.toHexadecimal());  // Required to reformat the hexadecimal string
-    applySPISettings(CSCUSTOM, BRTKEEP);
+    // Note that, since version 1.0.2, applySPISettings() is no longer called here
 }
 
 void DeviceWindow::on_lineEditWrite_textChanged(const QString &text)
@@ -425,7 +426,7 @@ void DeviceWindow::on_pushButtonSPIDelays_clicked()
     }
 }
 
-// Fixed in version 1.0.1
+// Fixed in version 1.0.2
 void DeviceWindow::on_pushButtonTransfer_clicked()
 {
     size_t bytesToTransfer = write_.vector.size();
@@ -441,13 +442,21 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     int errcnt = 0;
     QString errstr;
     mcp2210_.cancelSPITransfer(errcnt, errstr);  // Just as a precautionary measure to force a start from scratch
+    if (bytesToTransfer >= MCP2210::SPIDATA_MAXSIZE) {  // Added in version 1.0.2
+        spiSettings_.nbytes = MCP2210::SPIDATA_MAXSIZE;
+        mcp2210_.configureSPISettings(spiSettings_, errcnt, errstr);
+    }
     quint8 spiTransferStatus = MCP2210::TRANSFER_STARTED;
-    while (bytesProcessed < bytesToTransfer) {  // For future reference, the variable "spiTransferStatus" does not provide a reliable way to check if the transfer is actually completed (e.g., by evaluating "spiTransferStatus != MCP2210::TRANSFER_FINISHED"), and relying on that variable alone may even lead to a crash!
+    while (bytesProcessed < bytesToTransfer) {  // Since version 1.0.2, transfers are broken up into 60-byte fragments explicitly, by manipulating the number of bytes to be sent via the SPI settings
         if (spiTransferProgress.wasCanceled()) {  // If the user clicks "Abort"
             break;  // Abort the SPI transfer operation
         }
         size_t bytesRemaining = bytesToTransfer - bytesProcessed;
         size_t fragmentSize = bytesRemaining > MCP2210::SPIDATA_MAXSIZE ? MCP2210::SPIDATA_MAXSIZE : bytesRemaining;
+        if (fragmentSize < MCP2210::SPIDATA_MAXSIZE) {  // Added in version 1.0.2
+            spiSettings_.nbytes = fragmentSize;
+            mcp2210_.configureSPISettings(spiSettings_, errcnt, errstr);
+        }
         QVector<quint8> readFragment = mcp2210_.spiTransfer(write_.fragment(bytesProcessed, fragmentSize), spiTransferStatus, errcnt, errstr);  // Transfer SPI data
         if (errcnt > 0) {  // In case of error
             spiTransferProgress.cancel();  // Important!
@@ -457,7 +466,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
             spiTransferProgress.setLabelText(tr("Waiting for the SPI bus to be released..."));
         } else {
             spiTransferProgress.setLabelText(tr("Performing SPI transfer..."));
-            if (spiTransferStatus == MCP2210::TRANSFER_NOT_FINISHED || spiTransferStatus == MCP2210::TRANSFER_FINISHED) {
+            if (spiTransferStatus == MCP2210::TRANSFER_FINISHED || spiTransferStatus == MCP2210::TRANSFER_NOT_FINISHED) {  // The condition "spiTransferStatus == MCP2210::TRANSFER_NOT_FINISHED" is kept for legacy purposes since version 1.0.2
                 read.vector += readFragment;  // The returned fragment could be considered valid at this point
                 bytesProcessed += fragmentSize;
             }
@@ -465,7 +474,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
         spiTransferProgress.setValue(static_cast<int>(bytesProcessed));  // Note that this should be done here at the end of the loop, outside the previous if statements
         QCoreApplication::processEvents();  // Required in order to maintain responsiveness
     }
-    if (spiTransferStatus != MCP2210::TRANSFER_FINISHED) {  // Fix applied in version 1.0.1
+    if (spiTransferStatus != MCP2210::TRANSFER_FINISHED) {  // Fix applied in version 1.0.1 (kept for legacy purposes since version 1.0.2)
         mcp2210_.cancelSPITransfer(errcnt, errstr);  // This ensures a clean slate for any process that follows
     }
     qint64 elapsedTime = time.elapsed();  // Elapsed time in milliseconds
@@ -551,11 +560,11 @@ void DeviceWindow::updatePushButtonClipboardPasteWrite()
     ui->pushButtonClipboardPasteWrite->setEnabled(isClipboardTextValid());
 }
 
-// Applies the SPI settings defined by the user (fixed in version 1.0.1)
+// Applies the SPI settings defined by the user (fixed in version 1.0.1 and modified in version 1.0.2)
 void DeviceWindow::applySPISettings(bool enforceSingleChannel, bool getCompatibleBitrate)
 {
-    MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied;
-    spiSettings.nbytes = static_cast<quint16>(write_.vector.size());  // Fixed in version 1.0.1
+    MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied
+    // Since version 1.0.2, the number of bytes to transfer is not defined here
     spiSettings.mode = static_cast<quint8>(ui->spinBoxMode->value());
     if (enforceSingleChannel && ui->comboBoxChannel->currentIndex() != 0) {  // If the current index of comboBoxChannel is zero, then no specific channel is selected and no changes should be applied
         spiSettings.actcs = static_cast<quint8>(~(0x0001 << ui->comboBoxChannel->currentText().toUInt()));  // The CS pin that corresponds to the selected channel is active low
