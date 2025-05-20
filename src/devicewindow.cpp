@@ -554,7 +554,7 @@ void DeviceWindow::updatePushButtonClipboardPasteWrite()
 // Applies the SPI settings defined by the user (fixed in version 1.0.1)
 void DeviceWindow::applySPISettings(bool enforceSingleChannel, bool getCompatibleBitrate)
 {
-    MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied;
+    MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied
     spiSettings.nbytes = static_cast<quint16>(write_.vector.size());  // Fixed in version 1.0.1
     spiSettings.mode = static_cast<quint8>(ui->spinBoxMode->value());
     if (enforceSingleChannel && ui->comboBoxChannel->currentIndex() != 0) {  // If the current index of comboBoxChannel is zero, then no specific channel is selected and no changes should be applied
