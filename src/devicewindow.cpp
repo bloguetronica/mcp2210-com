@@ -317,10 +317,11 @@ void DeviceWindow::on_lineEditRead_textChanged(const QString &text)
     ui->pushButtonClipboardCopyRead->setEnabled(!text.isEmpty());
 }
 
+// Modified in version 1.0.2
 void DeviceWindow::on_lineEditWrite_editingFinished()
 {
     ui->lineEditWrite->setText(write_.toHexadecimal());  // Required to reformat the hexadecimal string
-    applySPISettings(CSCUSTOM, BRTKEEP);
+    // Note that, since version 1.0.2, applySPISettings() is no longer called here
 }
 
 void DeviceWindow::on_lineEditWrite_textChanged(const QString &text)
@@ -559,11 +560,11 @@ void DeviceWindow::updatePushButtonClipboardPasteWrite()
     ui->pushButtonClipboardPasteWrite->setEnabled(isClipboardTextValid());
 }
 
-// Applies the SPI settings defined by the user (fixed in version 1.0.1)
+// Applies the SPI settings defined by the user (fixed in version 1.0.1 and modified in version 1.0.2)
 void DeviceWindow::applySPISettings(bool enforceSingleChannel, bool getCompatibleBitrate)
 {
     MCP2210::SPISettings spiSettings = spiSettings_;  // Local variable required in order to hold SPI settings that may or may not be applied
-    spiSettings.nbytes = static_cast<quint16>(write_.vector.size());  // Fixed in version 1.0.1
+    // Since version 1.0.2, the number of bytes to transfer is not defined here
     spiSettings.mode = static_cast<quint8>(ui->spinBoxMode->value());
     if (enforceSingleChannel && ui->comboBoxChannel->currentIndex() != 0) {  // If the current index of comboBoxChannel is zero, then no specific channel is selected and no changes should be applied
         spiSettings.actcs = static_cast<quint8>(~(0x0001 << ui->comboBoxChannel->currentText().toUInt()));  // The CS pin that corresponds to the selected channel is active low
