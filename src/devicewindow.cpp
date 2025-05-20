@@ -425,7 +425,7 @@ void DeviceWindow::on_pushButtonSPIDelays_clicked()
     }
 }
 
-// Fixed in version 1.0.1
+// Fixed in version 1.0.2
 void DeviceWindow::on_pushButtonTransfer_clicked()
 {
     size_t bytesToTransfer = write_.vector.size();
@@ -441,13 +441,21 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     int errcnt = 0;
     QString errstr;
     mcp2210_.cancelSPITransfer(errcnt, errstr);  // Just as a precautionary measure to force a start from scratch
+    if (bytesToTransfer >= MCP2210::SPIDATA_MAXSIZE) {  // Added in version 1.0.2
+        spiSettings_.nbytes = MCP2210::SPIDATA_MAXSIZE;
+        mcp2210_.configureSPISettings(spiSettings_, errcnt, errstr);
+    }
     quint8 spiTransferStatus = MCP2210::TRANSFER_STARTED;
-    while (bytesProcessed < bytesToTransfer) {  // For future reference, the variable "spiTransferStatus" does not provide a reliable way to check if the transfer is actually completed (e.g., by evaluating "spiTransferStatus != MCP2210::TRANSFER_FINISHED"), and relying on that variable alone may even lead to a crash!
+    while (bytesProcessed < bytesToTransfer) {  // Since version 1.0.2, transfers are broken up into 60 byte segments explicitly, by manipulating the number of bytes to be sent via the SPI settings
         if (spiTransferProgress.wasCanceled()) {  // If the user clicks "Abort"
             break;  // Abort the SPI transfer operation
         }
         size_t bytesRemaining = bytesToTransfer - bytesProcessed;
         size_t fragmentSize = bytesRemaining > MCP2210::SPIDATA_MAXSIZE ? MCP2210::SPIDATA_MAXSIZE : bytesRemaining;
+        if (fragmentSize < MCP2210::SPIDATA_MAXSIZE) {  // Added in version 1.0.2
+            spiSettings_.nbytes = fragmentSize;
+            mcp2210_.configureSPISettings(spiSettings_, errcnt, errstr);
+        }
         QVector<quint8> readFragment = mcp2210_.spiTransfer(write_.fragment(bytesProcessed, fragmentSize), spiTransferStatus, errcnt, errstr);  // Transfer SPI data
         if (errcnt > 0) {  // In case of error
             spiTransferProgress.cancel();  // Important!
@@ -457,7 +465,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
             spiTransferProgress.setLabelText(tr("Waiting for the SPI bus to be released..."));
         } else {
             spiTransferProgress.setLabelText(tr("Performing SPI transfer..."));
-            if (spiTransferStatus == MCP2210::TRANSFER_NOT_FINISHED || spiTransferStatus == MCP2210::TRANSFER_FINISHED) {
+            if (spiTransferStatus == MCP2210::TRANSFER_FINISHED || spiTransferStatus == MCP2210::TRANSFER_NOT_FINISHED) {  // The condition "spiTransferStatus == MCP2210::TRANSFER_NOT_FINISHED" is kept for legacy purposes since version 1.0.2
                 read.vector += readFragment;  // The returned fragment could be considered valid at this point
                 bytesProcessed += fragmentSize;
             }
@@ -465,7 +473,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
         spiTransferProgress.setValue(static_cast<int>(bytesProcessed));  // Note that this should be done here at the end of the loop, outside the previous if statements
         QCoreApplication::processEvents();  // Required in order to maintain responsiveness
     }
-    if (spiTransferStatus != MCP2210::TRANSFER_FINISHED) {  // Fix applied in version 1.0.1
+    if (spiTransferStatus != MCP2210::TRANSFER_FINISHED) {  // Fix applied in version 1.0.1 (kept for legacy purposes since version 1.0.2)
         mcp2210_.cancelSPITransfer(errcnt, errstr);  // This ensures a clean slate for any process that follows
     }
     qint64 elapsedTime = time.elapsed();  // Elapsed time in milliseconds
