@@ -447,7 +447,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
         mcp2210_.configureSPISettings(spiSettings_, errcnt, errstr);
     }
     quint8 spiTransferStatus = MCP2210::TRANSFER_STARTED;
-    while (bytesProcessed < bytesToTransfer) {  // Since version 1.0.2, transfers are broken up into 60 byte segments explicitly, by manipulating the number of bytes to be sent via the SPI settings
+    while (bytesProcessed < bytesToTransfer) {  // Since version 1.0.2, transfers are broken up into 60-byte fragments explicitly, by manipulating the number of bytes to be sent via the SPI settings
         if (spiTransferProgress.wasCanceled()) {  // If the user clicks "Abort"
             break;  // Abort the SPI transfer operation
         }
