@@ -15,8 +15,8 @@
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="81"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Version 1.0.2&lt;br/&gt;© 2023-2025 Samuel Lourenço&lt;/p&gt;&lt;p&gt;This program is distributed under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0-standalone.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;GNU GPL v3&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Versão 1.0.2&lt;br/&gt;© 2023-2025 Samuel Lourenço&lt;/p&gt;&lt;p&gt;Este programa é distribuido sob os termos da licença &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0-standalone.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;GNU GPL v3&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Version 1.0.3&lt;br/&gt;© 2023-2025 Samuel Lourenço&lt;/p&gt;&lt;p&gt;This program is distributed under the terms of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0-standalone.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;GNU GPL v3&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Versão 1.0.3&lt;br/&gt;© 2023-2025 Samuel Lourenço&lt;/p&gt;&lt;p&gt;Este programa é distribuido sob os termos da licença &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0-standalone.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;GNU GPL v3&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -354,7 +354,7 @@
     </message>
     <message>
         <location filename="../devicewindow.ui" line="238"/>
-        <location filename="../devicewindow.cpp" line="641"/>
+        <location filename="../devicewindow.cpp" line="642"/>
         <source>Count</source>
         <translation>Contagem</translation>
     </message>
@@ -480,11 +480,11 @@ Este é um erro crítico e a execução será abortada.</translation>
     <message>
         <location filename="../devicewindow.cpp" line="89"/>
         <location filename="../devicewindow.cpp" line="91"/>
-        <location filename="../devicewindow.cpp" line="754"/>
-        <location filename="../devicewindow.cpp" line="757"/>
-        <location filename="../devicewindow.cpp" line="772"/>
-        <location filename="../devicewindow.cpp" line="775"/>
-        <location filename="../devicewindow.cpp" line="781"/>
+        <location filename="../devicewindow.cpp" line="755"/>
+        <location filename="../devicewindow.cpp" line="758"/>
+        <location filename="../devicewindow.cpp" line="773"/>
+        <location filename="../devicewindow.cpp" line="776"/>
+        <location filename="../devicewindow.cpp" line="782"/>
         <source>Error</source>
         <translation>Erro</translation>
     </message>
@@ -608,73 +608,73 @@ Por favor, confirme que o mesmo não está a ser utilizado.</translation>
         <translation>A executar transferência SPI...</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="484"/>
+        <location filename="../devicewindow.cpp" line="485"/>
         <source>SPI transfer failed.</source>
         <translation>Transferência SPI falhou.</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="486"/>
+        <location filename="../devicewindow.cpp" line="487"/>
         <source>SPI transfer aborted by the user.</source>
         <translation>Transferência SPI abortada pelo utilizador.</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="488"/>
+        <location filename="../devicewindow.cpp" line="489"/>
         <source>SPI transfer completed. %1 bytes transferred in %2 ms.</source>
         <translation>Transferência SPI concluída. %1 bytes transferidos em %2 ms.</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="490"/>
+        <location filename="../devicewindow.cpp" line="491"/>
         <source>SPI transfer completed. %1 bytes transferred in %2 s.</source>
         <translation>Transferência SPI concluída. %1 bytes transferidos em %2 s.</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="492"/>
+        <location filename="../devicewindow.cpp" line="493"/>
         <source>transfer SPI data</source>
         <translation>transferir dados via SPI</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="500"/>
+        <location filename="../devicewindow.cpp" line="501"/>
         <source>reset event counter</source>
         <translation>repor o contador de eventos</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="548"/>
+        <location filename="../devicewindow.cpp" line="549"/>
         <source>update</source>
         <translation>actualizar</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="605"/>
+        <location filename="../devicewindow.cpp" line="606"/>
         <source>apply SPI settings</source>
         <translation>aplicar as definições SPI</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="618"/>
+        <location filename="../devicewindow.cpp" line="619"/>
         <source>&amp;Close Window</source>
         <translation>&amp;Fechar Janela</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="629"/>
+        <location filename="../devicewindow.cpp" line="630"/>
         <source>Falling edge count</source>
         <translation>Contagem de flancos descendentes</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="632"/>
+        <location filename="../devicewindow.cpp" line="633"/>
         <source>Rising edge count</source>
         <translation>Contagem de flancos ascendentes</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="635"/>
+        <location filename="../devicewindow.cpp" line="636"/>
         <source>Low pulse count</source>
         <translation>Contagem de pulsos baixos</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="638"/>
+        <location filename="../devicewindow.cpp" line="639"/>
         <source>High pulse count</source>
         <translation>Contagem de pulsos altos</translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="754"/>
-        <location filename="../devicewindow.cpp" line="772"/>
+        <location filename="../devicewindow.cpp" line="755"/>
+        <location filename="../devicewindow.cpp" line="773"/>
         <source>Device disconnected.
 
 Please reconnect it and try again.</source>
@@ -683,7 +683,7 @@ Please reconnect it and try again.</source>
 Por favor, ligue-o e tente novamente.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../devicewindow.cpp" line="757"/>
+        <location filename="../devicewindow.cpp" line="758"/>
         <source>Failed to read device settings. The operation returned the following error(s):
 – %1
 
@@ -700,7 +700,7 @@ Por favor, tente aceder novamente ao dispositivo.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../devicewindow.cpp" line="775"/>
+        <location filename="../devicewindow.cpp" line="776"/>
         <source>Failed to %1. The operation returned the following error(s):
 – %2</source>
         <translation>
@@ -711,7 +711,7 @@ Por favor, tente aceder novamente ao dispositivo.</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../devicewindow.cpp" line="781"/>
+        <location filename="../devicewindow.cpp" line="782"/>
         <source>Detected too many errors.</source>
         <translation>Demasiados erros detectados.</translation>
     </message>
@@ -913,70 +913,70 @@ Este é um erro crítico e a execução será abortada.</translation>
 </translation>
     </message>
     <message>
-        <location filename="../mcp2210.cpp" line="551"/>
+        <location filename="../mcp2210.cpp" line="563"/>
         <source>In setGPIO(): GPIO pin number must be between 0 and 7.
 </source>
         <translation>Em &quot;setGPIO()&quot;: o número do pino GPIO deve estar compreendido entre 0 e 7.
 </translation>
     </message>
     <message>
-        <location filename="../mcp2210.cpp" line="577"/>
+        <location filename="../mcp2210.cpp" line="589"/>
         <source>In setGPIODirection(): GPIO pin number must be between 0 and 7.
 </source>
         <translation>Em &quot;setGPIODirection()&quot;: o número do pino GPIO deve estar compreendido entre 0 e 7.
 </translation>
     </message>
     <message>
-        <location filename="../mcp2210.cpp" line="627"/>
+        <location filename="../mcp2210.cpp" line="639"/>
         <source>In spiTransfer(): vector size cannot exceed 60 bytes.
 </source>
         <translation>Em &quot;spiTransfer()&quot;: o tamanho do vector não pode exceder 60 bytes.
 </translation>
     </message>
     <message>
-        <location filename="../mcp2210.cpp" line="656"/>
+        <location filename="../mcp2210.cpp" line="668"/>
         <source>In toggleGPIO(): GPIO pin number must be between 0 and 7.
 </source>
         <translation>Em &quot;toggleGPIO():&quot;: o número do pino GPIO deve estar compreendido entre 0 e 7.
 </translation>
     </message>
     <message>
-        <location filename="../mcp2210.cpp" line="721"/>
+        <location filename="../mcp2210.cpp" line="733"/>
         <source>In writeEEPROMRange(): the first address cannot be greater than the last address.
 </source>
         <translation>Em &quot;writeEEPROMRange()&quot;: o primeiro endereço não pode ser maior do que o último endereço.
 </translation>
     </message>
     <message>
-        <location filename="../mcp2210.cpp" line="727"/>
+        <location filename="../mcp2210.cpp" line="739"/>
         <source>In writeEEPROMRange(): vector size does not match range size.
 </source>
         <translation>Em &quot;writeEEPROMRange()&quot;: o tamanho do vector não condiz com o tamanho do escopo.
 </translation>
     </message>
     <message>
-        <location filename="../mcp2210.cpp" line="749"/>
+        <location filename="../mcp2210.cpp" line="761"/>
         <source>In writeManufacturerDesc(): manufacturer descriptor string cannot be longer than 28 characters.
 </source>
         <translation>Em &quot;writeManufacturerDesc()&quot;: o descritor do fabricante não pode ter mais do que 28 caracteres.
 </translation>
     </message>
     <message>
-        <location filename="../mcp2210.cpp" line="835"/>
+        <location filename="../mcp2210.cpp" line="847"/>
         <source>In writeProductDesc(): product descriptor string cannot be longer than 28 characters.
 </source>
         <translation>Em &quot;writeProductDesc()&quot;: o descritor do produto não pode ter mais do que 28 caracteres.
 </translation>
     </message>
     <message>
-        <location filename="../mcp2210.cpp" line="864"/>
+        <location filename="../mcp2210.cpp" line="876"/>
         <source>Could not initialize libusb.
 </source>
         <translation>Falhou ao inicializar o libusb.
 </translation>
     </message>
     <message>
-        <location filename="../mcp2210.cpp" line="870"/>
+        <location filename="../mcp2210.cpp" line="882"/>
         <source>Failed to retrieve a list of devices.
 </source>
         <translation>Falhou em obter uma lista de dispositivos.

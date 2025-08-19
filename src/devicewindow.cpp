@@ -1,4 +1,4 @@
-/* MCP2210 Commander - Version 1.0.2 for Debian Linux
+/* MCP2210 Commander - Version 1.0.3 for Debian Linux
    Copyright (c) 2023-2025 Samuel Lourenço
 
    This program is free software: you can redistribute it and/or modify it
@@ -20,7 +20,6 @@
 
 // Includes
 #include <QClipboard>
-#include <QCoreApplication>
 #include <QElapsedTimer>
 #include <QGuiApplication>
 #include <QMessageBox>
@@ -28,6 +27,7 @@
 #include <QRegExp>
 #include <QRegExpValidator>
 #include <QStringList>
+#include <QVector>
 #include "common.h"
 #include "chipsettingsdialog.h"
 #include "cssettingsdialog.h"
@@ -426,7 +426,7 @@ void DeviceWindow::on_pushButtonSPIDelays_clicked()
     }
 }
 
-// Fixed in version 1.0.2
+// Fixed in version 1.0.2 and optimized in version 1.0.3
 void DeviceWindow::on_pushButtonTransfer_clicked()
 {
     size_t bytesToTransfer = write_.vector.size();
@@ -434,7 +434,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     QProgressDialog spiTransferProgress("", tr("Abort"), 0, static_cast<int>(bytesToTransfer), this);
     spiTransferProgress.setWindowTitle(tr("SPI transfer"));
     spiTransferProgress.setWindowModality(Qt::WindowModal);
-    spiTransferProgress.setMinimumDuration(0);  // Because QCoreApplication::processEvents() is called, the progress dialog needs be displayed right away
+    spiTransferProgress.setMinimumDuration(500);  // The progress dialog should appear only if the operation takes more than 500 ms (applied in version 1.0.3)
     Data read;
     timer_->stop();  // The update timer should be stopped during SPI transfers
     QElapsedTimer time;
@@ -471,8 +471,9 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
                 bytesProcessed += fragmentSize;
             }
         }
+        spiTransferProgress.setValue(-1);  // Workaround required in order to maintain responsiveness (fix applied in version 1.0.3)
         spiTransferProgress.setValue(static_cast<int>(bytesProcessed));  // Note that this should be done here at the end of the loop, outside the previous if statements
-        QCoreApplication::processEvents();  // Required in order to maintain responsiveness
+        // Note that, since version 1.0.3, there is no need to call QCoreApplication::processEvents() in order to maintain responsiveness
     }
     if (spiTransferStatus != MCP2210::TRANSFER_FINISHED) {  // Fix applied in version 1.0.1 (kept for legacy purposes since version 1.0.2)
         mcp2210_.cancelSPITransfer(errcnt, errstr);  // This ensures a clean slate for any process that follows
