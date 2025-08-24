@@ -1,4 +1,4 @@
-/* MCP2210 Commander - Version 1.0.3 for Debian Linux
+/* MCP2210 Commander - Version 1.0.4 for Debian Linux
    Copyright (c) 2023-2025 Samuel Lourenço
 
    This program is free software: you can redistribute it and/or modify it
@@ -50,6 +50,7 @@ DeviceWindow::DeviceWindow(QWidget *parent) :
     ui(new Ui::DeviceWindow)
 {
     ui->setupUi(this);
+    ui->doubleSpinBoxBitRate->setLocale(systemLocale);  // Added in version 1.0.4
     ui->lineEditWrite->setValidator(new QRegExpValidator(QRegExp("[A-Fa-f\\d\\s]+"), this));  // Spaces are also allowed
     labelStatus_ = new QLabel(this);
     this->statusBar()->addWidget(labelStatus_);
@@ -488,7 +489,7 @@ void DeviceWindow::on_pushButtonTransfer_clicked()
     } else if (elapsedTime < 1000) {
         labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 ms.").arg(bytesProcessed + read.vector.size()).arg(elapsedTime));  // Fixed in version 1.0.1
     } else {
-        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 s.").arg(bytesProcessed + read.vector.size()).arg(locale_.toString(elapsedTime / 1000.0, 'f', 3)));  // Fixed in version 1.0.1
+        labelStatus_->setText(tr("SPI transfer completed. %1 bytes transferred in %2 s.").arg(bytesProcessed + read.vector.size()).arg(systemLocale.toString(elapsedTime / 1000.0, 'f', 3)));  // Fixed in version 1.0.1 and modified in version 1.0.4
     }
     validateOperation(tr("transfer SPI data"), errcnt, errstr);
 }
