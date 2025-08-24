@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     QTranslator translator;
-    if (!translator.load("mcp2210-com_" + systemLocale.name(), ":/translations/translations")) {  // It the locale translation does not exist or cannot be loaded
+    if (!translator.load("mcp2210-com_" + systemLocale.name(), ":/translations/translations")) {  // It the locale translation does not exist or cannot be loaded (modified in version 1.0.4)
         translator.load("mcp2210-com_en_US", ":/translations/translations");  // Fall back to the en-US translation
     }
     a.installTranslator(&translator);
