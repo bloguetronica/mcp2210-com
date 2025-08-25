@@ -22,13 +22,13 @@
 #include <QStringRef>
 #include "data.h"
 
-// Returns a fragment of data from the given index, with the specified size
+// Returns a fragment of data from the given index, with the specified size (optimized in version 1.0.4)
 // If the given size, when added to the index, goes out of boundaries, the returned QVector will have a smaller than expected size
 QVector<quint8> Data::fragment(size_t index, size_t size) const
 {
     size_t vectorSize = static_cast<size_t>(vector.size());
     if (index < vectorSize) {  // This is essential to prevent integer underflow (see subtraction in the line below)
-        size = size + index > vectorSize ? vectorSize - index : size;  // Optimized in version 1.0.4
+        size = size + index > vectorSize ? vectorSize - index : size;
     } else {
         size = 0;
     }
