@@ -27,15 +27,14 @@
 QVector<quint8> Data::fragment(size_t index, size_t size) const
 {
     size_t vectorSize = static_cast<size_t>(vector.size());
-    size_t fragmentSize;
     if (index < vectorSize) {  // This is essential to prevent integer underflow (see subtraction in the line below)
-        fragmentSize = size + index > vectorSize ? vectorSize - index : size;
+        size = size + index > vectorSize ? vectorSize - index : size;  // Optimized in version 1.0.4
     } else {
-        fragmentSize = 0;
+        size = 0;
     }
-    QVector<quint8> retdata(fragmentSize);
-    for (size_t i = 0; i < fragmentSize; ++i) {
-        retdata[static_cast<int>(i)] = vector[static_cast<int>(index + i)];
+    QVector<quint8> retdata(size);
+    for (size_t i = 0; i < size; ++i) {
+        retdata[static_cast<int>(i)] = vector.at(static_cast<int>(index + i));  // Optimized in version 1.0.4
     }
     return retdata;
 }
@@ -48,7 +47,7 @@ QString Data::toHexadecimal() const
         if (i > 0) {
             hexadecimal += " ";
         }
-        hexadecimal += QString("%1").arg(vector[i], 2, 16, QChar('0'));
+        hexadecimal += QString("%1").arg(vector.at(i), 2, 16, QChar('0'));  // Optimized in version 1.0.4
     }
     return hexadecimal;
 }
@@ -58,9 +57,9 @@ void Data::fromHexadecimal(const QString &hexadecimal)
 {
     QString strippedHexadecimal(hexadecimal);
     strippedHexadecimal.remove(QChar(' ')).remove(QChar('\n'));  // Newline characters are also removed to prevent conversion errors
-    int vecSize = strippedHexadecimal.size() / 2;
-    vector.resize(vecSize);
-    for (int i = 0; i < vecSize; ++i) {
+    int vectorSize = strippedHexadecimal.size() / 2;
+    vector.resize(vectorSize);
+    for (int i = 0; i < vectorSize; ++i) {
         vector[i] = static_cast<quint8>(QStringRef(&strippedHexadecimal, 2 * i, 2).toUInt(nullptr, 16));
     }
 }
