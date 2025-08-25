@@ -22,7 +22,7 @@
 #include <QStringRef>
 #include "data.h"
 
-// Returns a fragment of data from the given index, with the specified size (optimized in version 1.0.4)
+// Returns a fragment of data from the given index, with the specified size (cleaned up and optimized in version 1.0.4)
 // If the given size, when added to the index, goes out of boundaries, the returned QVector will have a smaller than expected size
 QVector<quint8> Data::fragment(size_t index, size_t size) const
 {
@@ -39,7 +39,7 @@ QVector<quint8> Data::fragment(size_t index, size_t size) const
     return retdata;
 }
 
-// Converts to a string of hexadecimal numbers
+// Converts to a string of hexadecimal numbers (optimized in version 1.0.4)
 QString Data::toHexadecimal() const
 {
     QString hexadecimal;
