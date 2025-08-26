@@ -110,6 +110,7 @@ private:
     void initializeView();
     bool isClipboardTextValid();
     void readSettings();
+    Data spiTransfer(QString &statusText, size_t &bytesProcessed, const bool &abort, int &errcnt, QString &errstr);
     bool validateOperation(const QString &operation, int errcnt, QString errstr);
     void updateView(quint16 gpios, quint16 eventCount);
 };
