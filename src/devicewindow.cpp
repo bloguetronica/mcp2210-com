@@ -434,7 +434,7 @@ void DeviceWindow::on_pushButtonSPIDelays_clicked()
 // Modified in version 1.0.4
 void DeviceWindow::on_pushButtonTransfer_clicked()
 {
-    QProgressDialog spiTransferProgress("", tr("Abort"), 0, static_cast<int>(write_.vector.size()), this);
+    QProgressDialog spiTransferProgress("", tr("Abort"), 0, write_.vector.size(), this);  // Optimized in version 1.0.4
     spiTransferProgress.setWindowTitle(tr("SPI transfer"));
     spiTransferProgress.setWindowModality(Qt::WindowModal);
     spiTransferProgress.setMinimumDuration(500);  // The progress dialog should appear only if the operation takes more than 500 ms (applied in version 1.0.3)
@@ -748,7 +748,7 @@ Data DeviceWindow::spiTransfer(QString &statusText, size_t &bytesProcessed, cons
 {
     Data read;
     mcp2210_.cancelSPITransfer(errcnt, errstr);  // Just as a precautionary measure to force a start from scratch
-    size_t bytesToTransfer = write_.vector.size();
+    size_t bytesToTransfer = static_cast<size_t>(write_.vector.size());
     if (bytesToTransfer >= MCP2210::SPIDATA_MAXSIZE) {
         spiSettings_.nbytes = MCP2210::SPIDATA_MAXSIZE;
         mcp2210_.configureSPISettings(spiSettings_, errcnt, errstr);
