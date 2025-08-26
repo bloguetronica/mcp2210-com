@@ -1,4 +1,4 @@
-/* MCP2210 Commander - Version 1.0.3 for Debian Linux
+/* MCP2210 Commander - Version 1.0.4 for Debian Linux
    Copyright (c) 2023-2025 Samuel Lourenço
 
    This program is free software: you can redistribute it and/or modify it
@@ -23,7 +23,6 @@
 
 // Includes
 #include <QLabel>
-#include <QLocale>
 #include <QMainWindow>
 #include <QPointer>
 #include <QResizeEvent>
@@ -95,7 +94,6 @@ private:
     MCP2210::ChipSettings chipSettings_;
     MCP2210::SPISettings spiSettings_;
     QLabel *labelStatus_;
-    QLocale locale_ = QLocale::system();
     QPointer<InformationDialog> informationDialog_;
     QPointer<StatusDialog> statusDialog_;
     QString serialString_;
@@ -112,6 +110,7 @@ private:
     void initializeView();
     bool isClipboardTextValid();
     void readSettings();
+    Data spiTransfer(QString &statusText, size_t &bytesProcessed, const bool &abort, int &errcnt, QString &errstr);
     bool validateOperation(const QString &operation, int errcnt, QString errstr);
     void updateView(quint16 gpios, quint16 eventCount);
 };

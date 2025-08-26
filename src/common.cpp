@@ -1,4 +1,4 @@
-/* MCP2210 Commander - Version 1.0.3 for Debian Linux
+/* MCP2210 Commander - Version 1.0.4 for Debian Linux
    Copyright (c) 2023-2025 Samuel Lourenço
 
    This program is free software: you can redistribute it and/or modify it
@@ -23,7 +23,10 @@
 #include "aboutdialog.h"
 #include "common.h"
 
-// Definitions
+// Global definitions
+QLocale systemLocale = QLocale::system();  // Added in version 1.0.4
+
+// Local definitions
 QPointer<AboutDialog> aboutDialog_;
 
 // Closes the about dialog

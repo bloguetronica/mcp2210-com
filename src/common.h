@@ -1,4 +1,4 @@
-/* MCP2210 Commander - Version 1.0.3 for Debian Linux
+/* MCP2210 Commander - Version 1.0.4 for Debian Linux
    Copyright (c) 2023-2025 Samuel Lourenço
 
    This program is free software: you can redistribute it and/or modify it
@@ -20,6 +20,12 @@
 
 #ifndef COMMON_H
 #define COMMON_H
+
+// Includes
+#include <QLocale>
+
+// Global variables
+extern QLocale systemLocale;  // Added in version 1.0.4
 
 // Function prototypes
 void closeAboutDialog();

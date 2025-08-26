@@ -1,4 +1,4 @@
-/* MCP2210 Commander - Version 1.0.3 for Debian Linux
+/* MCP2210 Commander - Version 1.0.4 for Debian Linux
    Copyright (c) 2023-2025 Samuel Lourenço
 
    This program is free software: you can redistribute it and/or modify it
@@ -20,15 +20,15 @@
 
 // Includes
 #include <QApplication>
-#include <QLocale>
 #include <QTranslator>
+#include "common.h"
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     QTranslator translator;
-    if (!translator.load("mcp2210-com_" + QLocale::system().name(), ":/translations/translations")) {  // It the locale translation does not exist or cannot be loaded
+    if (!translator.load("mcp2210-com_" + systemLocale.name(), ":/translations/translations")) {  // It the locale translation does not exist or cannot be loaded (modified in version 1.0.4)
         translator.load("mcp2210-com_en_US", ":/translations/translations");  // Fall back to the en-US translation
     }
     a.installTranslator(&translator);
