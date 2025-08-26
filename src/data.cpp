@@ -34,7 +34,7 @@ QVector<quint8> Data::fragment(size_t index, size_t size) const
     }
     QVector<quint8> retdata(size);
     for (size_t i = 0; i < size; ++i) {
-        retdata[static_cast<int>(i)] = vector.at(static_cast<int>(index + i));  // Optimized in version 1.0.4
+        retdata[static_cast<int>(i)] = vector.at(static_cast<int>(index + i));  // Since version 1.0.4, QVector::at() is used in leu of QVector::operator[] to get values from the vector
     }
     return retdata;
 }
@@ -47,7 +47,7 @@ QString Data::toHexadecimal() const
         if (i > 0) {
             hexadecimal += " ";
         }
-        hexadecimal += QString("%1").arg(vector.at(i), 2, 16, QChar('0'));  // Optimized in version 1.0.4
+        hexadecimal += QString("%1").arg(vector.at(i), 2, 16, QChar('0'));  // Since version 1.0.4, QVector::at() is used instead of QVector::operator[] to get values from the vector
     }
     return hexadecimal;
 }
