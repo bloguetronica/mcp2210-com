@@ -32,11 +32,11 @@ QVector<quint8> Data::fragment(size_t index, size_t size) const
     } else {
         size = 0;
     }
-    QVector<quint8> retdata(size);
+    QVector<quint8> dataFragment(size);  // The return variable is declared here and not at the beginning, so it can be declared with the conditioned size (which might not match the value passed via the corresponding argument)
     for (size_t i = 0; i < size; ++i) {
-        retdata[static_cast<int>(i)] = vector.at(static_cast<int>(index + i));  // Since version 1.0.4, QVector::at() is used in leu of QVector::operator[] to get values from the vector
+        dataFragment[static_cast<int>(i)] = vector.at(static_cast<int>(index + i));  // Since version 1.0.4, QVector::at() is used in leu of QVector::operator[] to get values from the vector
     }
-    return retdata;
+    return dataFragment;
 }
 
 // Converts to a string of hexadecimal numbers (optimized in version 1.0.4)
