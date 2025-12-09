@@ -784,6 +784,21 @@ Data DeviceWindow::spiTransfer(QString &statusText, size_t &bytesProcessed, cons
     return read;
 }
 
+// Updates the view
+void DeviceWindow::updateView(quint16 gpios, quint16 eventCount)
+{
+    ui->checkBoxGPIO0->setChecked((0x0001 & gpios) != 0x0000);
+    ui->checkBoxGPIO1->setChecked((0x0002 & gpios) != 0x0000);
+    ui->checkBoxGPIO2->setChecked((0x0004 & gpios) != 0x0000);
+    ui->checkBoxGPIO3->setChecked((0x0008 & gpios) != 0x0000);
+    ui->checkBoxGPIO4->setChecked((0x0010 & gpios) != 0x0000);
+    ui->checkBoxGPIO5->setChecked((0x0020 & gpios) != 0x0000);
+    ui->checkBoxGPIO6->setChecked((0x0040 & gpios) != 0x0000);
+    ui->checkBoxGPIO7->setChecked((0x0080 & gpios) != 0x0000);
+    ui->checkBoxGPIO8->setChecked((0x0100 & gpios) != 0x0000);
+    ui->lcdNumberCount->display(eventCount);
+}
+
 // Checks for errors and validates (or ultimately halts) device operations
 bool DeviceWindow::validateOperation(const QString &operation, int errcnt, QString errstr)
 {
@@ -810,19 +825,4 @@ bool DeviceWindow::validateOperation(const QString &operation, int errcnt, QStri
         retval = true;  // Passed validation
     }
     return retval;
-}
-
-// Updates the view
-void DeviceWindow::updateView(quint16 gpios, quint16 eventCount)
-{
-    ui->checkBoxGPIO0->setChecked((0x0001 & gpios) != 0x0000);
-    ui->checkBoxGPIO1->setChecked((0x0002 & gpios) != 0x0000);
-    ui->checkBoxGPIO2->setChecked((0x0004 & gpios) != 0x0000);
-    ui->checkBoxGPIO3->setChecked((0x0008 & gpios) != 0x0000);
-    ui->checkBoxGPIO4->setChecked((0x0010 & gpios) != 0x0000);
-    ui->checkBoxGPIO5->setChecked((0x0020 & gpios) != 0x0000);
-    ui->checkBoxGPIO6->setChecked((0x0040 & gpios) != 0x0000);
-    ui->checkBoxGPIO7->setChecked((0x0080 & gpios) != 0x0000);
-    ui->checkBoxGPIO8->setChecked((0x0100 & gpios) != 0x0000);
-    ui->lcdNumberCount->display(eventCount);
 }
