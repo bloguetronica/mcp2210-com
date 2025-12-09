@@ -1,4 +1,4 @@
-/* MCP2210 Commander - Version 1.0.4 for Debian Linux
+/* MCP2210 Commander - Version 1.0.5 for Debian Linux
    Copyright (c) 2023-2025 Samuel Lourenço
 
    This program is free software: you can redistribute it and/or modify it
@@ -329,11 +329,13 @@ void DeviceWindow::on_lineEditWrite_editingFinished()
     // Note that, since version 1.0.2, applySPISettings() is no longer called here
 }
 
+// Modified in version 1.0.5
 void DeviceWindow::on_lineEditWrite_textChanged(const QString &text)
 {
-    ui->pushButtonClipboardCopyWrite->setEnabled(!text.isEmpty());
     write_.fromHexadecimal(text);  // This also forces a retrim whenever on_lineEditWrite_editingFinished() is triggered, which is useful case the reformatted hexadecimal string does not fit the line edit box (required in order to follow the WYSIWYG principle)
-    ui->pushButtonTransfer->setEnabled(write_.vector.size() != 0);  // The button "Transfer" is enabled if the string is valid, that is, its conversion leads to a non-empty QVector
+    bool enableTransfer = !write_.vector.isEmpty();  // The "copy to clipboard" and "transfer" buttons are enabled if the string is valid, that is, its conversion leads to a non-empty QVector
+    ui->pushButtonClipboardCopyWrite->setEnabled(enableTransfer);
+    ui->pushButtonTransfer->setEnabled(enableTransfer);
 }
 
 void DeviceWindow::on_lineEditWrite_textEdited(const QString &text)
